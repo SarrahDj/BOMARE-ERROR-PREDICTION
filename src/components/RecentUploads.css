@@ -1,0 +1,74 @@
+.recent-uploads-wrapper {
+    width: 70%;
+    display: flex;
+    justify-content: center;
+  }
+  
+  .recent-uploads-table {
+    width: 90%;
+    border-collapse: separate; 
+    border-spacing: 0 3px; 
+  }
+  
+  .recent-uploads-table th {
+    text-align: left;
+    background-color: #e7e7e7a3;
+    padding: 0.6rem 1.2rem;
+    font-weight: 600;
+    font-size: 1.1rem;
+    vertical-align: middle; 
+  }
+  
+  .recent-uploads-table td {
+    padding: 0.6rem 1.2rem;
+    background-color: white;
+    font-size: 1rem;
+    text-align: left; 
+    vertical-align: middle;
+  }
+  
+  .upload-row {
+    transition: box-shadow 0.3s ease-in-out;
+    position: relative;
+  }
+  
+  .upload-row:hover {
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2); 
+    z-index: 10; 
+  }
+  
+  .status-processed {
+    color: #00C206;
+    font-weight: 550;
+  }
+  
+  .status-faulty {
+    color: red;
+    font-weight: 550;
+  }
+
+  .check-cross {
+    width: 0.9rem;
+  }
+
+  .status {
+    display: flex;
+    align-items: center;
+    gap: 0.2rem;
+  }
+  
+  .type-th {
+    color: #036DB9;
+  }
+
+  .status-th {
+    color: #9b9b9b;
+  }
+
+  .file-type {
+    color: #3F9BDD;
+  }
+
+  .upload-row {
+    cursor: pointer;
+  }

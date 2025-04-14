@@ -1,0 +1,65 @@
+.notch-sidebar {
+  position: fixed;
+  top:70%;
+  right: 1rem;
+  transform: translateY(-70%);
+  width: 4.1rem;
+  background-color: #0c69b1eb;
+  border-radius: 50px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 2px 5px 5px rgba(0, 0, 0, 0.342);
+
+}
+
+.notch-item {
+  margin: 0.3rem 0;
+  position: relative;
+}
+
+.icon-wrapper {
+  color: rgb(255, 255, 255);
+  font-size: 1.8rem;
+  position: relative;
+  transition: transform 0.2s ease-in-out;
+  height: 2.5rem;
+  width: 2.5rem;
+  padding: 0.5rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.icon-wrapper:hover {
+  cursor: pointer;
+}
+
+
+.tooltip {
+  position: absolute;
+  top: 50%;
+  right: 60px;
+  transform: translateY(-50%);
+  background-color: #222;
+  color: white;
+  padding: 5px 10px;
+  border-radius: 4px;
+  white-space: nowrap;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.2s;
+  font-size: 12px;
+}
+
+.icon-wrapper:hover .tooltip {
+  opacity: 1;
+}
+
+.selected .icon-wrapper {
+  background-color: rgb(69, 135, 197);
+  border-radius: 50%;
+  color: #e4edff;
+  
+}

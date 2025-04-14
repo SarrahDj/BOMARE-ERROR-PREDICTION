@@ -1,0 +1,41 @@
+.upload-page {
+  margin-top: 4rem;
+  padding: 0;
+  text-align: center;
+  height: 90%;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.wrapper {
+  width: 80%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+
+}
+
+.recent-up {
+  
+  height: auto;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 0;
+  margin-bottom: 1rem;
+}
+
+.span-1 {
+  color: black;
+  font-size: 1.3rem;
+  font-weight: 600;
+}
+
+.span-2 {
+  color: #737373;
+  font-size: 1rem;
+}
