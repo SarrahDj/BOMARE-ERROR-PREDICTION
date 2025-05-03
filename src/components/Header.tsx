@@ -1,18 +1,13 @@
-import './Header.css'
-import header from '../assets/head.png';
+import React, { forwardRef } from 'react';
+import './Header.css';
+import headerImg from '../assets/head.png';
 
-function Header() {
-
+const Header = forwardRef<HTMLElement>((_props, ref) => {
   return (
-    <>
-      <header>
-        <img
-          src={header}
-          alt="Header"
-        />
+    <header ref={ref}>
+      <img src={headerImg} alt="Header" />
     </header>
-    </>
-  )
-}
+  );
+});
 
-export default Header
+export default Header;

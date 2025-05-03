@@ -1,8 +1,9 @@
 import React, { useState, useCallback } from 'react';
 import { useDropzone } from 'react-dropzone';
 import './DragDrop.css';
-import upload from '../assets/upload-icon.png';
+import upload from '../assets/upload.png';
 import csv from '../assets/csv.png';
+import csvGrey from '../assets/csv-grey.png';
 import bin from '../assets/bin.png';
 import next from '../assets/next.png';
 import { useNavigate } from 'react-router-dom';
@@ -66,7 +67,7 @@ const DragDrop: React.FC = () => {
         {selectedFile && (
           <div className="file-preview">
             <img src={bin} alt="delete" className="delete-btn" onClick={handleDelete} />
-            <img src={csv} alt="csv-file" className="csv-icon" />
+            <img src={csvGrey} alt="csv-file" className="csv-icon" />
             <span className="file-name">{selectedFile.name}</span>
             <span className="file-size">{(selectedFile.size / 1024).toFixed(2)} KB</span>
             <button className="resume-btn" onClick={handleResume}>

@@ -1,9 +1,9 @@
 .notch-sidebar {
   position: fixed;
-  top:70%;
+  top: 70%;
   right: 1rem;
   transform: translateY(-70%);
-  width: 4.1rem;
+  width: 3.5rem;
   background-color: #0c69b1eb;
   border-radius: 50px;
   display: flex;
@@ -11,7 +11,8 @@
   align-items: center;
   justify-content: center;
   box-shadow: 2px 5px 5px rgba(0, 0, 0, 0.342);
-
+  z-index: 1000;
+  transition: all 0.3s ease;
 }
 
 .notch-item {
@@ -24,8 +25,8 @@
   font-size: 1.8rem;
   position: relative;
   transition: transform 0.2s ease-in-out;
-  height: 2.5rem;
-  width: 2.5rem;
+  height: 2.9rem;
+  width: 2.9rem;
   padding: 0.5rem;
   display: flex;
   justify-content: center;
@@ -35,7 +36,6 @@
 .icon-wrapper:hover {
   cursor: pointer;
 }
-
 
 .tooltip {
   position: absolute;
@@ -61,5 +61,111 @@
   background-color: rgb(69, 135, 197);
   border-radius: 50%;
   color: #e4edff;
+}
+
+/* Hamburger menu styles */
+.hamburger {
+  display: none;
+  flex-direction: column;
+  justify-content: space-around;
+  width: 1.5rem;
+  height: 1.5rem;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  padding: 0;
+  z-index: 1100;
+  position: absolute;
+}
+
+.hamburger div {
+  width: 1.5rem;
+  height: 0.25rem;
+  background: #0c69b1;
+  border-radius: 10px;
+  transition: all 0.3s ease;
+  position: relative;
+  transform-origin: 1px;
+}
+
+.mobile-menu {
+  position: fixed;
+  top: 0;
+  right: -100%;
+  width: 100%;
+  height: 100%;
+  background-color: #0c69b1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  transition: right 0.3s ease;
+  z-index: 1000;
+}
+
+.mobile-menu.open {
+  right: 0;
+}
+
+.mobile-menu .notch-item {
+  margin: 1.5rem 0;
+}
+
+.mobile-menu .icon-wrapper {
+  font-size: 2rem;
+}
+
+.close-icon {
+  position: absolute;
+  top: 2rem;
+  right: 2rem;
+  font-size: 2rem;
+  color: white;
+  cursor: pointer;
+}
+
+@media (max-width: 769px) {
+  .notch-sidebar {
+    display: none;
+  }
+
+  .hamburger {
+    display: flex;
+    right: 1rem;
+    margin-top: 0.3rem;
+  }
+
+  .hamburger.open div:nth-child(1) {
+    transform: rotate(45deg);
+  }
+
+  .hamburger.open div:nth-child(2) {
+    opacity: 0;
+  }
+
+  .hamburger.open div:nth-child(3) {
+    transform: rotate(-45deg);
+  }
+}
+
+
+@media (max-width: 478px) {
+  .icon-wrapper {
+    height: 2.5rem;
+    width: 2.5rem;
+  }
+
+  .notch-sidebar {
+    width: 3rem;
+  }
+}
+@media (max-width: 320px) {
+  .hamburger {
+    width: 1rem;
+    height: 1rem;
+  }
   
+  .hamburger div {
+    width: 1rem;
+  }
 }

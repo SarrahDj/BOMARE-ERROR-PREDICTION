@@ -1,11 +1,10 @@
-// ProcessingScreen.tsx
 import { useState, useEffect } from 'react';
 import Header from '../../components/Header';
 import logo from '../../assets/lo.png';
 import check from '../../assets/checkmark.svg'
 import './ProcessingScreen.css';
 import ProgressBar from '../../components/ProgressBar';
-import { FaFileAlt, FaExclamationTriangle, FaChartBar, FaFileExport } from 'react-icons/fa'; // Custom icons for each step
+import { FaFileAlt, FaExclamationTriangle, FaChartBar, FaFileExport } from 'react-icons/fa'; 
 import { useNavigate } from 'react-router-dom';
 
 interface ProcessStep {
@@ -90,7 +89,7 @@ const ProcessingScreen = () => {
   };
 
   const handleContinue = () => {
-    navigate('/ExportScreen');
+    navigate('/AnalyticsScreen');
   };
 
   return (
@@ -127,13 +126,13 @@ const ProcessingScreen = () => {
         
         <div className="action-buttons">
           <button 
-            className="cancel-button" 
+            className="cancel-button-process" 
             onClick={handleCancel}
           >
             Cancel
           </button>
           <button 
-            className="continue-button"
+            className="continue-button-process"
             onClick={handleContinue}
             disabled={!isCompleted}
           >

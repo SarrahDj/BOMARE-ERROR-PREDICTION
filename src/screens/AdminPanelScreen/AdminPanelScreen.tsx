@@ -33,7 +33,6 @@ interface User {
   id: number;
   name: string;
   email: string;
-  role: string;
   status: string;
   lastLogin: string;
 }
@@ -70,7 +69,6 @@ interface SystemConfig {
   maxFileSize: string;
   userRegistration: string;
   sessionTimeout: number;
-  enableFeedbackForm: boolean;
   logRetentionDays: number;
 }
 
@@ -94,7 +92,6 @@ const AdminPanel: React.FC = () => {
 
   const generateMockData = () => {
     const arabicNames = ['Ahmed', 'Mohamed', 'Youssef', 'Ali', 'Omar', 'Khaled', 'Bilal', 'Samir', 'Karim', 'Adel'];
-    const roles = ['Admin', 'Engineer', 'Read-only'];
     const statuses = ['Active', 'Inactive'];
     const organizations = ['System Admin', 'Engineering', 'Support'];
     const fileStatuses = ['Processed', 'Processing', 'Failed'];
@@ -111,7 +108,6 @@ const AdminPanel: React.FC = () => {
       id: i + 1,
       name: arabicNames[Math.floor(Math.random() * arabicNames.length)],
       email: `${arabicNames[Math.floor(Math.random() * arabicNames.length)].toLowerCase()}@example.com`,
-      role: roles[Math.floor(Math.random() * roles.length)],
       status: statuses[Math.floor(Math.random() * statuses.length)],
       lastLogin: randomDate(30).toISOString().replace('T', ' ').substring(0, 16)
     }));
@@ -161,7 +157,6 @@ const AdminPanel: React.FC = () => {
       maxFileSize: '10 MB',
       userRegistration: 'Admin invitation only',
       sessionTimeout: 30,
-      enableFeedbackForm: Math.random() > 0.5,
       logRetentionDays: 90
     };
 
@@ -172,7 +167,6 @@ const AdminPanel: React.FC = () => {
   const [users, setUsers] = useState<User[]>(initialUsers);
   const [files, setFiles] = useState<File[]>(initialFiles);
   const [systemLogs] = useState<Log[]>(initialLogs);
-  const [feedbackFormEnabled, setFeedbackFormEnabled] = useState(systemConfig.enableFeedbackForm);
 
   useEffect(() => {
     const updateLayout = () => {
@@ -259,7 +253,6 @@ const AdminPanel: React.FC = () => {
   const filteredUsers = users.filter(user => 
     user.name.toLowerCase().includes(searchTerm.toLowerCase()) ||
     user.email.toLowerCase().includes(searchTerm.toLowerCase()) ||
-    user.role.toLowerCase().includes(searchTerm.toLowerCase()) ||
     user.status.toLowerCase().includes(searchTerm.toLowerCase())
   );
 
@@ -354,9 +347,6 @@ const AdminPanel: React.FC = () => {
     }
   };
 
-  const handleToggleChange = () => {
-    setFeedbackFormEnabled(!feedbackFormEnabled);
-  };
 
   return (
     <>
@@ -366,13 +356,11 @@ const AdminPanel: React.FC = () => {
     className="main-layout"
     style={{
       marginTop: `${headerHeight}px`,
-      marginRight: `${sidebarWidth}px`,
-      height: `calc(100vh - ${headerHeight}px)`,
-      width: `calc(100vw - ${sidebarWidth}px)`
     }}
     >
-
+      
       <div className="content-wrapper">
+      <span className='page-title'>Administrator Panel</span>
         <div 
           className="admin-container"
         >
@@ -384,7 +372,6 @@ const AdminPanel: React.FC = () => {
               >
                 <FiUsers className="sidebar-icon" />
                 <span>User Management</span>
-                {/* <div className={`${currentSection === 'users' ? 'border-active' : ''}`}></div> */}
               </div>
               <div 
                 className={`sidebar-item ${currentSection === 'uploads' ? 'active' : ''}`} 
@@ -392,7 +379,6 @@ const AdminPanel: React.FC = () => {
               >
                 <FiUpload className="sidebar-icon" />
                 <span>Upload Monitoring</span>
-                {/* <div className={`${currentSection === 'uploads' ? 'border-active' : ''}`}></div> */}
               </div>
               <div 
                 className={`sidebar-item ${currentSection === 'model' ? 'active' : ''}`} 
@@ -428,7 +414,7 @@ const AdminPanel: React.FC = () => {
                       setShowPopup(true);
                       setPopupHistory([]);
                     }}>
-                      + Add User
+                      + Add
                     </button>
                   </div>
                   
@@ -456,11 +442,6 @@ const AdminPanel: React.FC = () => {
                               Email {getSortIcon('email')}
                             </div>
                           </th>
-                          <th onClick={() => requestSort('role')}>
-                            <div className="th-content">
-                              Role {getSortIcon('role')}
-                            </div>
-                          </th>
                           <th onClick={() => requestSort('status')}>
                             <div className="th-content">
                               Status {getSortIcon('status')}
@@ -478,7 +459,6 @@ const AdminPanel: React.FC = () => {
                           <tr key={user.id}>
                             <td>{user.name}</td>
                             <td>{user.email}</td>
-                            <td>{user.role}</td>
                             <td>
                               <span className={`status-badge ${user.status === 'Active' ? 'active' : 'inactive'}`}>
                                 {user.status}
@@ -670,17 +650,6 @@ const AdminPanel: React.FC = () => {
                             <span>75%</span>
                           </div>
                         </div>
-                        <div className="setting-item">
-                          <label>Enable Model Feedback</label>
-                          <label className="switch">
-                            <input 
-                              type="checkbox" 
-                              checked={feedbackFormEnabled} 
-                              onChange={handleToggleChange}
-                            />
-                            <span className="slider round"></span>
-                          </label>
-                        </div>
                       </div>
                       <button className="save-settings-btn">Save Settings</button>
                     </div>
@@ -805,15 +774,6 @@ const AdminPanel: React.FC = () => {
                   </div>
                   <div>
                     <div className="form-group">
-                      <label>Role</label>
-                      <select>
-                        <option>Select role</option>
-                        <option>Admin</option>
-                        <option>Engineer</option>
-                        <option>Read-only</option>
-                      </select>
-                    </div>
-                    <div className="form-group">
                       <label>Initial Password</label>
                       <input type="password" placeholder="Enter initial password" />
                     </div>
@@ -835,23 +795,7 @@ const AdminPanel: React.FC = () => {
                     <label>Email</label>
                     <input type="email" defaultValue={selectedUser.email} />
                   </div>
-                  <div className='role-status'>
-                    <div className="form-group">
-                      <label>Role</label>
-                      <select defaultValue={selectedUser.role}>
-                        <option>Admin</option>
-                        <option>Engineer</option>
-                        <option>Read-only</option>
-                      </select>
-                    </div>
-                    <div className="form-group">
-                      <label>Status</label>
-                      <select defaultValue={selectedUser.status}>
-                        <option>Active</option>
-                        <option>Inactive</option>
-                      </select>
-                    </div>
-                  </div>
+
                   <div className="form-actions">
                     <button type="button" className="cancel-button-edit" onClick={() => setShowPopup(false)}>Cancel</button>
                     <button type="button" className="submit-button-edit" onClick={() => setShowPopup(false)}>Save</button>

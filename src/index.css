@@ -1,3 +1,10 @@
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+
 :root {
   font-family: 'Khula', sans-serif;
   line-height: 1.5;
@@ -12,23 +19,22 @@
   -moz-osx-font-smoothing: grayscale;
 }
 
-#root {
+body {
   padding: 0;
-  text-align: center;
-  width: 100%;
+  margin: 0;
+  width: 100vw;
   height: 100%;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
+  overflow-x: hidden;
 }
 
-body {
-  margin: 0;
-  display: flex;
-  place-items: center;
-  width: 100vw;
+#root {
+  padding: 0;
+  width: 100%;
   height: 100vh;
+  /* display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center; */
 }
 
 h1 {

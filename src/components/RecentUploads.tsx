@@ -1,14 +1,59 @@
 import React from 'react';
 import './RecentUploads.css';
-import { mockUploads } from '../data/mockUploads';
-import check from '../assets/check-circle.png';
-import cross from '../assets/x-circle.png';
+
+interface File {
+  id: number;
+  name: string;
+  type: string;
+  uploadedBy: string;
+  uploadDate: string;
+  status: 'processed' | 'faulty';
+}
+
+const mockUploads: File[] = [
+  {
+    id: 1,
+    name: 'components_config_2023-10-15.csv',
+    type: 'csv',
+    uploadedBy: 'Ahmed',
+    uploadDate: '2023-10-15 14:30',
+    status: 'processed'
+  },
+  {
+    id: 2,
+    name: 'components_config_2023-10-15.csv',
+    type: 'csv',
+    uploadedBy: 'Mohamed',
+    uploadDate: '2023-10-14 09:15',
+    status: 'processed'
+  },
+  {
+    id: 3,
+    name: 'components_config_2023-10-15.csv',
+    type: 'xml',
+    uploadedBy: 'Youssef',
+    uploadDate: '2023-10-13 16:45',
+    status: 'faulty'
+  },
+  {
+    id: 4,
+    name: 'components_config_2023-10-15.csv',
+    type: 'csv',
+    uploadedBy: 'Ali',
+    uploadDate: '2023-10-12 11:20',
+    status: 'processed'
+  },
+  {
+    id: 5,
+    name: 'components_config_2023-10-15.csv',
+    type: 'xml',
+    uploadedBy: 'Omar',
+    uploadDate: '2023-10-11 13:10',
+    status: 'faulty'
+  }
+];
 
 const RecentUploads: React.FC = () => {
-  const handleRowClick = () => {
-    alert('To implement');
-  };
-
   return (
     <div className="recent-uploads-wrapper">
       <table className="recent-uploads-table">
@@ -16,24 +61,20 @@ const RecentUploads: React.FC = () => {
           <tr>
             <th>File Name</th>
             <th className='type-th'>Type</th>
+            <th className='status-th'>Uploaded By</th>
             <th className='status-th'>Upload Date</th>
             <th className='status-th'>Status</th>
           </tr>
         </thead>
         <tbody>
-          {mockUploads.map((file, index) => (
-            <tr
-              key={index}
-              className="upload-row"
-              onClick={() => handleRowClick()}  // Add click handler to row
-            >
-              <td className='file-name'>{file.fileName}</td>
-              <td className='file-type'>{file.type.toUpperCase()}</td>
+          {mockUploads.map((file) => (
+            <tr key={file.id} className="upload-row">
+              <td className='file-name-upload'>{file.name}</td>
+              <td className='file-type-upload'>{file.type.toUpperCase()}</td>
+              <td>{file.uploadedBy}</td>
               <td>{file.uploadDate}</td>
-              <td className={file.status === 'processed' ? 'status status-processed' : 'status status-faulty'} >
-                {file.status === 'processed' ? <img className='check-cross' alt='check' src={check}/> : 
-                <img className='check-cross' alt='cross' src={cross}/>}
-                {file.status}
+              <td className={file.status === 'processed' ? 'status status-processed' : 'status status-faulty'}>
+                {file.status === 'processed' ? 'Processed' : 'Faulty'}
               </td>
             </tr>
           ))}
