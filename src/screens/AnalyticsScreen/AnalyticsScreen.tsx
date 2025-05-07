@@ -17,9 +17,12 @@ import Header from '../../components/Header';
 import csv from '../../assets/csv.png';
 import danger from '../../assets/danger.png';
 import RightSidebar from '../../components/RightSideBar';
-import { FiLayers, FiBox, FiPackage } from 'react-icons/fi'; 
-import { FaShare } from 'react-icons/fa';
+import { FiLayers, FiBox, FiPackage, FiShare2 } from 'react-icons/fi'; 
+import { FaChartLine, FaShare, FaEye } from 'react-icons/fa';
 import { useNavigate } from 'react-router-dom';
+import csvIcon from '../../assets/csv.png';
+import excelIcon from '../../assets/excel.png';
+import { HiDownload } from 'react-icons/hi';
 
 const COLORS = ['#026DB5', '#eeeeee'];
 const COLORS_COMPONENTS = [
@@ -139,12 +142,6 @@ const AnalyticsScreen: React.FC = () => {
                       <span className="file-size">Uploaded by: user2</span>
                       <span className="file-size">Date of upload: 12 Jan 2025</span>
                     </div>
-                    <div className="export" 
-                      onClick={() => navigate('/ExportScreen')}
-                    >
-                      <FaShare />
-                      Export
-                    </div>
                     
 
                   </div>
@@ -237,13 +234,12 @@ const AnalyticsScreen: React.FC = () => {
             </div>
           </>
         );
-      
-        case 'components':
+      case 'shapes':
         return (
           <div className="components-grid">
             <div className='components-row-1'>
                 <div className="card component-card pie-chart-card">
-                <div className="card-title">Error Distribution by Component</div>
+                <div className="card-title">Error Distribution by Shape</div>
                 <ResponsiveContainer width="100%" height={160}>
                   <PieChart>
                     <Pie
@@ -279,7 +275,7 @@ const AnalyticsScreen: React.FC = () => {
 
                 <div className="card file-stats">
                     <img src={danger} alt="danger" />
-                    <span className="stat-card-title">Component with Most Errors</span>
+                    <span className="stat-card-title">Shape with Most Errors</span>
                     <span className="stat-card-number">
                       {errorCount}
                       <span className='percent'>times</span>
@@ -292,7 +288,7 @@ const AnalyticsScreen: React.FC = () => {
                 </div>
             
                 <div className="card file-stats pie-card">
-                  <span className="stat-card-title">Component with Most Errors</span>
+                  <span className="stat-card-title">Shape with Most Errors</span>
                     <PieChart width={70} height={70}>
                     <Pie
                         data={pieData}
@@ -551,7 +547,32 @@ const AnalyticsScreen: React.FC = () => {
             </div>
           </div>
         );
-        
+      case 'export' :
+        return (
+          <>
+          <div className="view-analytics">
+            <FaEye className="analytics-icon" />
+            <span>View File</span>
+          </div><p className="download-description">
+              Download a copy of the results of the prediction to share with others
+            </p><div className="export-boxes">
+              <div className="export-box">
+                <div className="icon-and-text-left">
+                  <img src={csvIcon} alt="PDF" />
+                  <span>Export to CSV</span>
+                </div>
+                <HiDownload className="download-icon" />
+              </div>
+
+              <div className="export-box">
+                <div className="icon-and-text-left">
+                  <img src={excelIcon} alt="PDF" />
+                  <span>Export to Excel</span>
+                </div>
+                <HiDownload className="download-icon" />
+              </div>
+            </div></>
+        ); 
       default:
         return null;
     }
@@ -581,11 +602,11 @@ const AnalyticsScreen: React.FC = () => {
             Overview
           </button>
           <button
-            className={`tab-button ${activeTab === 'components' ? 'active' : ''}`}
-            onClick={() => handleTabClick('components')}
+            className={`tab-button ${activeTab === 'shapes' ? 'active' : ''}`}
+            onClick={() => handleTabClick('shapes')}
           >
             <FiBox className='tab-button-icon'/>
-            Components
+            Shapes
           </button>
           <button
             className={`tab-button ${activeTab === 'modules' ? 'active' : ''}`}
@@ -593,6 +614,13 @@ const AnalyticsScreen: React.FC = () => {
           >
             <FiPackage className='tab-button-icon'/>
             Modules
+          </button>
+          <button
+            className={`tab-button ${activeTab === 'export' ? 'active' : ''}`}
+            onClick={() => handleTabClick('export')}
+          >
+            <FiShare2 className='tab-button-icon'/>
+            Export
           </button>
         </div>
 

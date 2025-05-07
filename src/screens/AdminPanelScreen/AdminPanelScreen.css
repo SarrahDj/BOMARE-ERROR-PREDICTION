@@ -1014,3 +1014,32 @@
     }
     }
   }
+
+  .config-card {
+    margin-bottom: 1.5rem;
+  }
+  
+  .info-row {
+    display: flex;
+    justify-content: space-between;
+    padding: 0.8rem 0;
+    border-bottom: 1px solid #eee;
+    align-items: center;
+  }
+  
+  .info-label {
+    font-weight: 500;
+    color: #555;
+  }
+  
+  .info-value {
+    color: #333;
+  }
+  
+  .save-settings-btn {
+    margin-top: 1.5rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+  }

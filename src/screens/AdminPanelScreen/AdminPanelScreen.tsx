@@ -89,6 +89,14 @@ const AdminPanel: React.FC = () => {
   const [sortConfig, setSortConfig] = useState<{key: string, direction: string} | null>(null);
   const [dropdownOpen, setDropdownOpen] = useState<number | null>(null);
 
+  const [currentUser, setCurrentUser] = useState<User>({
+    id: 1,
+    name: "Ahmed",
+    email: "ahmed@example.com",
+    status: "Active",
+    lastLogin: new Date().toISOString().replace('T', ' ').substring(0, 16)
+  });
+
 
   const generateMockData = () => {
     const arabicNames = ['Ahmed', 'Mohamed', 'Youssef', 'Ali', 'Omar', 'Khaled', 'Bilal', 'Samir', 'Karim', 'Adel'];
@@ -360,7 +368,7 @@ const AdminPanel: React.FC = () => {
     >
       
       <div className="content-wrapper">
-      <span className='page-title'>Administrator Panel</span>
+      <span className='page-title'>Settings Panel</span>
         <div 
           className="admin-container"
         >
@@ -466,30 +474,6 @@ const AdminPanel: React.FC = () => {
                             </td>
                             <td className="options-cell">
                               <span>{user.lastLogin}</span>
-                              <div className="row-actions">
-                                <div className="ellipsis-icon" onClick={(e) => toggleDropdown(e, user.id)}>
-                                  <FaEllipsisV />
-                                </div>
-                                {dropdownOpen === user.id && dropdownPosition && (
-                                  <div 
-                                    className="dropdown-content"
-                                    style={{
-                                      top: dropdownPosition.top,
-                                      left: dropdownPosition.left
-                                    }}
-                                  >
-                                    <div className="dropdown-item" onClick={() => handleUserAction(user, 'edit')}>
-                                      <FiEdit className='dropdown-icon'/> Edit
-                                    </div>
-                                    <div className="dropdown-item" onClick={() => handleUserAction(user, 'resetPassword')}>
-                                      <FiKey className='dropdown-icon'/> Reset Password
-                                    </div>
-                                    <div className="dropdown-item delete" onClick={() => handleUserAction(user, 'delete')}>
-                                      <FiTrash className='dropdown-icon'/> Delete
-                                    </div>
-                                  </div>
-                                )}
-                              </div>
                             </td>
                           </tr>
                         ))}
@@ -710,39 +694,70 @@ const AdminPanel: React.FC = () => {
               )}
               
               {currentSection === 'config' && (
-                <div className="section-content">
-                  <div className="section-header">
-                    <h2>System Configuration</h2>
-                  </div>
-                  
-                  <div className="config-container">
-                    <div className="config-card">
-                      <h3>File Settings</h3>
-                      <div className="config-item">
-                        <label>Allowed File Types</label>
-                        <div className="tag-container">
-                          {systemConfig.allowedFileTypes.map((type, index) => (
-                            <span key={index} className="config-tag">{type}</span>
-                          ))}
-                          <button className="add-tag">+</button>
-                        </div>
-                      </div>
-                      <div className="config-item">
-                        <label>Maximum File Size</label>
-                        <div className="input-with-unit">
-                          <input type="text" defaultValue="10" />
-                          <span>MB</span>
-                        </div>
-                      </div>
-                    </div>
-                    
-                    <div className="config-buttons">
-                      <button className="cancel-config-btn">Cancel</button>
-                      <button className="save-config-btn">Save Changes</button>
-                    </div>
-                  </div>
-                </div>
-              )}
+  <div className="section-content">
+    <div className="section-header">
+      <h2>Account Settings</h2>
+    </div>
+    
+    <div className="config-container">
+      <div className="config-card">
+        <h3>Profile Information</h3>
+        <div className="info-row">
+          <span className="info-label">Name:</span>
+          <span className="info-value">{currentUser.name}</span>
+        </div>
+        <div className="info-row">
+          <span className="info-label">Email:</span>
+          <span className="info-value">{currentUser.email}</span>
+        </div>
+        <div className="info-row">
+          <span className="info-label">Status:</span>
+          <span className="info-value">
+            <span className={`status-badge ${currentUser.status === 'Active' ? 'active' : 'inactive'}`}>
+              {currentUser.status}
+            </span>
+          </span>
+        </div>
+        <div className="info-row">
+          <span className="info-label">Last Login:</span>
+          <span className="info-value">{currentUser.lastLogin}</span>
+        </div>
+        
+        <button 
+          className="save-settings-btn" 
+          onClick={() => {
+            setSelectedUser(currentUser);
+            setPopupTitle('Edit Profile');
+            setPopupContent('editUser');
+            setShowPopup(true);
+          }}
+        >
+          <FiEdit /> Edit Profile
+        </button>
+      </div>
+
+      <div className="config-card">
+        <h3>Security</h3>
+        <div className="info-row">
+          <span className="info-label">Password:</span>
+          <span className="info-value">••••••••</span>
+        </div>
+        
+        <button 
+          className="save-settings-btn" 
+          onClick={() => {
+            setSelectedUser(currentUser);
+            setPopupTitle('Change Password');
+            setPopupContent('resetPassword');
+            setShowPopup(true);
+          }}
+        >
+          <FiKey /> Change Password
+        </button>
+      </div>
+    </div>
+  </div>
+)}
             </div>
           </div>
         </div>

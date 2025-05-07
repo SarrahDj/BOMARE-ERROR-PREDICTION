@@ -6,16 +6,17 @@ import {
   FaUpload,
   FaShare,
   FaUserShield,
-  FaTimes
+  FaTimes,
 } from 'react-icons/fa';
+import {
+  IoSettings
+} from 'react-icons/io5';
 import { useNavigate } from 'react-router-dom';
 
 const navItems = [
-  { icon: <FaHome />, label: 'Dashboard' },
   { icon: <FaChartBar />, label: 'Analytics' },
   { icon: <FaUpload />, label: 'Import Data' },
-  { icon: <FaShare />, label: 'Export' },
-  { icon: <FaUserShield />, label: 'Admin Panel' },
+  { icon: <IoSettings />, label: 'Settings' },
 ];
 
 const RightSidebar = forwardRef<HTMLDivElement>((_, ref) => {
@@ -27,19 +28,13 @@ const RightSidebar = forwardRef<HTMLDivElement>((_, ref) => {
     setSelected(label);
     setMenuOpen(false);
     switch (label) {
-      case 'Dashboard':
-        navigate('/dashboard');
-        break;
       case 'Analytics':
         navigate('/AnalyticsScreen');
         break;
       case 'Import Data':
         navigate('/UploadScreen');
         break;
-      case 'Export':
-        navigate('/ExportScreen');
-        break;
-      case 'Admin Panel':
+      case 'Settings':
         navigate('/AdminPanelScreen');
         break;
       default:

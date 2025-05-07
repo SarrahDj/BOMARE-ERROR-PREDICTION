@@ -9,7 +9,7 @@
     border: 3px dashed #5555553b;
     border-radius: 3rem;
     width: 100%;
-    background-color: #f5f7fa;
+    background-color: #ffffff;
     cursor: pointer;
     transition: background-color 0.8s ease;
     padding: 1.5rem 0;
@@ -31,7 +31,7 @@
   }
 
   .choose-file {
-    color: #555;
+    color: #036DB9;
     font-weight: 550;
     cursor: pointer;
     text-decoration: none;
@@ -63,7 +63,7 @@
   .file-name {
     font-size: 1.2rem;
     font-weight: 600;
-    color: #555;
+    color: #036DB9;
   }
   
   
@@ -80,7 +80,7 @@
   }
   
   .resume-btn {
-    background-color: #555;
+    background-color: #036DB9;
     color: white;
     padding: 0.2rem 0.6rem;
     display: inline-flex;
@@ -115,7 +115,7 @@
   
   .spinner {
     border: 4px solid #f3f3f3;
-    border-top: 4px solid #555;
+    border-top: 4px solid #036DB9;
     border-radius: 50%;
     width: 3rem;
     height: 3rem;

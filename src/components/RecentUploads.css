@@ -15,10 +15,10 @@
 
 .recent-uploads-table th {
   text-align: left;
-  background-color: #f5f7fa;
+  background-color: #036DB9;
   padding: 0.7rem;
   font-weight: 600;
-  color: #555;
+  color: #fff;
   border-bottom: 2px solid #e0e0e0;
 }
 
@@ -42,6 +42,14 @@
   padding: 0.7rem;
   background-color: white;
   border-bottom: 1px solid #e0e0e0;
+}
+
+.recent-uploads-table tr:nth-child(even) td {
+  background-color: #f5f7fa;
+}
+
+.recent-uploads-table tr:nth-child(odd) td {
+  background-color: white;
 }
 
 .upload-row {
