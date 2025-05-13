@@ -1,0 +1,136 @@
+.recent-uploads-wrapper {
+  width: 70%;
+  padding: 1rem;
+}
+
+.recent-uploads-table {
+  width: 100%;
+  border-collapse: separate;
+  border-spacing: 0;
+  border-radius: 8px;
+  overflow: hidden;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+  font-weight: 550;
+}
+
+.recent-uploads-table th {
+  text-align: left;
+  background-color: #036DB9;
+  padding: 0.7rem;
+  font-weight: 600;
+  color: #fff;
+  border-bottom: 2px solid #e0e0e0;
+}
+
+.recent-uploads-table th:first-child {
+  border-top-left-radius: 8px;
+}
+
+.recent-uploads-table th:last-child {
+  border-top-right-radius: 8px;
+}
+
+.recent-uploads-table tr:last-child td:first-child {
+  border-bottom-left-radius: 8px;
+}
+
+.recent-uploads-table tr:last-child td:last-child {
+  border-bottom-right-radius: 8px;
+}
+
+.recent-uploads-table td {
+  padding: 0.7rem;
+  background-color: white;
+  border-bottom: 1px solid #e0e0e0;
+}
+
+.recent-uploads-table tr:nth-child(even) td {
+  background-color: #f5f7fa;
+}
+
+.recent-uploads-table tr:nth-child(odd) td {
+  background-color: white;
+}
+
+.upload-row {
+  transition: box-shadow 0.3s ease-in-out;
+}
+
+.upload-row:hover {
+  background-color: #f8f9fa;
+}
+
+.status-processed {
+  color: #2e7d32;
+  font-weight: 550;
+}
+
+.status-faulty {
+  color: #c62828;
+  font-weight: 550;
+}
+
+.type-th {
+  color: #555;
+}
+
+.file-type-upload {
+  color: #555;
+}
+
+.status-th {
+  color: #9b9b9b;
+}
+
+.file-type {
+  color: #3F9BDD;
+}
+
+
+
+@media (max-width: 768px) {
+  .recent-uploads-wrapper {
+    width: 80%;
+    padding: 0.5rem;
+    overflow-x: auto;
+  }
+  
+  .recent-uploads-table {
+    font-size: 0.85rem;
+    border-radius: 6px;
+  }
+  
+  .recent-uploads-table th, 
+  .recent-uploads-table td {
+    padding: 0.5rem;
+  }
+
+  .recent-uploads-table th:first-child {
+    border-top-left-radius: 6px;
+  }
+
+  .recent-uploads-table th:last-child {
+    border-top-right-radius: 6px;
+  }
+
+  .recent-uploads-table tr:last-child td:first-child {
+    border-bottom-left-radius: 6px;
+  }
+
+  .recent-uploads-table tr:last-child td:last-child {
+    border-bottom-right-radius: 6px;
+  }
+}
+
+@media (max-width: 500px) {
+  .recent-uploads-table {
+    font-size: 0.75rem;
+  }
+  
+  .recent-uploads-table th, 
+  .recent-uploads-table td {
+    overflow-x: scroll;
+  }
+
+}
+
