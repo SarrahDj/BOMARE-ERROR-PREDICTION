@@ -1,0 +1,97 @@
+{
+  "model_performance": {
+    "accuracy": 0.9975,
+    "precision": 0.9945054945054945,
+    "recall": 1.0,
+    "f1_score": 0.9972451790633609,
+    "valid_samples": 400,
+    "total_samples": 840,
+    "nan_samples": 440
+  },
+  "error_summary": {
+    "TotalRows": 840,
+    "PredictedErrors": 182,
+    "ErrorRate": 0.21666666666666667
+  },
+  "top_shapes": {
+    "R-0402": {
+      "ErrorCount": 72
+    },
+    "C-0402": {
+      "ErrorCount": 22
+    },
+    "R-0603": {
+      "ErrorCount": 10
+    },
+    "R-0805": {
+      "ErrorCount": 10
+    },
+    "C-0603": {
+      "ErrorCount": 8
+    }
+  },
+  "top_modules": {
+    "M3": {
+      "ErrorCount": 62,
+      "TopErrorPartNumbers": {
+        "004.002.0000050": 1,
+        "004.002.0000067": 1,
+        "004.002.0000121": 1,
+        "004.002.0000208": 1,
+        "004.002.0000218": 1
+      }
+    },
+    "M1": {
+      "ErrorCount": 40,
+      "TopErrorPartNumbers": {
+        "004.002.0000568": 1,
+        "004.002.0000688": 1,
+        "004.002.0000689": 1,
+        "004.002.0000701": 1,
+        "004.003.0000018": 1
+      }
+    },
+    "M2": {
+      "ErrorCount": 39,
+      "TopErrorPartNumbers": {
+        "004.002.0000122": 1,
+        "004.002.0000155": 1,
+        "004.002.0000484": 1,
+        "004.002.0000564": 1,
+        "004.002.0000588": 1
+      }
+    },
+    "M4": {
+      "ErrorCount": 21,
+      "TopErrorPartNumbers": {
+        "0CK104BH56A": 1,
+        "0CK104CK56A": 1,
+        "0RH7501D422": 1,
+        "0RJ0561D677": 1,
+        "0RJ8201D477": 1
+      }
+    },
+    "M5": {
+      "ErrorCount": 19,
+      "TopErrorPartNumbers": {
+        "004.002.0000063": 1,
+        "004.002.0000076": 1,
+        "004.002.0000077": 1,
+        "004.002.0000110": 1,
+        "004.002.0000556": 1
+      }
+    }
+  },
+  "top_error_partnumbers": {
+    "004.002.0000050": 1,
+    "004.002.0000063": 1,
+    "004.002.0000067": 1,
+    "004.002.0000076": 1,
+    "004.002.0000077": 1
+  },
+  "output_files": {
+    "excel": "predictions_output_2025-05-05.xlsx",
+    "csv": "predictions_output_2025-05-05.csv",
+    "json": "predictions_output_2025-05-05.json"
+  }
+}
