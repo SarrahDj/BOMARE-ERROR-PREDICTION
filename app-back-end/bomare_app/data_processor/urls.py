@@ -7,7 +7,11 @@ urlpatterns = [
     path('auth/login/', views.login, name='login'),
     path('auth/register/', views.register, name='register'),
     path('users/', views.get_all_users, name='get_users'),
-
+    path('users/<int:user_id>/', views.get_user_by_id, name='get_user_by_id'),
+    path('users/create/', views.create_user, name='create_user'),
+    path('users/<int:user_id>/update/', views.update_user, name='update_user'),
+    path('users/<int:user_id>/delete/', views.delete_user, name='delete_user'),
+    path('users/<int:user_id>/reset-password/', views.reset_password, name='reset_password'),
 
     path('files/upload/', csrf_exempt(views.upload_file), name='upload_file'),
     path('files/recent/', views.get_user_files, name='get_recent_uploads'),

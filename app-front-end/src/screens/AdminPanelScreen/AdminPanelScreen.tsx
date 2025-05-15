@@ -100,7 +100,6 @@ const AdminPanel: React.FC = () => {
     lastLogin: new Date().toISOString().replace('T', ' ').substring(0, 16)
   });
 
-
   const [isLoading, setIsLoading] = useState<boolean>(true);
   const [error, setError] = useState<string | null>(null);
   const [saveError, setSaveError] = useState<string | null>(null);
@@ -183,7 +182,6 @@ const AdminPanel: React.FC = () => {
       setIsLoading(true);
       const apiFiles = await fileService.getUserFiles();
       
-
       const transformedFiles: File[] = apiFiles.map(file => ({
         id: file.id,
         name: file.filename,
@@ -211,7 +209,6 @@ const AdminPanel: React.FC = () => {
       fetchFiles();
     }
   }, [currentSection]);
-
 
   useEffect(() => {
     const updateLayout = () => {
@@ -298,7 +295,6 @@ const AdminPanel: React.FC = () => {
   const filteredUsers = users.filter(user => 
     user.name.toLowerCase().includes(searchTerm.toLowerCase()) ||
     user.email.toLowerCase().includes(searchTerm.toLowerCase()) ||
-    // user.role.toLowerCase().includes(searchTerm.toLowerCase()) ||
     user.status.toLowerCase().includes(searchTerm.toLowerCase())
   );
 
@@ -353,9 +349,7 @@ const AdminPanel: React.FC = () => {
         email: user.email,
         is_active: user.status === 'Active'
       });
-    } else if (action === 'delete') {
-      setPopupTitle('Delete User');
-      setPopupContent('deleteUser');
+   
     } else if (action === 'resetPassword') {
       setPopupTitle('Reset Password');
       setPopupContent('resetPassword');
@@ -467,6 +461,19 @@ const AdminPanel: React.FC = () => {
       return;
     }
     
+    // Basic email validation
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    if (!emailRegex.test(newUser.email)) {
+      setSaveError('Please enter a valid email address');
+      return;
+    }
+    
+    // Password strength validation
+    if (newUser.password.length < 8) {
+      setSaveError('Password must be at least 8 characters long');
+      return;
+    }
+    
     try {
       setIsLoading(true);
       setSaveError(null);
@@ -476,7 +483,7 @@ const AdminPanel: React.FC = () => {
         email: newUser.email,
         password: newUser.password,
       });
-      
+      console.log("user added")
       // Refresh the user list
       await fetchUsers();
       
@@ -493,9 +500,9 @@ const AdminPanel: React.FC = () => {
         });
       }, 1500);
       
-    } catch (error) {
+    } catch (error: any) {
       console.error('Failed to create user:', error);
-      setSaveError('Failed to create user. Please try again.');
+      setSaveError(error.response?.data?.error || 'Failed to create user. Please try again.');
     } finally {
       setIsLoading(false);
     }
@@ -506,7 +513,14 @@ const AdminPanel: React.FC = () => {
     
     // Input validation
     if (!editUser.username || !editUser.email) {
-      setSaveError('Name, email  are required');
+      setSaveError('Name and email are required');
+      return;
+    }
+    
+    // Basic email validation
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    if (!emailRegex.test(editUser.email)) {
+      setSaveError('Please enter a valid email address');
       return;
     }
     
@@ -521,6 +535,16 @@ const AdminPanel: React.FC = () => {
         is_active: editUser.is_active
       });
       
+      // If this is the current user, update their info
+      if (selectedUser.id === currentUser.id) {
+        setCurrentUser({
+          ...currentUser,
+          name: editUser.username,
+          email: editUser.email,
+          status: editUser.is_active ? 'Active' : 'Inactive'
+        });
+      }
+      
       // Refresh the user list
       await fetchUsers();
       
@@ -532,41 +556,15 @@ const AdminPanel: React.FC = () => {
         setShowPopup(false);
       }, 1500);
       
-    } catch (error) {
+    } catch (error: any) {
       console.error('Failed to update user:', error);
-      setSaveError('Failed to update user. Please try again.');
+      setSaveError(error.response?.data?.error || 'Failed to update user. Please try again.');
     } finally {
       setIsLoading(false);
     }
   };
 
-  const handleDeleteUser = async () => {
-    if (!selectedUser) return;
-    
-    try {
-      setIsLoading(true);
-      setSaveError(null);
-      
-      await userService.deleteUser(selectedUser.id);
-      
-      // Refresh the user list
-      await fetchUsers();
-      
-      // Show success message
-      setSaveSuccess('User deleted successfully');
-      
-      // Close the popup after a short delay
-      setTimeout(() => {
-        setShowPopup(false);
-      }, 1500);
-      
-    } catch (error) {
-      console.error('Failed to delete user:', error);
-      setSaveError('Failed to delete user. Please try again.');
-    } finally {
-      setIsLoading(false);
-    }
-  };
+
 
   const handleResetPassword = async () => {
     if (!selectedUser) return;
@@ -580,6 +578,12 @@ const AdminPanel: React.FC = () => {
     // Validate password is not empty
     if (!passwordReset.new_password) {
       setSaveError('Password cannot be empty');
+      return;
+    }
+    
+    // Password strength validation
+    if (passwordReset.new_password.length < 8) {
+      setSaveError('Password must be at least 8 characters long');
       return;
     }
     
@@ -601,9 +605,9 @@ const AdminPanel: React.FC = () => {
         setShowPopup(false);
       }, 1500);
       
-    } catch (error) {
+    } catch (error: any) {
       console.error('Failed to reset password:', error);
-      setSaveError('Failed to reset password. Please try again.');
+      setSaveError(error.response?.data?.error || 'Failed to reset password. Please try again.');
     } finally {
       setIsLoading(false);
     }
@@ -690,7 +694,7 @@ const AdminPanel: React.FC = () => {
                 <FiCpu className="sidebar-icon" />
                 <span>Model Oversight</span>
               </div>
-              <div 
+               <div 
                 className={`sidebar-item ${currentSection === 'logs' ? 'active' : ''}`} 
                 onClick={() => setCurrentSection('logs')}
               >
@@ -714,6 +718,7 @@ const AdminPanel: React.FC = () => {
                     <button className="add-button" onClick={() => {
                       setPopupTitle('Add New User');
                       setPopupContent('addUser');
+                      setNewUser({ username: '', email: '', password: '' });
                       setShowPopup(true);
                       setPopupHistory([]);
                     }}>
@@ -1105,10 +1110,11 @@ const AdminPanel: React.FC = () => {
                   </div>
                   <div className="form-actions">
                     <button type="button" className="cancel-button" onClick={() => setShowPopup(false)}>Cancel</button>
-                    <button type="button" className="submit-button" onClick={() => setShowPopup(false)}>Add User</button>
+                    <button type="button" className="submit-button" onClick={() => {setShowPopup(false); handleCreateUser();}}>Add User</button>
                   </div>
                 </form>
               )}
+
               
               {popupContent === 'editUser' && selectedUser && (
                 <form className="form-container">
