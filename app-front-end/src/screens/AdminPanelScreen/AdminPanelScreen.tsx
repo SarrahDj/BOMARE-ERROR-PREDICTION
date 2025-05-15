@@ -30,7 +30,7 @@ import './AdminPanelScreen.css';
 import csv from '../../assets/csv.png';
 import userService, { User as ApiUser, UserCreatePayload, UserUpdatePayload, ResetPasswordPayload } from '../../services/user';
 import fileService, { UserFile } from '../../services/file';
-
+import { useAuth } from '../../services/auth_context'; 
 // Interface for component state
 interface User {
   id: number;
@@ -92,18 +92,31 @@ const AdminPanel: React.FC = () => {
   const [sortConfig, setSortConfig] = useState<{key: string, direction: string} | null>(null);
   const [dropdownOpen, setDropdownOpen] = useState<number | null>(null);
 
-  const [currentUser, setCurrentUser] = useState<User>({
-    id: 1,
-    name: "Ahmed",
-    email: "ahmed@example.com",
-    status: "Active",
-    lastLogin: new Date().toISOString().replace('T', ' ').substring(0, 16)
-  });
+const { user, isAuthenticated, logout } = useAuth();
 
   const [isLoading, setIsLoading] = useState<boolean>(true);
   const [error, setError] = useState<string | null>(null);
   const [saveError, setSaveError] = useState<string | null>(null);
   const [saveSuccess, setSaveSuccess] = useState<string | null>(null);
+
+const adaptUserToComponentFormat = (apiUser: any): User => {
+  return {
+    id: apiUser.id,
+    name: apiUser.username,
+    email: apiUser.email,
+    status: apiUser.is_active ? 'Active' : 'Inactive',
+    lastLogin: apiUser.last_login || 'Never'
+  };
+};
+
+// Then, create a computed current user for your component
+const currentUser: User = user ? adaptUserToComponentFormat(user) : {
+  id: 0,
+  name: '',
+  email: '',
+  status: 'Inactive',
+  lastLogin: 'Never'
+};
 
   // Form states for user creation and editing
   const [newUser, setNewUser] = useState<UserCreatePayload>({
@@ -151,6 +164,14 @@ const AdminPanel: React.FC = () => {
     logRetentionDays: 90
   });
 
+useEffect(() => {
+  if (!isAuthenticated) {
+    // Redirect to login page if not authenticated
+    window.location.href = '/login'; // Adjust this to your login route path
+  }
+}, [isAuthenticated]);
+
+
   // Fetch users from API
   const fetchUsers = async () => {
     try {
@@ -186,7 +207,7 @@ const AdminPanel: React.FC = () => {
         id: file.id,
         name: file.filename,
         size: `${(file.file_size / (1024 * 1024)).toFixed(2)} MB`,
-        uploadedBy: "file.username", 
+        uploadedBy: file.username, 
         uploadDate: file.upload_date,
         status: file.status.charAt(0).toUpperCase() + file.status.slice(1) 
       }));
@@ -529,25 +550,16 @@ const AdminPanel: React.FC = () => {
       setSaveError(null);
       
       await userService.updateUser({
-        id: selectedUser.id,
+        id: currentUser.id,
         username: editUser.username,
         email: editUser.email,
         is_active: editUser.is_active
       });
       
-      // If this is the current user, update their info
-      if (selectedUser.id === currentUser.id) {
-        setCurrentUser({
-          ...currentUser,
-          name: editUser.username,
-          email: editUser.email,
-          status: editUser.is_active ? 'Active' : 'Inactive'
-        });
-      }
       
       // Refresh the user list
       await fetchUsers();
-      
+  
       // Show success message
       setSaveSuccess('User updated successfully');
       
@@ -694,13 +706,13 @@ const AdminPanel: React.FC = () => {
                 <FiCpu className="sidebar-icon" />
                 <span>Model Oversight</span>
               </div>
-               <div 
+               {/* <div 
                 className={`sidebar-item ${currentSection === 'logs' ? 'active' : ''}`} 
                 onClick={() => setCurrentSection('logs')}
               >
                 <FiClock className="sidebar-icon" />
                 <span>System Logs</span>
-              </div>
+              </div> */}
               <div 
                 className={`sidebar-item ${currentSection === 'config' ? 'active' : ''}`} 
                 onClick={() => setCurrentSection('config')}
@@ -947,7 +959,7 @@ const AdminPanel: React.FC = () => {
                 </div>
               )}
               
-              {currentSection === 'logs' && (
+              {/* {currentSection === 'logs' && (
                 <div className="section-content">
                   <div className="section-header">
                     <h2>System Logs</h2>
@@ -997,7 +1009,7 @@ const AdminPanel: React.FC = () => {
                     ))}
                   </div>
                 </div>
-              )}
+              )} */}
               
               {currentSection === 'config' && (
   <div className="section-content">
@@ -1087,11 +1099,23 @@ const AdminPanel: React.FC = () => {
                 <form className="form-container">
                   <div className="form-group">
                     <label>Full Name</label>
-                    <input type="text" placeholder="Enter full name" />
+                    <input 
+        type="text" 
+        name="username" 
+        placeholder="Enter full name" 
+        value={newUser.username}
+        onChange={handleNewUserChange}
+      />
                   </div>
                   <div className="form-group">
                     <label>Email</label>
-                    <input type="email" placeholder="Enter email address" />
+                    <input 
+        type="email" 
+        name="email" 
+        placeholder="Enter email address" 
+        value={newUser.email}
+        onChange={handleNewUserChange}
+      />
                   </div>
                   <div>
                     {/* <div className="form-group">
@@ -1105,12 +1129,19 @@ const AdminPanel: React.FC = () => {
                     </div> */}
                     <div className="form-group">
                       <label>Initial Password</label>
-                      <input type="password" placeholder="Enter initial password" />
-                    </div>
+ <input 
+          type="password" 
+          name="password" 
+          placeholder="Enter initial password" 
+          value={newUser.password}
+          onChange={handleNewUserChange}
+        />                    </div>
                   </div>
+                  {saveError && <div className="error-message">{saveError}</div>}
+    {saveSuccess && <div className="success-message">{saveSuccess}</div>}
                   <div className="form-actions">
                     <button type="button" className="cancel-button" onClick={() => setShowPopup(false)}>Cancel</button>
-                    <button type="button" className="submit-button" onClick={() => {setShowPopup(false); handleCreateUser();}}>Add User</button>
+                    <button type="button" className="submit-button" onClick={handleCreateUser}>Add User</button>
                   </div>
                 </form>
               )}
@@ -1120,11 +1151,22 @@ const AdminPanel: React.FC = () => {
                 <form className="form-container">
                   <div className="form-group">
                     <label>Full Name</label>
-                    <input type="text" defaultValue={selectedUser.name} />
+                 <input 
+        type="text" 
+        name="username" 
+        placeholder=""
+        value={editUser.username}
+        onChange={handleEditUserChange}
+      />
                   </div>
                   <div className="form-group">
                     <label>Email</label>
-                    <input type="email" defaultValue={selectedUser.email} />
+                    <input 
+        type="email" 
+        name="email" 
+        value={editUser.email}
+        onChange={handleEditUserChange}
+      />
                   </div>
                   <div className='role-status'>
                     {/* <div className="form-group">
@@ -1136,22 +1178,27 @@ const AdminPanel: React.FC = () => {
                       </select>
                     </div> */}
                     <div className="form-group">
-                      <label>Status</label>
-                      <select defaultValue={selectedUser.status}>
+                      {/* <label>Status</label> */}
+                          {/* <select 
+          name="status" 
+          value={editUser.is_active ? 'Active' : 'Inactive'}
+          onChange={handleEditUserChange}
+        >
                         <option>Active</option>
                         <option>Inactive</option>
-                      </select>
+                      </select> */}
                     </div>
                   </div>
-
+    {saveError && <div className="error-message">{saveError}</div>}
+    {saveSuccess && <div className="success-message">{saveSuccess}</div>}
                   <div className="form-actions">
                     <button type="button" className="cancel-button-edit" onClick={() => setShowPopup(false)}>Cancel</button>
-                    <button type="button" className="submit-button-edit" onClick={() => setShowPopup(false)}>Save</button>
+                    <button type="button" className="submit-button-edit" onClick={handleUpdateUser}>Save</button>
                   </div>
                 </form>
               )}
               
-              {popupContent === 'deleteUser' && selectedUser && (
+              {/* {popupContent === 'deleteUser' && selectedUser && (
                 <div className="confirmation-content">
                   <div className="warning-icon">⚠️</div>
                   <p>Are you sure you want to delete the user <strong>{selectedUser.name}</strong>?</p>
@@ -1161,26 +1208,46 @@ const AdminPanel: React.FC = () => {
                     <button type="button" className="delete-button" onClick={() => setShowPopup(false)}>Delete User</button>
                   </div>
                 </div>
-              )}
+              )} */}
               
               {popupContent === 'resetPassword' && selectedUser && (
                 <div className="form-container">
                   <p>Reset password for user: <strong>{selectedUser.name}</strong></p>
                   <div className="form-group">
                     <label>New Password</label>
-                    <input type="password" placeholder="Enter new password" />
+                         <input 
+        type="password" 
+        name="new_password" 
+        placeholder="Enter new password" 
+        value={passwordReset.new_password}
+        onChange={handlePasswordResetChange}
+      />
                   </div>
                   <div className="form-group">
                     <label>Confirm Password</label>
-                    <input type="password" placeholder="Confirm new password" />
+                        <input 
+        type="password" 
+        name="confirm_password" 
+        placeholder="Confirm new password" 
+        value={passwordReset.confirm_password}
+        onChange={handlePasswordResetChange}
+      />
                   </div>
                   <div className="checkbox-group">
-                    <input type="checkbox" id="force-reset" />
-                    <label htmlFor="force-reset">Force user to change password on next login</label>
+                        <input 
+        type="checkbox" 
+        id="force-reset" 
+        name="force_change" 
+        checked={passwordReset.force_change}
+        onChange={handlePasswordResetChange}
+      />
+                    {/* <label htmlFor="force-reset">Force user to change password on next login</label> */}
                   </div>
+                      {saveError && <div className="error-message">{saveError}</div>}
+    {saveSuccess && <div className="success-message">{saveSuccess}</div>}
                   <div className="form-actions">
                     <button type="button" className="cancel-button-psw" onClick={() => setShowPopup(false)}>Cancel</button>
-                    <button type="button" className="submit-button" onClick={() => setShowPopup(false)}>Reset Password</button>
+                    <button type="button" className="submit-button" onClick={handleResetPassword}>Reset Password</button>
                   </div>
                 </div>
               )}
@@ -1209,18 +1276,18 @@ const AdminPanel: React.FC = () => {
                       <span className={`detail-value status-${selectedFile.status.toLowerCase()}`}>{selectedFile.status}</span>
                     </div>
                   </div>
-                  <div className="file-actions">
+                  {/* <div className="file-actions">
                     <button className="download-button">
                       <FaDownload /> Download
                     </button>
                     <button className="delete-button" onClick={() => navigatePopup('deleteFile')}>
                       <FaTrash /> Delete
-                    </button>
+                    </button> */}
                   </div>
-                </div>
+                // </div>
               )}
               
-              {popupContent === 'deleteFile' && selectedFile && (
+              {/* {popupContent === 'deleteFile' && selectedFile && (
                 <div className="confirmation-content">
                   <div className="warning-icon">⚠️</div>
                   <p>Are you sure you want to delete the file <strong>{selectedFile.name}</strong>?</p>
@@ -1230,7 +1297,7 @@ const AdminPanel: React.FC = () => {
                     <button type="button" className="delete-button" onClick={() => setShowPopup(false)}>Delete File</button>
                   </div>
                 </div>
-              )}
+              )} */}
             </div>
           </div>
         </div>

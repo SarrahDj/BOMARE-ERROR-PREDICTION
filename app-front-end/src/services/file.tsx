@@ -11,6 +11,7 @@ export interface FileUploadResponse {
 
 export interface UserFile {
   id: number;
+  username : string;
   filename: string;
   file_type: string;
   file_size: number;
@@ -50,6 +51,7 @@ export const uploadFile = async (file: File): Promise<FileUploadResponse> => {
 export const getUserFiles = async (): Promise<UserFile[]> => {
   try {
     const response = await authService.api.get<UserFile[]>('/files/recent/');
+    console.log(response.data)
     return response.data;
   } catch (error) {
     console.error('Error fetching user files:', error);
