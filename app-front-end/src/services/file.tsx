@@ -19,6 +19,19 @@ export interface UserFile {
   status: string;
 }
 
+
+export interface ProcessingHistory {
+  id: number;
+  file_id: number;
+  accuracy: number;
+  precision: number;
+  recall: number;
+  f1_score: number;
+  total_samples: number;
+  error_rate: number;
+  created_at: string;
+}
+
 export const uploadFile = async (file: File): Promise<FileUploadResponse> => {
   const formData = new FormData();
   formData.append('file', file);
@@ -59,7 +72,20 @@ export const getUserFiles = async (): Promise<UserFile[]> => {
   }
 };
 
+export const getProcessingHistory = async (fileId?: number): Promise<ProcessingHistory[]> => {
+  try {
+    const endpoint = `/files/${fileId}/processing-history/` 
+      
+    
+    const response = await authService.api.get<ProcessingHistory[]>(endpoint);
+    return response.data;
+  } catch (error) {
+    console.error('Error fetching processing history:', error);
+    throw error;
+  }
+};
 export default {
   uploadFile,
   getUserFiles,
+  getProcessingHistory,
 };

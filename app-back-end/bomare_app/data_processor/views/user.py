@@ -1,7 +1,10 @@
+from django.utils import timezone
 from rest_framework import status
 from rest_framework.decorators import api_view
 from rest_framework.response import Response
 import hashlib
+
+from sqlalchemy import false
 
 from ..models.user import User
 from ..serializers.user import LoginSerializer, UserSerializer
@@ -16,7 +19,9 @@ def login(request):
 
         # Generate JWT token
         token = generate_jwt_token(user)
+        user.last_login = timezone.now()
         user.is_active = True
+        user.save()
 
         return Response({
             'user': UserSerializer(user).data,
@@ -24,6 +29,21 @@ def login(request):
         })
 
     return Response(serializer.errors, status=status.HTTP_401_UNAUTHORIZED)
+
+
+@api_view(['POST'])
+def logout(request):
+    """
+    Logout endpoint - can be expanded to handle token invalidation
+    if using a token blacklist.
+    """
+    # Currently client-side logout is sufficient since we're using JWT
+    # But we can log the logout event if needed
+    user = request.user
+    user.is_active = False
+    user.save()
+
+    return Response({'message': 'Successfully logged out'}, status=status.HTTP_200_OK)
 
 
 @api_view(['POST'])

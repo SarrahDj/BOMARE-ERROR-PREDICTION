@@ -148,7 +148,6 @@
   }
 }
 
-
 @media (max-width: 478px) {
   .icon-wrapper {
     height: 2.5rem;
@@ -164,7 +163,7 @@
     width: 1rem;
     height: 1rem;
   }
-  
+
   .hamburger div {
     width: 1rem;
   }

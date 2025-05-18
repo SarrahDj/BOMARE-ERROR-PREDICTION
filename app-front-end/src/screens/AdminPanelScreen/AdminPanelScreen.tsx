@@ -99,6 +99,7 @@ const { user, isAuthenticated, logout } = useAuth();
   const [saveError, setSaveError] = useState<string | null>(null);
   const [saveSuccess, setSaveSuccess] = useState<string | null>(null);
 
+
 const adaptUserToComponentFormat = (apiUser: any): User => {
   return {
     id: apiUser.id,
@@ -163,6 +164,8 @@ const currentUser: User = user ? adaptUserToComponentFormat(user) : {
     sessionTimeout: 30,
     logRetentionDays: 90
   });
+    console.log(currentUser)
+
 
 useEffect(() => {
   if (!isAuthenticated) {
@@ -625,6 +628,22 @@ useEffect(() => {
     }
   };
 
+  function formatISODate(isoString: string): string {
+  const date = new Date(isoString);
+
+  return date.toLocaleString('en-US', {
+    year: 'numeric',
+    month: 'long',   // "May"
+    day: 'numeric',  // "18"
+    hour: '2-digit',
+    minute: '2-digit',
+    second: '2-digit',
+    hour12: false,   // Use 24-hour format
+    timeZone: 'UTC'  // Optional: keep it UTC or change to local
+  });
+}
+
+
   const handleDeleteFile = async () => {
     if (!selectedFile) return;
     
@@ -791,7 +810,7 @@ useEffect(() => {
                               </span>
                             </td>
                             <td className="options-cell">
-                              <span>{user.lastLogin}</span>
+                              <span>{formatISODate(user.lastLogin)}</span>
                             </td>
                           </tr>
                         ))}
@@ -880,12 +899,12 @@ useEffect(() => {
                                     <div className="dropdown-item" onClick={() => handleFileAction(file, 'view')}>
                                       <FiSearch className='dropdown-icon'/> View Details
                                     </div>
-                                    <div className="dropdown-item" onClick={() => handleFileAction(file, 'download')}>
+                                    {/* <div className="dropdown-item" onClick={() => handleFileAction(file, 'download')}>
                                       <FiDownload className='dropdown-icon'/> Download
                                     </div>
                                     <div className="dropdown-item delete" onClick={() => handleFileAction(file, 'delete')}>
                                       <FiTrash className='dropdown-icon'/> Delete
-                                    </div>
+                                    </div> */}
                                   </div>
                                 )}
                               </div>
@@ -1269,7 +1288,7 @@ useEffect(() => {
                     </div>
                     <div className="detail-row">
                       <span className="detail-label">Upload Date:</span>
-                      <span className="detail-value">{selectedFile.uploadDate}</span>
+                      <span className="detail-value">{formatISODate(selectedFile.uploadDate)}</span>
                     </div>
                     <div className="detail-row">
                       <span className="detail-label">Status:</span>

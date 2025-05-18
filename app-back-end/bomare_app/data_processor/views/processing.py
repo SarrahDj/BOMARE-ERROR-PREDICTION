@@ -1,6 +1,7 @@
 import csv
 
-from django.http import JsonResponse
+
+from django.http import JsonResponse, FileResponse
 from rest_framework import status
 from rest_framework.decorators import api_view
 from rest_framework.response import Response
@@ -106,19 +107,22 @@ def execute_processing(request, job_id):
 
     user_id = payload['user_id']
     user = get_object_or_404(User, id=user_id)
-
+    print("1")
     # Get the job
     job = get_object_or_404(ProcessingJob, id=job_id)
+    print("2")
 
     # Update job status
     job.status = 'processing'
     job.started_at = datetime.now()
     job.save()
+    print("3")
 
     try:
         # Get the file data
         file_path = job.file.storage_path
         file_type = job.file.file_type.lower()
+        print("4")
 
         # Read the file
         if file_type in ['csv']:
@@ -130,26 +134,33 @@ def execute_processing(request, job_id):
 
         # Process with model
         model_output = predict_feeder_errors_detailed(file_path)['json_output']
+        print(type(model_output))
+        import json
+        cleaned_output = make_json_serializable(model_output)
+
 
         # Extract AI score from model output
         ai_score = model_output['model_performance']['accuracy']
+        print("ai score khlas")
 
         # Save prediction result
         result = ProcessingResult.objects.create(
             job=job,
             ai_score=ai_score,
-            prediction_data=model_output,  # Store the entire model output
-            confidence_level=model_output['model_performance']['precision']  # Use precision as confidence level
+            prediction_data=cleaned_output,  # Store the entire model output
+            confidence_level=ai_score # Use precision as confidence level
         )
+        print("output result khlas")
 
         # Update job status
         job.status = 'completed'
         job.completed_at = datetime.now()
         job.save()
-
+        print("job status khlas")
         # Update file status
         job.file.status = 'processed'
         job.file.save()
+        print("file status khlas")
 
         # Save the historical data
         ProcessingHistory.objects.create(
@@ -158,15 +169,15 @@ def execute_processing(request, job_id):
             precision=model_output['model_performance']['precision'],
             recall=model_output['model_performance']['recall'],
             f1_score=model_output['model_performance']['f1_score'],
-            valid_samples=model_output['model_performance']['valid_samples'],
             total_samples=model_output['model_performance']['total_samples'],
-            nan_samples=model_output['model_performance']['nan_samples'],
-            predicted_errors=model_output['error_summary']['PredictedErrors'],
-            error_rate=model_output['error_summary']['ErrorRate'],
-            top_shapes=model_output['top_shapes'],
-            top_modules=model_output['top_modules'],
-            top_error_partnumbers=model_output['top_error_partnumbers']
+            #nan_samples=model_output['model_performance']['nan_samples'],
+            #predicted_errors=model_output['error_summary']['PredictedErrors'],
+            error_rate=model_output['model_performance']['error_rate'],
+            #top_shapes=model_output['top_shapes'],
+            #top_modules=model_output['top_modules'],
+            #top_error_partnumbers=model_output['top_error_partnumbers']
         )
+        print("his data khlas")
 
         # Create export records
         exports = []
@@ -189,7 +200,7 @@ def execute_processing(request, job_id):
 
         # Serialize export objects
         export_serializer = ExportSerializer(exports, many=True)
-
+        print("export khlas")
         # Prepare complete response data
         response_data = {
             'status': 'success',
@@ -197,12 +208,36 @@ def execute_processing(request, job_id):
             'result_id': result.id,
             'exports': export_serializer.data,
             'model_output': {
+                # Include all the fields from model_output, preserving the original structure
                 'model_performance': model_output['model_performance'],
-                'error_summary': model_output['error_summary'],
-                'top_shapes': model_output['top_shapes'],
-                'top_modules': model_output['top_modules'],
-                'top_error_partnumbers': model_output['top_error_partnumbers'],
-                'output_files': model_output['output_files']
+                'total_parts': model_output.get('total_parts'),
+                'unique_part_numbers': model_output.get('unique_part_numbers'),
+                'unique_feeder_ids': model_output.get('unique_feeder_ids'),
+                'most_used_feeder_id': model_output.get('most_used_feeder_id'),
+                'part_number_count_per_feeder': model_output.get('part_number_count_per_feeder'),
+                'unique_shapes': model_output.get('unique_shapes'),
+                'shape_distribution': model_output.get('shape_distribution', {}),
+                'most_common_shape': model_output.get('most_common_shape'),
+                'unique_package_names': model_output.get('unique_package_names'),
+                'most_common_package': model_output.get('most_common_package'),
+                'package_type_distribution': model_output.get('package_type_distribution', {}),
+                'tape_width_distribution': model_output.get('tape_width_distribution', {}),
+                'feeder_type_distribution': model_output.get('feeder_type_distribution', {}),
+                'total_errors': model_output.get('total_errors'),
+                'error_rate': model_output.get('error_rate'),
+                'error_distribution_by_shape': model_output.get('error_distribution_by_shape', {}),
+                'shape_with_most_error': model_output.get('shape_with_most_error'),
+                'top_5_shapes_with_errors': model_output.get('top_5_shapes_with_errors', {}),
+                'all_shapes_errors': {'somth': 1},
+                'error_distribution_by_part_number': model_output.get('error_distribution_by_part_number', {}),
+                'part_number_with_most_error': model_output.get('part_number_with_most_error'),
+                'top_5_parts_with_errors': model_output.get('top_5_parts_with_errors', {}),
+                'all_parts_errors': model_output.get('all_parts_errors', {}),
+                'error_distribution_by_module': model_output.get('error_distribution_by_module', {}),
+                'module_with_most_error': model_output.get('module_with_most_error'),
+                'top_5_modules_with_errors': model_output.get('top_5_modules_with_errors', {}),
+                'all_modules_errors': model_output.get('all_modules_errors', {}),
+                'output_files': model_output.get('output_files')
             }
         }
 
@@ -224,7 +259,7 @@ def execute_processing(request, job_id):
 
 
 @api_view(['GET'])
-def get_job_results(request, job_id):
+def get_job_results(request, result_id):
     """Get all results for a specific job"""
     # Authenticate user
     auth_header = request.headers.get('Authorization')
@@ -240,10 +275,8 @@ def get_job_results(request, job_id):
     user_id = payload['user_id']
 
     # Get the job and ensure it belongs to the user
-    job = get_object_or_404(ProcessingJob, id=job_id, file__user=user_id)
-
-    # Get results for this job
-    results = ProcessingResult.objects.filter(job=job)
+# Get results for this job
+    results = ProcessingResult.objects.filter(id = result_id)
 
     serializer = ProcessingResultSerializer(results, many=True)
     return Response(serializer.data)
@@ -372,3 +405,70 @@ def parse_json_export(file_path):
         data = json.load(jsonfile)
 
     return JsonResponse(data, safe=False)
+
+import numpy as np
+def make_json_serializable(obj):
+    if isinstance(obj, dict):
+        return {k: make_json_serializable(v) for k, v in obj.items()}
+    elif isinstance(obj, list):
+        return [make_json_serializable(v) for v in obj]
+    elif isinstance(obj, (np.ndarray,)):
+        return obj.tolist()
+    elif isinstance(obj, (np.float32, np.float64)):
+        return float(obj)
+    elif isinstance(obj, (np.int32, np.int64)):
+        return int(obj)
+    else:
+        return obj  # assume already serializable
+
+
+@api_view(['GET'])
+def download_export_file(request, result_id, export_type):
+    """
+    Download the actual export file by result ID and export type
+    """
+    # Authenticate user
+    auth_header = request.headers.get('Authorization')
+    if not auth_header or not auth_header.startswith('Bearer '):
+        return Response({'error': 'Authorization required'}, status=401)
+
+    # Extract and verify token
+    token = auth_header.split(' ')[1]
+    payload = verify_jwt_token(token)
+    if not payload:
+        return Response({'error': 'Invalid or expired token'}, status=401)
+
+    user_id = payload['user_id']
+    print("passed auth")
+    # Get the result
+    result = get_object_or_404(ProcessingResult, id=result_id)
+    print("passed result fetching")
+    # Check if user has access to this result
+    job = result.job
+    print("passed job thing")
+    if job.file.user.id != user_id:
+        return Response({'error': 'Unauthorized access'}, status=403)
+
+    # Get file path from model_output
+    try:
+        if (export_type == 'excel'):
+            export = 'xlsx'
+        export = 'csv'
+        file_path = result.prediction_data['output_files'][export]
+        print("passed file path")
+        # Ensure file exists
+        if not os.path.exists(file_path):
+            return Response({'error': 'Export file not found'}, status=404)
+
+        # Determine filename
+        filename = f"feeder-error-prediction-{job.id}.{export_type.lower()}"
+
+        # Serve the file
+        response = FileResponse(open(file_path, 'rb'))
+        response['Content-Disposition'] = f'attachment; filename="{filename}"'
+        return response
+
+    except KeyError:
+        return Response({'error': f'Export file of type {export_type} not found'}, status=404)
+    except Exception as e:
+        return Response({'error': str(e)}, status=500)

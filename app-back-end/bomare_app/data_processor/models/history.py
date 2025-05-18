@@ -6,15 +6,15 @@ class ProcessingHistory(models.Model):
     precision = models.FloatField()
     recall = models.FloatField()
     f1_score = models.FloatField()
-    valid_samples = models.IntegerField()
+    #valid_samples = models.IntegerField()
     total_samples = models.IntegerField()
-    nan_samples = models.IntegerField()
-    predicted_errors = models.IntegerField()
+    #nan_samples = models.IntegerField()
+    #predicted_errors = models.IntegerField()
     error_rate = models.FloatField()
 
-    top_shapes = models.JSONField()
-    top_modules = models.JSONField()
-    top_error_partnumbers = models.JSONField()
+    #top_shapes = models.JSONField()
+    #top_modules = models.JSONField()
+    #top_error_partnumbers = models.JSONField()
 
     created_at = models.DateTimeField(auto_now_add=True)
 

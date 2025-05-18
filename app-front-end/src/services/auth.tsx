@@ -66,9 +66,21 @@ export const register = async (userData: LoginCredentials & { email: string }): 
   return response.data;
 };
 
-export const logout = (): void => {
-  localStorage.removeItem('token');
-  localStorage.removeItem('user');
+export const logout = async (): Promise<void> => {
+  try {
+    // Call the backend logout endpoint if token exists
+    const token = localStorage.getItem('token');
+    if (token) {
+      await api.post('/auth/logout/');
+    }
+  } catch (error) {
+    console.error('Logout API error:', error);
+    // Continue with logout even if API call fails
+  } finally {
+    // Always clear local storage
+    localStorage.removeItem('token');
+    localStorage.removeItem('user');
+  }
 };
 
 export const getCurrentUser = (): User | null => {

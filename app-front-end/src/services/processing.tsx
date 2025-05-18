@@ -1,4 +1,7 @@
+import authService from './auth';
+import { FileUploadResponse, UserFile } from './file';
 
+// Define interfaces for the data structures
 export interface FileMetadata {
   id: number;
   user: number;
@@ -23,37 +26,35 @@ export interface ProcessingJob {
   error_message: string | null;
 }
 
-
 export interface ModelPerformance {
   accuracy: number;
   precision: number;
   recall: number;
   f1_score: number;
-  valid_samples: number;
   total_samples: number;
-  nan_samples: number;
-}
-
-export interface ErrorSummary {
-  TotalRows: number;
-  PredictedErrors: number;
-  ErrorRate: number;
+  total_errors: number;
+  error_rate: number;
 }
 
 export interface ShapeError {
-  ErrorCount: number;
+  name?: string;
+  count?: number;
+  error?: number;
+  percentage?: number;
+}
+
+export interface PartError {
+  name?: string;
+  count?: number;
+  error?: number;
+  percentage?: number;
 }
 
 export interface ModuleError {
-  ErrorCount: number;
-  TopErrorPartNumbers: Record<string, number>;
-}
-
-export interface ModuleErrorT {
-  name: string;
-  error: number;
-  percentage: number;
- 
+  name?: string;
+  count?: number;
+  error?: number;
+  percentage?: number;
 }
 
 export interface OutputFiles {
@@ -62,20 +63,53 @@ export interface OutputFiles {
   json: string;
 }
 
+export interface ModelOutput {
+  model_performance?: ModelPerformance;
+  total_parts: number;
+  unique_part_numbers?: number;
+  unique_feeder_ids?: number;
+  most_used_feeder_id?: string;
+  part_number_count_per_feeder?: Record<string, number>;
+  unique_shapes?: number;
+  shape_distribution?: Record<string, number>;
+  most_common_shape?: string | null;
+  unique_package_names?: number;
+  most_common_package?: string;
+  package_type_distribution?: Record<string, number>;
+  tape_width_distribution?: Record<string, number>;
+  feeder_type_distribution?: Record<string, number>;
+  total_errors: number;
+  error_rate: number;
+  error_distribution_by_shape?: Record<string, number>;
+  shape_with_most_error?: string | null;
+  top_5_shapes_with_errors?: Record<string, string | ShapeError>;
+  all_shapes_errors?: Record<string, number>;
+  error_distribution_by_part_number?: Record<string, number>;
+  part_number_with_most_error?: {
+    name: string;
+    count: number;
+    percentage: number;
+  };
+  top_5_parts_with_errors?: Record<string, string | PartError>;
+  all_parts_errors: Record<string, number>;
+  error_distribution_by_module?: Record<string, number>;
+  module_with_most_error?: {
+    name: string;
+    count: number;
+    percentage: number;
+  };
+  top_5_modules_with_errors?: Record<string, string | ModuleError>;
+  all_modules_errors?: Record<string, number>;
+  output_files?: OutputFiles;
+}
+
 export interface ProcessingResult {
   id: number;
   job_id: number;
-  ai_score: number;
-  confidence_level: number;
+  ai_score: number |undefined;
+  confidence_level: number |undefined;
   created_at: string;
-  prediction_data: {
-    model_performance: ModelPerformance;
-    error_summary: ErrorSummary;
-    top_shapes: Record<string, ShapeError>;
-    top_modules: Record<string, ModuleError>;
-    top_error_partnumbers: Record<string, number>;
-    output_files: OutputFiles;
-  };
+  prediction_data: ModelOutput;
 }
 
 export interface Export {
@@ -96,14 +130,7 @@ export interface ExecuteJobResponse {
   job_id: number;
   result_id: number;
   exports: Export[];
-  model_output: {
-    model_performance: ModelPerformance;
-    error_summary: ErrorSummary;
-    top_shapes: Record<string, ShapeError>;
-    top_modules: Record<string, ModuleError>;
-    top_error_partnumbers: Record<string, number>;
-    output_files: OutputFiles;
-  };
+  model_output: ModelOutput;
 }
 
 export interface FileProcessingStatus {
@@ -114,9 +141,6 @@ export interface FileProcessingStatus {
   isLoading: boolean;
   error: string | null;
 }
-
-import authService from './auth';
-import { FileUploadResponse, UserFile } from './file';
 
 // Service for handling file processing flows
 const fileProcessingService = {
@@ -219,14 +243,7 @@ const fileProcessingService = {
     job: ProcessingJob | null;
     results: ProcessingResult[] | null;
     exports: Export[] | null;
-    modelOutput: {
-      model_performance: ModelPerformance;
-      error_summary: ErrorSummary;
-      top_shapes: Record<string, ShapeError>;
-      top_modules: Record<string, ModuleError>;
-      top_error_partnumbers: Record<string, number>;
-      output_files: OutputFiles;
-    } | null;
+    modelOutput: ModelOutput | null;
   }> => {
     try {
       const response = await authService.api.get(
@@ -240,18 +257,116 @@ const fileProcessingService = {
   },
 
   // Get the content of an export file directly from the backend
-getExportFileContent: async (jobId: number): Promise<any> => {
+  getExportFileContent: async (jobId: number): Promise<any> => {
+    try {
+      // Call the backend API endpoint that returns parsed content
+      const response = await authService.api.get<any>(
+        `/exports/${jobId}/content/`
+      );
+      return response.data;
+    } catch (error) {
+      console.error('Error getting export file content:', error);
+      throw error;
+    }
+  },
+  
+  // Parse and format processing results for visualization
+ formatProcessingResultsForDisplay: (result:any) => {
+  console.log("Starting format processing results with:", result);
+
+  // Ensure data exists and provide default values if not
+  const data = result[0]["prediction_data"] || {};
+
+  
+  console.log("Processing prediction data:", data);
+  
+  // Safely access nested properties
+  const modelPerformance = data['model_performance'] || {
+    accuracy: 0,
+    precision: 0,
+    recall: 0,
+    f1_score: 0,
+    total_samples: 0,
+    total_errors: 0,
+    error_rate: 0
+  };
+  
+  console.log("Model performance:", modelPerformance);
+  
+  // Process top shapes with errors safely
+  const topShapesWithErrors = Object.entries(data['top_5_shapes_with_errors'] || {}).map(([name, data]) => {
+    console.log(`Processing shape error for ${name}:`, data);
+    
+    // Handle both string and object types
+    if (typeof data === 'string') {
+      return {
+        name,
+        error: parseInt(data, 10) || 0,
+        percentage: 0 // We don't have percentage in string format
+      };
+    } else {
+      return {
+        name,
+        error: (typeof data === 'object' && data !== null) ? (data || data || 0) : 0,
+        percentage: (typeof data === 'object' && data !== null) ? (data || 0) : 0
+      };
+    }
+  });
+
+  // Process top parts with errors safely
+  const topPartsWithErrors = Object.entries(data['top_5_parts_with_errors'] || {}).map(([name, data]) => {
+    // Handle both string and object types
+    if (typeof data === 'string') {
+      return {
+        name,
+        error: parseInt(data, 10) || 0,
+        percentage: 0 // We don't have percentage in string format
+      };
+    } else {
+      return {
+        name,
+        error: (typeof data === 'object' && data !== null) ? (data || data || 0) : 0,
+        percentage: (typeof data === 'object' && data !== null) ? (data || 0) : 0
+      };
+    }
+  });
+
+  // Process top modules with errors safely
+  const topModulesWithErrors = Object.entries(data['top_5_modules_with_errors'] || {}).map(([name, data]) => {
+    // Handle both string and object types
+    if (typeof data === 'string') {
+      return {
+        name,
+        error: parseInt(data, 10) || 0,
+        percentage: 0 // We don't have percentage in string format
+      };
+    } else {
+      return {
+        name,
+        error: (typeof data === 'object' && data !== null) ? (data || data || 0) : 0,
+        percentage: (typeof data === 'object' && data !== null) ? (data || 0) : 0
+      };
+    }
+  });
+ 
+  
+  console.log("Formatted result:", data);
+  return data;
+},
+
+downloadExportByType: async (resultId: number, exportType: string): Promise<Blob> => {
   try {
-    // Call the backend API endpoint that returns parsed content
-    const response = await authService.api.get<any>(
-      `/exports/${jobId}/content/`
+    const response = await authService.api.get(
+      `/results/${resultId}/download/${exportType}/`,
+      { responseType: 'blob' }
     );
     return response.data;
   } catch (error) {
-    console.error('Error getting export file content:', error);
+    console.error(`Error downloading ${exportType} export:`, error);
     throw error;
   }
 }
+
 };
 
 export default fileProcessingService;

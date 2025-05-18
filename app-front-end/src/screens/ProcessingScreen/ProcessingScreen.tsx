@@ -183,7 +183,15 @@ const ProcessingScreen = () => {
   };
 
   const handleContinue = () => {
-    navigate('/Analytics');
+       const resultId = results && results.length > 0 ? results[0].id : null;
+    
+    // Pass data via state for consistency instead of URL params
+    navigate('/Analytics', { 
+      state: { 
+        fileId: fileId,
+        resultId: resultId
+      } 
+    });
   };
 
   return (

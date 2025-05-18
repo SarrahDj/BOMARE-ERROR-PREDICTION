@@ -19,14 +19,7 @@ import csv from '../../../assets/csv.png';
 import danger from '../../../assets/danger.png';
 import { FiInfo } from 'react-icons/fi';
 import { FaBox, FaTimes } from 'react-icons/fa';
-import {
-    targetPercent,
-    errorTarget,
-    distinctErrorTarget,
-    errorRateTimelineData,
-    COLORS_COMPONENTS,
-    COLORS,
-} from '../../../data/mockUploads';
+import { COLORS_COMPONENTS, COLORS } from '../../../data/mockUploads';
 
 interface PopupData {
     title: string;
@@ -34,10 +27,58 @@ interface PopupData {
     data: { name: string; count: number }[];
 }
 
-const OverviewScreen: React.FC = () => {
+interface OverviewScreenProps {
+    performanceMetrics: {
+        errorCount: number;
+        distinctErrors: number;
+        errorRate: number;
+        fileName: string;
+        fileSize: number;
+        uploadedBy: string;
+        uploadDate: string;
+    };
+    partStats: {
+        placedParts: number;
+        uniqueParts: number;
+        feedersUsed: number;
+        topFeeder: string;
+        partCountPerFeeder: { name: string; count: number }[];
+    };
+    shapeStats: {
+        shapesUsed: number;
+        topShape: string;
+        shapeDistribution: { name: string; value: number }[];
+    };
+    packageStats: {
+        packageTypes: number;
+        topPackage: string;
+        feederTypeDistribution: { name: string; count: number }[];
+        tapeWidthDistribution: { name: string; value: number }[];
+        packageTypeCounts: { name: string; count: number }[];
+    };
+    errorAnalysis: {
+        errorRateTimeline: Array<{
+      name: string;
+      errorRate: any;
+      uploadDate: string;
+      isCurrent: boolean | null | undefined;
+    }>;
+    };
+}
+
+const OverviewScreen: React.FC<OverviewScreenProps> = ({
+    performanceMetrics,
+    partStats,
+    shapeStats,
+    packageStats,
+    errorAnalysis
+}) => {
     const [activeIndex, setActiveIndex] = useState<number | null>(null);
     const [showPopup, setShowPopup] = useState(false);
     const [popupData, setPopupData] = useState<PopupData | null>(null);
+    const [percent, setPercent] = useState(0);
+    const [errorCount, setErrorCount] = useState(0);
+    const [distincErrors, setDistincErrors] = useState(0);
 
     const handleOpenPopup = (title: string, description: string) => {
         const sampleData = Array.from({ length: 15 }, (_, i) => ({
@@ -53,28 +94,59 @@ const OverviewScreen: React.FC = () => {
         setShowPopup(true);
     };
 
-    const [percent, setPercent] = useState(0);
-    const [errorCount, setErrorCount] = useState(0);
-    const [distincErrors, setdistincErrors] = useState(0);
-
+    // Create pie data for error rate
     const pieData = [
         { name: 'Used', value: percent },
         { name: 'Remaining', value: 100 - percent },
     ];
-    
-    useEffect(() => {
-        let p = 0;
-        let e = 0;
-        let d = 0;
-        const interval = setInterval(() => {
-            if (p <= targetPercent) setPercent(p++);
-            if (e <= errorTarget) setErrorCount(e++);
-            if (d <= distinctErrorTarget) setdistincErrors(d++);
-            if (p > targetPercent && e > errorTarget && d > distinctErrorTarget) clearInterval(interval);
-        }, 15);
-        return () => clearInterval(interval);
-    }, []);
+   
+const processedData = () => {
+  // Sort descending by value
+  const sorted = [...safeShapeDistribution].sort((a, b) => b.value - a.value);
 
+  // Take top 4
+  const topFour = sorted.slice(0, 4);
+
+  // Sum the rest
+  const otherSum = sorted.slice(4).reduce((acc, cur) => acc + cur.value, 0);
+
+  // Add "Others" only if there is something to group
+  if (otherSum > 0) {
+    topFour.push({ name: "Others", value: otherSum });
+  }
+
+  return topFour;
+};
+const processedTapeWidthData = () => {
+  const sorted = [...safeTapeWidthDistribution].sort((a, b) => b.value - a.value);
+  const topFour = sorted.slice(0, 4);
+  const otherSum = sorted.slice(4).reduce((acc, cur) => acc + cur.value, 0);
+  console.log(topFour)
+  if (otherSum > 0) {
+    topFour.push({ name: "Others", value: otherSum });
+  }
+
+  return topFour;
+};
+
+    // Ensure shapeStats data has default values
+    const safeShapeDistribution = shapeStats?.shapeDistribution.slice(0,5) || [];
+    const safePartCountPerFeeder = partStats?.partCountPerFeeder || [];
+    const safeFeederTypeDistribution = packageStats?.feederTypeDistribution || [];
+    const safeTapeWidthDistribution = packageStats?.tapeWidthDistribution || [];
+    const safePackageTypeCounts = packageStats?.packageTypeCounts || [];
+    const safeErrorRateTimeline = errorAnalysis?.errorRateTimeline || [];
+    const total = processedData().reduce((sum, item) => sum + item.value, 0);
+    useEffect(() => {
+        // Initialize values from props
+        setPercent(performanceMetrics?.errorRate * 100|| 0);
+        setErrorCount(performanceMetrics?.errorCount || 0);
+        setDistincErrors(performanceMetrics?.distinctErrors || 0);
+
+    }, [performanceMetrics]);
+
+    console.log("afeShapeDistribution")
+    console.log(packageStats)
     return (
         <>
             <div className="row-1">
@@ -83,10 +155,10 @@ const OverviewScreen: React.FC = () => {
                     <div className="left">
                         <img src={csv} alt="CSV" />
                         <div className="file-text">
-                            <span>file_name.csv</span>
-                            <span className="file-size">File size: 2.5MB</span>
-                            <span className="file-size">Uploaded by: user2</span>
-                            <span className="file-size">Date of upload: 12 Jan 2025</span>
+                            <span>{performanceMetrics?.fileName || "file_name.csv"}</span>
+                            <span className="file-size">File size: {performanceMetrics?.fileSize || "2.5MB"}</span>
+                            <span className="file-size">Uploaded by: {performanceMetrics?.uploadedBy || "user2"}</span>
+                            <span className="file-size">Date of upload: {performanceMetrics?.uploadDate || "12 Jan 2025"}</span>
                         </div>
                     </div>
                 </div>
@@ -98,12 +170,12 @@ const OverviewScreen: React.FC = () => {
                     <span className="stat-card-subtitle">Errors in total</span>
                 </div>
 
-                <div className="card file-stats">
+                {/* <div className="card file-stats">
                     <img src={danger} alt="danger" />
                     <span className="stat-card-title">Distinct errors</span>
                     <span className="stat-card-number">{distincErrors}</span>
                     <span className="stat-card-subtitle">Distinct errors</span>
-                </div>
+                </div> */}
 
                 <div className="card file-stats pie-card">
                     <PieChart width={70} height={70}>
@@ -121,7 +193,7 @@ const OverviewScreen: React.FC = () => {
                             ))}
                         </Pie>
                     </PieChart>
-                    <span className="stat-card-number">{percent}%</span>
+                    <span className="stat-card-number">{Math.round(percent) }%</span>
                     <span className="stat-card-title">Error rate</span>
                 </div>
             </div>
@@ -131,7 +203,7 @@ const OverviewScreen: React.FC = () => {
                     <div className="card-title center">Error Rate Trend Across Files</div>
                     <ResponsiveContainer width="100%" height={300}>
                         <LineChart
-                            data={errorRateTimelineData}
+                            data={safeErrorRateTimeline}
                             margin={{ top: 20, right: 20, left: 0, bottom: 30 }}
                         >
                             <CartesianGrid strokeDasharray="3 3" stroke="#f0f0f0" />
@@ -140,7 +212,7 @@ const OverviewScreen: React.FC = () => {
                                 height={50} 
                                 tick={(props) => {
                                     const { x, y, payload } = props;
-                                    const entry = errorRateTimelineData.find(item => item.name === payload.value);
+                                    const entry = safeErrorRateTimeline.find(item => item.name === payload.value);
                                     return (
                                         <text x={x} y={y} fill="#4B4B4B" fontSize={"1.2rem"} textAnchor="middle">
                                             <tspan x={x} dy="1em">{payload.value}</tspan>
@@ -164,7 +236,7 @@ const OverviewScreen: React.FC = () => {
                             <Tooltip
                                 formatter={(value: number) => [`${value}%`, 'Error Rate']}
                                 labelFormatter={(name) => {
-                                    const entry = errorRateTimelineData.find(item => item.name === name);
+                                    const entry = safeErrorRateTimeline.find(item => item.name === name);
                                     return [
                                         `File: ${name}`,
                                         `Uploaded: ${entry?.uploadDate}`,
@@ -210,7 +282,6 @@ const OverviewScreen: React.FC = () => {
                                 }}
                                 animationDuration={1500}
                             />
-
                         </LineChart>
                     </ResponsiveContainer>
                 </div>
@@ -221,7 +292,7 @@ const OverviewScreen: React.FC = () => {
                     <div className="card stat-card">
                         <FaBox className="stat-icon" />
                         <span className="stat-card-title">Placed Parts</span>
-                        <span className="stat-card-number">164</span>
+                        <span className="stat-card-number">{partStats?.placedParts || 0}</span>
                         <span className="stat-card-subtitle">Total placed components</span>
                         <FiInfo
                             className="info-icon"
@@ -235,7 +306,7 @@ const OverviewScreen: React.FC = () => {
                     <div className="card stat-card">
                         <FaBox className="stat-icon" />
                         <span className="stat-card-title">Unique Parts</span>
-                        <span className="stat-card-number">92</span>
+                        <span className="stat-card-number">{partStats?.uniqueParts || 0}</span>
                         <span className="stat-card-subtitle">Unique part numbers</span>
                         <FiInfo
                             className="info-icon"
@@ -249,7 +320,7 @@ const OverviewScreen: React.FC = () => {
                     <div className="card stat-card">
                         <FaBox className="stat-icon" />
                         <span className="stat-card-title">Feeders Used</span>
-                        <span className="stat-card-number">45</span>
+                        <span className="stat-card-number">{partStats?.feedersUsed || 0}</span>
                         <span className="stat-card-subtitle">Unique feeder IDs</span>
                         <FiInfo
                             className="info-icon"
@@ -263,7 +334,7 @@ const OverviewScreen: React.FC = () => {
                     <div className="card stat-card">
                         <FaBox className="stat-icon" />
                         <span className="stat-card-title">Top Feeder</span>
-                        <span className="stat-card-error">KT-0800F-180</span>
+                        <span className="stat-card-error">{partStats?.topFeeder || "N/A"}</span>
                         <span className="stat-card-subtitle">Most used feeder ID</span>
                     </div>
                 </div>
@@ -273,22 +344,13 @@ const OverviewScreen: React.FC = () => {
                     <div className='chart-container'>
                         <ResponsiveContainer width="100%" height="100%">
                             <BarChart
-                                data={[
-                                    { name: 'KT-0800F-180', count: 58 },
-                                    { name: 'KT-1200F-180', count: 32 },
-                                    { name: 'KT-2400-380', count: 18 },
-                                    { name: 'KT-1600F-380', count: 12 },
-                                    { name: 'KT-3200-380', count: 8 },
-                                ]}
+                                data={safePartCountPerFeeder}
                                 layout="vertical"
                                 margin={{ top: 20, right: 30, left: 40, bottom: 5 }}
-
                             >
                                 <CartesianGrid strokeDasharray="3 3" />
                                 <XAxis type="number" fontSize={"1.2rem"} />
                                 <YAxis dataKey="name" type="category" width={100} fontSize={"1.2rem"} />
-
-
                                 <Tooltip />
                                 <Bar
                                     dataKey="count"
@@ -297,8 +359,8 @@ const OverviewScreen: React.FC = () => {
                                     animationDuration={1500}
                                     animationEasing="ease-out"
                                 >
-                                    {COLORS_COMPONENTS.map((color, index) => (
-                                        <Cell key={`cell-${index}`} fill={color} />
+                                    {safePartCountPerFeeder.map((_, index) => (
+                                        <Cell key={`cell-${index}`} fill={COLORS_COMPONENTS[index % COLORS_COMPONENTS.length]} />
                                     ))}
                                 </Bar>
                             </BarChart>
@@ -311,7 +373,7 @@ const OverviewScreen: React.FC = () => {
                 <div className="card stat-card">
                     <FaBox className="stat-icon" />
                     <span className="stat-card-title">Shapes Used</span>
-                    <span className="stat-card-number">28</span>
+                    <span className="stat-card-number">{shapeStats?.shapesUsed || 0}</span>
                     <span className="stat-card-subtitle">Unique shape names</span>
                     <FiInfo
                         className="info-icon"
@@ -327,25 +389,19 @@ const OverviewScreen: React.FC = () => {
                     <ResponsiveContainer width="100%" height="100%">
                         <PieChart>
                             <Pie
-                                data={[
-                                    { name: 'C-0402', value: 35 },
-                                    { name: 'R-0402', value: 28 },
-                                    { name: 'C-0603', value: 12 },
-                                    { name: 'SOT-23', value: 8 },
-                                    { name: 'Others', value: 17 },
-                                ]}
+                                data={processedData()}
                                 cx="50%"
                                 cy="50%"
                                 outerRadius={80}
                                 dataKey="value"
                                 activeShape={{}}
                                 activeIndex={activeIndex ?? undefined}
-                                onMouseEnter={(_, index) => setActiveIndex(index)}
+                                onMouseEnter={(_, index) => setActiveIndex((index * 100)) }
                                 onMouseLeave={() => setActiveIndex(null)}
-                                label
+                                label= {({ percent }) => `${(percent * 100).toFixed(1)}%`} 
                             >
-                                {COLORS_COMPONENTS.map((color, index) => (
-                                    <Cell key={`cell-${index}`} fill={color} />
+                                {safeShapeDistribution.map((_, index) => (
+                                    <Cell key={`cell-${index}`} fill={COLORS_COMPONENTS[index % COLORS_COMPONENTS.length]} />
                                 ))}
                             </Pie>
                             <Tooltip />
@@ -368,7 +424,7 @@ const OverviewScreen: React.FC = () => {
                 <div className="card stat-card">
                     <FaBox className="stat-icon" />
                     <span className="stat-card-title">Top Shape</span>
-                    <span className="stat-card-error">C-0402</span>
+                    <span className="stat-card-error">{shapeStats.topShape['name']}</span>
                     <span className="stat-card-subtitle">Most common shape</span>
                 </div>
             </div>
@@ -377,7 +433,7 @@ const OverviewScreen: React.FC = () => {
                 <div className="card stat-card">
                     <FaBox className="stat-icon" />
                     <span className="stat-card-title">Package Types</span>
-                    <span className="stat-card-number">12</span>
+                    <span className="stat-card-number">{packageStats?.packageTypes || 0}</span>
                     <span className="stat-card-subtitle">Unique package names</span>
                     <FiInfo
                         className="info-icon"
@@ -391,7 +447,7 @@ const OverviewScreen: React.FC = () => {
                 <div className="card stat-card">
                     <FaBox className="stat-icon" />
                     <span className="stat-card-title">Top Package</span>
-                    <span className="stat-card-error">P0802</span>
+                    <span className="stat-card-error">{packageStats?.topPackage || "N/A"}</span>
                     <span className="stat-card-subtitle">Most common package</span>
                 </div>
 
@@ -399,11 +455,7 @@ const OverviewScreen: React.FC = () => {
                     <div className="card-title center">Feeder Type Distribution</div>
                     <ResponsiveContainer width="100%" height="100%">
                         <BarChart
-                            data={[
-                                { name: 'Paper', count: 42 },
-                                { name: 'Emboss', count: 28 },
-                                { name: 'Tray', count: 6 },
-                            ]}
+                            data={safeFeederTypeDistribution}
                             margin={{ top: 0, right: 30, left: 20, bottom: 10 }}
                         >
                             <CartesianGrid strokeDasharray="3 3" />
@@ -417,8 +469,8 @@ const OverviewScreen: React.FC = () => {
                                 animationDuration={1500}
                                 animationEasing="ease-out"
                             >
-                                {COLORS_COMPONENTS.map((color, index) => (
-                                    <Cell key={`cell-${index}`} fill={color} />
+                                {safeFeederTypeDistribution.map((_, index) => (
+                                    <Cell key={`cell-${index}`} fill={COLORS_COMPONENTS[index % COLORS_COMPONENTS.length]} />
                                 ))}
                             </Bar>
                         </BarChart>
@@ -432,11 +484,7 @@ const OverviewScreen: React.FC = () => {
                     <ResponsiveContainer width="100%" height="100%">
                         <PieChart>
                             <Pie
-                                data={[
-                                    { name: '8mm', value: 65 },
-                                    { name: '12mm', value: 20 },
-                                    { name: '16mm+', value: 15 },
-                                ]}
+                                data={processedTapeWidthData()}
                                 dataKey="value"
                                 cx="50%"
                                 cy="50%"
@@ -444,13 +492,13 @@ const OverviewScreen: React.FC = () => {
                                 outerRadius={80}
                                 fill="#8884d8"
                                 paddingAngle={5}
-                                label
+                                label={({ name, value }) => `${((value ) * 100).toFixed(1)}%`}
                                 animationBegin={400}
                                 animationDuration={1500}
                                 animationEasing="ease-out"
                             >
-                                {COLORS_COMPONENTS.map((color, index) => (
-                                    <Cell key={`cell-${index}`} fill={color} />
+                                {processedTapeWidthData().map((_, index) => (
+                                    <Cell key={`cell-${index}`} fill={COLORS_COMPONENTS[index % COLORS_COMPONENTS.length]} />
                                 ))}
                             </Pie>
                             <Legend
@@ -465,22 +513,16 @@ const OverviewScreen: React.FC = () => {
                                 iconSize={10}
                                 iconType="circle"
                             />
-                            <Tooltip />
+                            <Tooltip formatter={(value: number) => `${((value / total) * 100).toFixed(1)}%`}/>
                         </PieChart>
                     </ResponsiveContainer>
                 </div>
 
-                <div className="card package-count-chart">
+                {/* <div className="card package-count-chart">
                     <div className="card-title center">Package Type Counts</div>
                     <ResponsiveContainer width="100%" height="100%">
                         <BarChart
-                            data={[
-                                { name: 'P0802', count: 58 },
-                                { name: 'E0804', count: 32 },
-                                { name: 'E1208', count: 18 },
-                                { name: 'P0804', count: 12 },
-                                { name: 'Others', count: 8 },
-                            ]}
+                            data={safePackageTypeCounts}
                             margin={{ top: 0, right: 30, left: 40, bottom: 10 }}
                         >
                             <CartesianGrid strokeDasharray="3 3" />
@@ -494,13 +536,13 @@ const OverviewScreen: React.FC = () => {
                                 animationDuration={1500}
                                 animationEasing="ease-out"
                             >
-                                {COLORS_COMPONENTS.map((color, index) => (
-                                    <Cell key={`cell-${index}`} fill={color} />
+                                {safePackageTypeCounts.map((_, index) => (
+                                    <Cell key={`cell-${index}`} fill={COLORS_COMPONENTS[index % COLORS_COMPONENTS.length]} />
                                 ))}
                             </Bar>
                         </BarChart>
                     </ResponsiveContainer>
-                </div>
+                </div> */}
             </div>
 
             {showPopup && popupData && (
@@ -555,6 +597,8 @@ const OverviewScreen: React.FC = () => {
             )}
         </>
     );
+    
 };
+
 
 export default OverviewScreen;

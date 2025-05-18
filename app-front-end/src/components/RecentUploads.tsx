@@ -4,7 +4,7 @@ import './RecentUploads.css';
 import check from '../assets/check-circle.png';
 import cross from '../assets/x-circle.png';
 import fileService, { UserFile } from '../services/file';
-
+import { useLocation, useNavigate } from 'react-router-dom';
 interface File {
   id: number;
   name: string;
@@ -14,54 +14,12 @@ interface File {
   status: 'processed' | 'faulty';
 }
 
-const mockUploads: File[] = [
-  {
-    id: 1,
-    name: 'components_config_2023-10-15.csv',
-    type: 'csv',
-    uploadedBy: 'Ahmed',
-    uploadDate: '2023-10-15 14:30',
-    status: 'processed'
-  },
-  {
-    id: 2,
-    name: 'components_config_2023-10-15.csv',
-    type: 'csv',
-    uploadedBy: 'Mohamed',
-    uploadDate: '2023-10-14 09:15',
-    status: 'processed'
-  },
-  {
-    id: 3,
-    name: 'components_config_2023-10-15.csv',
-    type: 'xml',
-    uploadedBy: 'Youssef',
-    uploadDate: '2023-10-13 16:45',
-    status: 'faulty'
-  },
-  {
-    id: 4,
-    name: 'components_config_2023-10-15.csv',
-    type: 'csv',
-    uploadedBy: 'Ali',
-    uploadDate: '2023-10-12 11:20',
-    status: 'processed'
-  },
-  {
-    id: 5,
-    name: 'components_config_2023-10-15.csv',
-    type: 'xml',
-    uploadedBy: 'Omar',
-    uploadDate: '2023-10-11 13:10',
-    status: 'faulty'
-  }
-];
 
 const RecentUploads: React.FC = () => {
   const [userFiles, setUserFiles] = useState<UserFile[]>([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
-
+  const navigate = useNavigate();
   useEffect(() => {
     const fetchUserFiles = async () => {
       try {
@@ -80,6 +38,12 @@ const RecentUploads: React.FC = () => {
   const handleRowClick = (fileId: number) => {
     // You can implement navigation to file details here
     console.log(`Clicked file ID: ${fileId}`);
+        navigate('/Analytics', { 
+      state: { 
+        fileId: fileId
+      } 
+    });
+
   };
 
   const formatDate = (dateString: string) => {

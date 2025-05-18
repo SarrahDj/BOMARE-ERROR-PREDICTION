@@ -7,11 +7,13 @@ import {
   FaShare,
   FaUserShield,
   FaTimes,
+  FaSignOutAlt,
 } from 'react-icons/fa';
 import {
   IoSettings
 } from 'react-icons/io5';
 import { useNavigate } from 'react-router-dom';
+import { useAuth } from '../services/auth_context'; // Import the auth context
 
 const navItems = [
   { icon: <FaChartBar />, label: 'Analytics' },
@@ -23,12 +25,12 @@ const RightSidebar = forwardRef<HTMLDivElement>((_, ref) => {
   const [selected, setSelected] = useState('Dashboard');
   const [menuOpen, setMenuOpen] = useState(false);
   const navigate = useNavigate();
+  const { logout } = useAuth(); // Get the logout function from auth context
 
   const handleNavigation = (label: string) => {
     setSelected(label);
     setMenuOpen(false);
     switch (label) {
-
       case 'Analytics':
         navigate('/Analytics');
         break;
@@ -38,9 +40,17 @@ const RightSidebar = forwardRef<HTMLDivElement>((_, ref) => {
       case 'Settings':
         navigate('/Admin');
         break;
+      case 'Logout':
+        handleLogout();
+        break;
       default:
         break;
     }
+  };
+
+  const handleLogout = () => {
+    logout(); // Call the logout function from auth context
+    navigate('/login'); // Redirect to login page after logout
   };
 
   const toggleMenu = () => {
@@ -69,6 +79,16 @@ const RightSidebar = forwardRef<HTMLDivElement>((_, ref) => {
             </div>
           </div>
         ))}
+        {/* Logout button for mobile menu */}
+        <div
+          className="notch-item"
+          onClick={() => handleNavigation('Logout')}
+        >
+          <div className="icon-wrapper">
+            <FaSignOutAlt />
+            <span className="tooltip">Logout</span>
+          </div>
+        </div>
       </div>
 
       <div className="notch-sidebar" ref={ref}>
@@ -84,6 +104,16 @@ const RightSidebar = forwardRef<HTMLDivElement>((_, ref) => {
             </div>
           </div>
         ))}
+        {/* Logout button for desktop sidebar */}
+        <div
+          className="notch-item logout-item"
+          onClick={() => handleNavigation('Logout')}
+        >
+          <div className="icon-wrapper">
+            <FaSignOutAlt />
+            <span className="tooltip">Logout</span>
+          </div>
+        </div>
       </div>
     </>
   );

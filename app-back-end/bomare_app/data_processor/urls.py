@@ -5,6 +5,7 @@ from . import views
 
 urlpatterns = [
     path('auth/login/', views.login, name='login'),
+    path('auth/logout/', views.logout, name='logout'),
     path('auth/register/', views.register, name='register'),
     path('users/', views.get_all_users, name='get_users'),
     path('users/<int:user_id>/', views.get_user_by_id, name='get_user_by_id'),
@@ -25,7 +26,11 @@ urlpatterns = [
          name='get_latest_file_processing'),
     path('jobs/<int:job_id>/status/', views.get_processing_status, name='get_processing_status'),
     path('jobs/<int:job_id>/execute/', views.execute_processing, name='execute_processing'),
-    path('jobs/<int:job_id>/results/', views.get_job_results, name='get_job_results'),
+    path('results/<int:result_id>/', views.get_job_results, name='get_job_results'),
     path('exports/<int:job_id>/content/', views.get_export_content, name='export-content'),
+
+# Add to urls.py
+path('results/<int:result_id>/download/<str:export_type>/', views.download_export_file, name='download_export_file'),
+path('files/<int:file_id>/processing-history/', views.get_processing_history, name='get_file_processing_history'),
 
 ]

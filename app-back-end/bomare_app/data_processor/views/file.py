@@ -6,8 +6,11 @@ from rest_framework.response import Response
 from django.views.decorators.csrf import csrf_exempt
 import os
 from django.conf import settings
+
+from ..models import ProcessingHistory
 from ..models.file import File
 from ..models.job import ProcessingJob
+from ..serializers import ProcessingHistorySerializer
 from ..serializers.file import FileSerializer
 from ..serializers.processing import ProcessingJobSerializer
 from ..serializers.file import FileSerializer
@@ -154,4 +157,37 @@ def get_file_jobs(request, file_id):
     jobs = ProcessingJob.objects.filter(file=file_instance).order_by('-started_at', '-id')
 
     serializer = ProcessingJobSerializer(jobs, many=True)
+    return Response(serializer.data)
+
+@api_view(['GET'])
+def get_processing_history(request, file_id=None):
+    """
+    Get processing history for a specific file or all files owned by the user.
+    If file_id is provided, returns history only for that file.
+    Otherwise, returns history for all files owned by the user.
+    """
+    # Authenticate user
+    auth_header = request.headers.get('Authorization')
+    if not auth_header or not auth_header.startswith('Bearer '):
+        return Response({'error': 'Authorization required'}, status=401)
+
+    # Extract and verify token
+    token = auth_header.split(' ')[1]
+    payload = verify_jwt_token(token)
+    if not payload:
+        return Response({'error': 'Invalid or expired token'}, status=401)
+
+    user_id = payload['user_id']
+
+    if file_id:
+        # Get the file or return 404
+        file_instance = get_object_or_404(File, id=file_id, user=user_id, is_deleted=False)
+        # Get history records for this specific file
+        history_records = ProcessingHistory.objects.filter(file=file_instance).order_by('-created_at')
+    else:
+        # Get history records for all files owned by the user
+        user_files = File.objects.filter(user=user_id, is_deleted=False)
+        history_records = ProcessingHistory.objects.filter(file__in=user_files).order_by('-created_at')
+
+    serializer = ProcessingHistorySerializer(history_records, many=True)
     return Response(serializer.data)

@@ -7,6 +7,7 @@ class User(models.Model):
     password_hash = models.CharField(max_length=255)
     created_at = models.DateTimeField(auto_now_add=True)
     is_active = models.BooleanField(default=True)
+    last_login = models.DateTimeField(blank=True, null=True)
 
 
     def __str__(self):
