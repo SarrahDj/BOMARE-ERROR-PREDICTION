@@ -14,7 +14,7 @@ import {
     Legend,
 } from 'recharts';
 import danger from '../../../assets/danger.png';
-import { COLORS, COLORS_COMPONENTS } from '../../../data/mockUploads';
+import { COLORS1, COLORS_COMPONENTS1 } from '../../../data/mockUploads';
 
 // Define the prop types for the component
 interface ComponentsScreenProps {
@@ -178,7 +178,7 @@ if (errorAnalysis && errorAnalysis.errorDistributionByPartNumber) {
                                 label={({ percentage }) => `${Math.round(percentage * 100) / 100}%`}
                             >
                                 {componentErrorData.map((_entry, index) => (
-                                    <Cell key={`cell-${index}`} fill={COLORS_COMPONENTS[index % COLORS_COMPONENTS.length]} />
+                                    <Cell key={`cell-${index}`} fill={COLORS_COMPONENTS1[index % COLORS_COMPONENTS1.length]} />
                                 ))}
                             </Pie>
                             <Tooltip />
@@ -243,54 +243,54 @@ if (errorAnalysis && errorAnalysis.errorDistributionByPartNumber) {
                 <div className="card component-card bar-chart-card">
                     <div className="card-title">Top 5 Most Frequent Errors</div>
                     <ResponsiveContainer width="100%" height={250} className='bar-chart'>
-                        <BarChart
-                            data={frequentErrorsData}
-                            layout={window.innerWidth < 400 ? "horizontal" : "vertical"}
-                            margin={{ top: 20, right: 30, left: 40, bottom: 5 }}
-                            barCategoryGap={15}
-                        >
-                            <CartesianGrid
-                                horizontal={window.innerWidth >= 400}
-                                vertical={window.innerWidth < 400}
-                                stroke="#f0f0f0"
-                            />
-                            <XAxis
-                                type={window.innerWidth < 400 ? "category" : "number"}
-                                dataKey={window.innerWidth < 400 ? "name" : undefined}
-                                axisLine={false}
-                                tickLine={false}
-                                tick={{ fontSize: 13, fill: '#4B4B4B' }}
-                            />
-                            <YAxis
-                                type={window.innerWidth < 400 ? "number" : "category"}
-                                dataKey={window.innerWidth >= 400 ? "name" : undefined}
-                                axisLine={false}
-                                tickLine={false}
-                                tick={{ fontSize: 13, fill: '#4B4B4B' }}
-                                width={100}
-                            />
-                            <Tooltip
-                                contentStyle={{
-                                    borderRadius: '8px',
-                                    border: '1px solid #ddd',
-                                    boxShadow: '0 2px 4px rgba(0,0,0,0.1)'
-                                }}
-                            />
-                            <Bar
-                                dataKey="count"
-                                radius={[0, 8, 8, 0]}
-                                barSize={20}
-                                animationDuration={1500}
-                            >
-                                {frequentErrorsData.map((entry, index) => (
-                                    <Cell
-                                        key={`cell-${index}`}
-                                        fill={entry.color}
-                                    />
-                                ))}
-                            </Bar>
-                        </BarChart>
-                    </ResponsiveContainer>
+    <BarChart
+        data={frequentErrorsData}
+        layout={window.innerWidth < 400 ? "horizontal" : "vertical"}
+        margin={{ top: 20, right: 30, left: 40, bottom: 5 }}
+        barCategoryGap={15}
+    >
+        <CartesianGrid
+            horizontal={window.innerWidth >= 400}
+            vertical={window.innerWidth < 400}
+            stroke="#f0f0f0"
+        />
+        <XAxis
+            type={window.innerWidth < 400 ? "category" : "number"}
+            dataKey={window.innerWidth < 400 ? "name" : undefined}
+            axisLine={false}
+            tickLine={false}
+            tick={{ fontSize: 13, fill: '#4B4B4B' }}
+        />
+        <YAxis
+            type={window.innerWidth < 400 ? "number" : "category"}
+            dataKey={window.innerWidth >= 400 ? "name" : undefined}
+            axisLine={false}
+            tickLine={false}
+            tick={{ fontSize: 13, fill: '#4B4B4B' }}
+            width={100}
+        />
+        <Tooltip
+            contentStyle={{
+                borderRadius: '8px',
+                border: '1px solid #ddd',
+                boxShadow: '0 2px 4px rgba(0,0,0,0.1)'
+            }}
+        />
+        <Bar
+            dataKey="count"
+            radius={[0, 8, 8, 0]}
+            barSize={20}
+            animationDuration={1500}
+        >
+            {frequentErrorsData.map((_entry, index) => (
+                <Cell
+                    key={`cell-${index}`}
+                    fill={COLORS_COMPONENTS1[index % COLORS_COMPONENTS1.length]}
+                />
+            ))}
+        </Bar>
+    </BarChart>
+</ResponsiveContainer>
                 </div>
 
                 <div className="card component-card table-card">

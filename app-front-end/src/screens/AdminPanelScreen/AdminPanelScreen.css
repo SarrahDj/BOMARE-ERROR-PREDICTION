@@ -337,7 +337,6 @@
   max-width: 90%;
   max-height: 90vh;
   overflow-y: auto;
-  box-shadow: 0 5px 20px rgba(0, 0, 0, 0.2);
   margin: 0 auto;
 }
 
@@ -366,6 +365,8 @@
   font-size: 1.5rem;
   cursor: pointer;
   color: #757575;
+  position: absolute;
+  right: 0;
 }
 
 .back-button {
@@ -377,7 +378,7 @@
   padding: 0.5rem;
 }
 
-.popup-content {
+.popup-content-edit {
   padding: 1.2rem;
 }
 

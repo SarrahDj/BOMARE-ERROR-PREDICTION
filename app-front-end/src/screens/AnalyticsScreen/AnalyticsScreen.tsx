@@ -4,17 +4,11 @@ import './AnalyticsScreen.css';
 import Header from '../../components/Header';
 import RightSidebar from '../../components/RightSideBar';
 import { FiLayers, FiBox, FiPackage, FiShare2, FiAlertCircle } from 'react-icons/fi';
-import { FaEye } from 'react-icons/fa';
-import csvIcon from '../../assets/csv.png';
-import excelIcon from '../../assets/excel.png';
-import { HiDownload } from 'react-icons/hi';
+
 import { RiPuzzle2Line } from "react-icons/ri";
 import{UserFile , ProcessingHistory} from "../../services/file"
 import fileProcessingService, { 
   ProcessingResult, 
-  ModelOutput, 
-  Export, 
-  ExecuteJobResponse,
   FileProcessingStatus
 } from '../../services/processing';
 import authService from '../../services/auth';

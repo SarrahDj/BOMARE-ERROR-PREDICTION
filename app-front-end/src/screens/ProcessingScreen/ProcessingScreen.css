@@ -11,7 +11,7 @@
   .page-title-section {
     width: 80%;
     text-align: center;
-    margin: 4rem 0;
+    margin: 6rem 0;
   }
   
   .page-title {
@@ -82,6 +82,14 @@
     opacity: 0.4;
   }
   
+  .error-container{
+    display: flex;
+    flex-direction: column;
+    align-content: center;
+    justify-content: center;
+    align-items: center;
+
+  }
   
   @keyframes fadeIn {
     from {

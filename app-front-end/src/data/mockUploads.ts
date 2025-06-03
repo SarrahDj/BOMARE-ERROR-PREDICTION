@@ -60,8 +60,8 @@ export const errorRateTimelineData = [
   }
 ];
 
-export const COLORS = ['#026DB5', '#eeeeee'];
-export const COLORS_COMPONENTS = [
+export const COLORS1 = ['#026DB5', '#eeeeee'];
+export const COLORS_COMPONENTS1 = [
   '#026DB5',
   '#0285DB',
   '#029DFF',

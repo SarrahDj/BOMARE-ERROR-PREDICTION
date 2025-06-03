@@ -19,7 +19,7 @@ import csv from '../../../assets/csv.png';
 import danger from '../../../assets/danger.png';
 import { FiInfo } from 'react-icons/fi';
 import { FaBox, FaTimes } from 'react-icons/fa';
-import { COLORS_COMPONENTS, COLORS } from '../../../data/mockUploads';
+import { COLORS_COMPONENTS1, COLORS1 } from '../../../data/mockUploads';
 
 interface PopupData {
     title: string;
@@ -189,7 +189,7 @@ const processedTapeWidthData = () => {
                             animationDuration={1000}
                         >
                             {pieData.map((_entry, index) => (
-                                <Cell key={`cell-${index}`} fill={COLORS[index]} />
+                                <Cell key={`cell-${index}`} fill={COLORS1[index]} />
                             ))}
                         </Pie>
                     </PieChart>
@@ -360,7 +360,7 @@ const processedTapeWidthData = () => {
                                     animationEasing="ease-out"
                                 >
                                     {safePartCountPerFeeder.map((_, index) => (
-                                        <Cell key={`cell-${index}`} fill={COLORS_COMPONENTS[index % COLORS_COMPONENTS.length]} />
+                                        <Cell key={`cell-${index}`} fill={COLORS_COMPONENTS1[index % COLORS_COMPONENTS1.length]} />
                                     ))}
                                 </Bar>
                             </BarChart>
@@ -398,10 +398,14 @@ const processedTapeWidthData = () => {
                                 activeIndex={activeIndex ?? undefined}
                                 onMouseEnter={(_, index) => setActiveIndex((index * 100)) }
                                 onMouseLeave={() => setActiveIndex(null)}
-                                label= {({ percent }) => `${(percent * 100).toFixed(1)}%`} 
+                                label={
+                                    window.innerWidth >= 1125
+                                        ? ({ percent }) => `${(percent * 100).toFixed(1)}%`
+                                        : undefined
+                                }
                             >
                                 {safeShapeDistribution.map((_, index) => (
-                                    <Cell key={`cell-${index}`} fill={COLORS_COMPONENTS[index % COLORS_COMPONENTS.length]} />
+                                    <Cell key={`cell-${index}`} fill={COLORS_COMPONENTS1[index % COLORS_COMPONENTS1.length]} />
                                 ))}
                             </Pie>
                             <Tooltip />
@@ -470,7 +474,7 @@ const processedTapeWidthData = () => {
                                 animationEasing="ease-out"
                             >
                                 {safeFeederTypeDistribution.map((_, index) => (
-                                    <Cell key={`cell-${index}`} fill={COLORS_COMPONENTS[index % COLORS_COMPONENTS.length]} />
+                                    <Cell key={`cell-${index}`} fill={COLORS_COMPONENTS1[index % COLORS_COMPONENTS1.length]} />
                                 ))}
                             </Bar>
                         </BarChart>
@@ -492,13 +496,17 @@ const processedTapeWidthData = () => {
                                 outerRadius={80}
                                 fill="#8884d8"
                                 paddingAngle={5}
-                                label={({ name, value }) => `${((value ) * 100).toFixed(1)}%`}
+                                label={
+                                    window.innerWidth >= 1040
+                                        ? ({ name, value }) => `${((value) * 100).toFixed(1)}%`
+                                        : undefined
+                                }
                                 animationBegin={400}
                                 animationDuration={1500}
                                 animationEasing="ease-out"
                             >
                                 {processedTapeWidthData().map((_, index) => (
-                                    <Cell key={`cell-${index}`} fill={COLORS_COMPONENTS[index % COLORS_COMPONENTS.length]} />
+                                    <Cell key={`cell-${index}`} fill={COLORS_COMPONENTS1[index % COLORS_COMPONENTS1.length]} />
                                 ))}
                             </Pie>
                             <Legend
@@ -583,7 +591,7 @@ const processedTapeWidthData = () => {
                                                 {popupData.data.map((_entry, index) => (
                                                     <Cell
                                                         key={`cell-${index}`}
-                                                        fill={COLORS_COMPONENTS[index % COLORS_COMPONENTS.length]}
+                                                        fill={COLORS_COMPONENTS1[index % COLORS_COMPONENTS1.length]}
                                                     />
                                                 ))}
                                             </Bar>

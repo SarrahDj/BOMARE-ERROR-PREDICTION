@@ -86,7 +86,7 @@ const RecentUploads: React.FC = () => {
                 <td className='file-name'>{file.filename}</td>
                 <td className='file-type'>{file.file_type.toUpperCase()}</td>
                 <td>{formatDate(file.upload_date)}</td>
-                <td className={file.status === 'processed' ? 'status status-processed' : 'status status-faulty'}>
+                <td className={file.status === 'processed' ? 'status file-status-processed' : 'status file-status-faulty'}>
                   {file.status === 'processed' ? <img className='check-cross' alt='check' src={check}/> : 
                   <img className='check-cross' alt='cross' src={cross}/>}
                   {file.status}

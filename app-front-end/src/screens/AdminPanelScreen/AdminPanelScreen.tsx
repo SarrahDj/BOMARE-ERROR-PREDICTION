@@ -1,22 +1,22 @@
 import React, { useState, useEffect, useRef } from 'react';
 import Header from '../../components/Header';
 import RightSideBar from '../../components/RightSideBar';
-import { 
-  FiUsers, 
-  FiUpload, 
-  FiCpu, 
+import {
+  FiUsers,
+  FiUpload,
+  FiCpu,
   FiClock,
   FiEdit,
   FiKey,
   FiTrash,
   FiSearch,
-  FiDownload, 
+  FiDownload,
 } from 'react-icons/fi';
-import { 
-  FaCog, 
-  FaEdit, 
-  FaTrash, 
-  FaKey, 
+import {
+  FaCog,
+  FaEdit,
+  FaTrash,
+  FaKey,
   FaEllipsisV,
   FaArrowLeft,
   FaSearch,
@@ -30,7 +30,7 @@ import './AdminPanelScreen.css';
 import csv from '../../assets/csv.png';
 import userService, { User as ApiUser, UserCreatePayload, UserUpdatePayload, ResetPasswordPayload } from '../../services/user';
 import fileService, { UserFile } from '../../services/file';
-import { useAuth } from '../../services/auth_context'; 
+import { useAuth } from '../../services/auth_context';
 // Interface for component state
 interface User {
   id: number;
@@ -89,10 +89,10 @@ const AdminPanel: React.FC = () => {
   const [selectedUser, setSelectedUser] = useState<User | null>(null);
   const [selectedFile, setSelectedFile] = useState<File | null>(null);
   const [searchTerm, setSearchTerm] = useState<string>('');
-  const [sortConfig, setSortConfig] = useState<{key: string, direction: string} | null>(null);
+  const [sortConfig, setSortConfig] = useState<{ key: string, direction: string } | null>(null);
   const [dropdownOpen, setDropdownOpen] = useState<number | null>(null);
 
-const { user, isAuthenticated, logout } = useAuth();
+  const { user, isAuthenticated, logout } = useAuth();
 
   const [isLoading, setIsLoading] = useState<boolean>(true);
   const [error, setError] = useState<string | null>(null);
@@ -100,24 +100,24 @@ const { user, isAuthenticated, logout } = useAuth();
   const [saveSuccess, setSaveSuccess] = useState<string | null>(null);
 
 
-const adaptUserToComponentFormat = (apiUser: any): User => {
-  return {
-    id: apiUser.id,
-    name: apiUser.username,
-    email: apiUser.email,
-    status: apiUser.is_active ? 'Active' : 'Inactive',
-    lastLogin: apiUser.last_login || 'Never'
+  const adaptUserToComponentFormat = (apiUser: any): User => {
+    return {
+      id: apiUser.id,
+      name: apiUser.username,
+      email: apiUser.email,
+      status: apiUser.is_active ? 'Active' : 'Inactive',
+      lastLogin: apiUser.last_login || 'Never'
+    };
   };
-};
 
-// Then, create a computed current user for your component
-const currentUser: User = user ? adaptUserToComponentFormat(user) : {
-  id: 0,
-  name: '',
-  email: '',
-  status: 'Inactive',
-  lastLogin: 'Never'
-};
+  // Then, create a computed current user for your component
+  const currentUser: User = user ? adaptUserToComponentFormat(user) : {
+    id: 0,
+    name: '',
+    email: '',
+    status: 'Inactive',
+    lastLogin: 'Never'
+  };
 
   // Form states for user creation and editing
   const [newUser, setNewUser] = useState<UserCreatePayload>({
@@ -125,7 +125,7 @@ const currentUser: User = user ? adaptUserToComponentFormat(user) : {
     email: '',
     password: ''
   });
-  
+
   const [editUser, setEditUser] = useState<UserUpdatePayload>({
     id: 0,
     username: '',
@@ -164,15 +164,15 @@ const currentUser: User = user ? adaptUserToComponentFormat(user) : {
     sessionTimeout: 30,
     logRetentionDays: 90
   });
-    console.log(currentUser)
+  console.log(currentUser)
 
 
-useEffect(() => {
-  if (!isAuthenticated) {
-    // Redirect to login page if not authenticated
-    window.location.href = '/login'; // Adjust this to your login route path
-  }
-}, [isAuthenticated]);
+  useEffect(() => {
+    if (!isAuthenticated) {
+      // Redirect to login page if not authenticated
+      window.location.href = '/login'; // Adjust this to your login route path
+    }
+  }, [isAuthenticated]);
 
 
   // Fetch users from API
@@ -180,7 +180,7 @@ useEffect(() => {
     try {
       setIsLoading(true);
       const apiUsers = await userService.getUsers();
-      
+
       // Transform API user format to component format
       const transformedUsers: User[] = apiUsers.map((apiUser: { id: any; username: any; email: any; is_active: any; last_login: any; }) => ({
         id: apiUser.id,
@@ -189,7 +189,7 @@ useEffect(() => {
         status: apiUser.is_active ? 'Active' : 'Inactive',
         lastLogin: apiUser.last_login || 'Never'
       }));
-      
+
       setUsers(transformedUsers);
       setError(null);
     } catch (err) {
@@ -205,16 +205,16 @@ useEffect(() => {
     try {
       setIsLoading(true);
       const apiFiles = await fileService.getUserFiles();
-      
+
       const transformedFiles: File[] = apiFiles.map(file => ({
         id: file.id,
         name: file.filename,
         size: `${(file.file_size / (1024 * 1024)).toFixed(2)} MB`,
-        uploadedBy: file.username, 
+        uploadedBy: file.username,
         uploadDate: file.upload_date,
-        status: file.status.charAt(0).toUpperCase() + file.status.slice(1) 
+        status: file.status.charAt(0).toUpperCase() + file.status.slice(1)
       }));
-      
+
       setFiles(transformedFiles);
       setError(null);
     } catch (err) {
@@ -239,13 +239,13 @@ useEffect(() => {
       if (headerRef.current) setHeaderHeight(headerRef.current.offsetHeight);
       if (sidebarRef.current) setSidebarWidth(sidebarRef.current.offsetWidth);
     };
-    
+
     updateLayout();
-    
+
     const resizeObserver = new ResizeObserver(updateLayout);
     if (headerRef.current) resizeObserver.observe(headerRef.current);
     if (sidebarRef.current) resizeObserver.observe(sidebarRef.current);
-    
+
     window.addEventListener('resize', updateLayout);
     return () => {
       resizeObserver.disconnect();
@@ -256,7 +256,7 @@ useEffect(() => {
   const toggleDropdown = (e: React.MouseEvent<HTMLDivElement>, id: number) => {
     e.stopPropagation();
     const rect = e.currentTarget.getBoundingClientRect();
-    
+
     if (dropdownOpen === id) {
       setDropdownOpen(null);
       setDropdownPosition(null);
@@ -316,13 +316,13 @@ useEffect(() => {
     return <FaSort />;
   };
 
-  const filteredUsers = users.filter(user => 
+  const filteredUsers = users.filter(user =>
     user.name.toLowerCase().includes(searchTerm.toLowerCase()) ||
     user.email.toLowerCase().includes(searchTerm.toLowerCase()) ||
     user.status.toLowerCase().includes(searchTerm.toLowerCase())
   );
 
-  const filteredFiles = files.filter(file => 
+  const filteredFiles = files.filter(file =>
     file.name.toLowerCase().includes(searchTerm.toLowerCase()) ||
     file.uploadedBy.toLowerCase().includes(searchTerm.toLowerCase()) ||
     file.status.toLowerCase().includes(searchTerm.toLowerCase())
@@ -361,11 +361,11 @@ useEffect(() => {
     setSelectedUser(user);
     setSaveError(null);
     setSaveSuccess(null);
-    
+
     if (action === 'edit') {
       setPopupTitle('Edit User');
       setPopupContent('editUser');
-      
+
       // Set the edit user form data
       setEditUser({
         id: user.id,
@@ -373,7 +373,7 @@ useEffect(() => {
         email: user.email,
         is_active: user.status === 'Active'
       });
-   
+
     } else if (action === 'resetPassword') {
       setPopupTitle('Reset Password');
       setPopupContent('resetPassword');
@@ -383,7 +383,7 @@ useEffect(() => {
         force_change: false
       });
     }
-    
+
     setShowPopup(true);
     setPopupHistory([]);
   };
@@ -392,7 +392,7 @@ useEffect(() => {
     setSelectedFile(file);
     setSaveError(null);
     setSaveSuccess(null);
-    
+
     if (action === 'view') {
       setPopupTitle('View File Details');
       setPopupContent('viewFile');
@@ -400,7 +400,7 @@ useEffect(() => {
       setPopupTitle('Delete File');
       setPopupContent('deleteFile');
     }
-    
+
     setShowPopup(true);
     setPopupHistory([]);
   };
@@ -444,31 +444,31 @@ useEffect(() => {
 
   const handleEditUserChange = (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>) => {
     const { name, value } = e.target;
-    
+
     if (name === 'status') {
-      setEditUser(prev => ({ 
-        ...prev, 
-        is_active: value === 'Active' 
+      setEditUser(prev => ({
+        ...prev,
+        is_active: value === 'Active'
       }));
     } else {
-      setEditUser(prev => ({ 
-        ...prev, 
-        [name === 'name' ? 'username' : name]: value 
+      setEditUser(prev => ({
+        ...prev,
+        [name === 'name' ? 'username' : name]: value
       }));
     }
   };
 
   const handlePasswordResetChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const { name, value, type, checked } = e.target;
-    setPasswordReset(prev => ({ 
-      ...prev, 
-      [name]: type === 'checkbox' ? checked : value 
+    setPasswordReset(prev => ({
+      ...prev,
+      [name]: type === 'checkbox' ? checked : value
     }));
   };
 
   const handleSystemConfigChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const { name, value } = e.target;
-    
+
     if (name === 'maxFileSize') {
       setSystemConfig(prev => ({
         ...prev,
@@ -484,24 +484,24 @@ useEffect(() => {
       setSaveError('All fields are required');
       return;
     }
-    
+
     // Basic email validation
     const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
     if (!emailRegex.test(newUser.email)) {
       setSaveError('Please enter a valid email address');
       return;
     }
-    
+
     // Password strength validation
     if (newUser.password.length < 8) {
       setSaveError('Password must be at least 8 characters long');
       return;
     }
-    
+
     try {
       setIsLoading(true);
       setSaveError(null);
-      
+
       await userService.createUser({
         username: newUser.username,
         email: newUser.email,
@@ -510,10 +510,10 @@ useEffect(() => {
       console.log("user added")
       // Refresh the user list
       await fetchUsers();
-      
+
       // Show success message
       setSaveSuccess('User created successfully');
-      
+
       // Close the popup after a short delay
       setTimeout(() => {
         setShowPopup(false);
@@ -523,7 +523,7 @@ useEffect(() => {
           password: ''
         });
       }, 1500);
-      
+
     } catch (error: any) {
       console.error('Failed to create user:', error);
       setSaveError(error.response?.data?.error || 'Failed to create user. Please try again.');
@@ -534,43 +534,43 @@ useEffect(() => {
 
   const handleUpdateUser = async () => {
     if (!selectedUser) return;
-    
+
     // Input validation
     if (!editUser.username || !editUser.email) {
       setSaveError('Name and email are required');
       return;
     }
-    
+
     // Basic email validation
     const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
     if (!emailRegex.test(editUser.email)) {
       setSaveError('Please enter a valid email address');
       return;
     }
-    
+
     try {
       setIsLoading(true);
       setSaveError(null);
-      
+
       await userService.updateUser({
         id: currentUser.id,
         username: editUser.username,
         email: editUser.email,
         is_active: editUser.is_active
       });
-      
-      
+
+
       // Refresh the user list
       await fetchUsers();
-  
+
       // Show success message
       setSaveSuccess('User updated successfully');
-      
+
       // Close the popup after a short delay
       setTimeout(() => {
         setShowPopup(false);
       }, 1500);
-      
+
     } catch (error: any) {
       console.error('Failed to update user:', error);
       setSaveError(error.response?.data?.error || 'Failed to update user. Please try again.');
@@ -583,43 +583,43 @@ useEffect(() => {
 
   const handleResetPassword = async () => {
     if (!selectedUser) return;
-    
+
     // Validate passwords match
     if (passwordReset.new_password !== passwordReset.confirm_password) {
       setSaveError('Passwords do not match');
       return;
     }
-    
+
     // Validate password is not empty
     if (!passwordReset.new_password) {
       setSaveError('Password cannot be empty');
       return;
     }
-    
+
     // Password strength validation
     if (passwordReset.new_password.length < 8) {
       setSaveError('Password must be at least 8 characters long');
       return;
     }
-    
+
     try {
       setIsLoading(true);
       setSaveError(null);
-      
+
       await userService.resetPassword({
         id: selectedUser.id,
         new_password: passwordReset.new_password,
         force_change: passwordReset.force_change
       });
-      
+
       // Show success message
       setSaveSuccess('Password reset successfully');
-      
+
       // Close the popup after a short delay
       setTimeout(() => {
         setShowPopup(false);
       }, 1500);
-      
+
     } catch (error: any) {
       console.error('Failed to reset password:', error);
       setSaveError(error.response?.data?.error || 'Failed to reset password. Please try again.');
@@ -629,41 +629,41 @@ useEffect(() => {
   };
 
   function formatISODate(isoString: string): string {
-  const date = new Date(isoString);
+    const date = new Date(isoString);
 
-  return date.toLocaleString('en-US', {
-    year: 'numeric',
-    month: 'long',   // "May"
-    day: 'numeric',  // "18"
-    hour: '2-digit',
-    minute: '2-digit',
-    second: '2-digit',
-    hour12: false,   // Use 24-hour format
-    timeZone: 'UTC'  // Optional: keep it UTC or change to local
-  });
-}
+    return date.toLocaleString('en-US', {
+      year: 'numeric',
+      month: 'long',   // "May"
+      day: 'numeric',  // "18"
+      hour: '2-digit',
+      minute: '2-digit',
+      second: '2-digit',
+      hour12: false,   // Use 24-hour format
+      timeZone: 'UTC'  // Optional: keep it UTC or change to local
+    });
+  }
 
 
   const handleDeleteFile = async () => {
     if (!selectedFile) return;
-    
+
     try {
       setIsLoading(true);
       setSaveError(null);
-      
+
       // await fileService.deleteFile(selectedFile.id);
-      
+
       // Refresh the file list
       await fetchFiles();
-      
+
       // Show success message
       setSaveSuccess('File deleted successfully');
-      
+
       // Close the popup after a short delay
       setTimeout(() => {
         setShowPopup(false);
       }, 1500);
-      
+
     } catch (error) {
       console.error('Failed to delete file:', error);
       setSaveError('Failed to delete file. Please try again.');
@@ -684,301 +684,300 @@ useEffect(() => {
     // In a real app, you would download the file here
     console.log('Downloading file:', fileId);
   };
-  
+
 
   return (
     <>
-    <Header ref={headerRef} />
-    <RightSideBar ref={sidebarRef} />
-    <div 
-    className="main-layout"
-    style={{
-      marginTop: `${headerHeight}px`,
-    }}
-    >
-      
-      <div className="content-wrapper">
-      <span className='page-title'>Settings Panel</span>
-        <div 
-          className="admin-container"
-        >
-          <div className="admin-panel">
-            <div className="panel-sidebar">
-              <div 
-                className={`sidebar-item ${currentSection === 'users' ? 'active' : ''}`} 
-                onClick={() => setCurrentSection('users')}
-              >
-                <FiUsers className="sidebar-icon" />
-                <span>User Management</span>
-              </div>
-              <div 
-                className={`sidebar-item ${currentSection === 'uploads' ? 'active' : ''}`} 
-                onClick={() => setCurrentSection('uploads')}
-              >
-                <FiUpload className="sidebar-icon" />
-                <span>Upload Monitoring</span>
-              </div>
-              <div 
-                className={`sidebar-item ${currentSection === 'model' ? 'active' : ''}`} 
-                onClick={() => setCurrentSection('model')}
-              >
-                <FiCpu className="sidebar-icon" />
-                <span>Model Oversight</span>
-              </div>
-               {/* <div 
+      <Header ref={headerRef} />
+      <RightSideBar ref={sidebarRef} />
+      <div
+        className="main-layout"
+        style={{
+          marginTop: `${headerHeight}px`,
+        }}
+      >
+
+        <div className="content-wrapper">
+          <span className='page-title'>Settings Panel</span>
+          <div
+            className="admin-container"
+          >
+            <div className="admin-panel">
+              <div className="panel-sidebar">
+                <div
+                  className={`sidebar-item ${currentSection === 'users' ? 'active' : ''}`}
+                  onClick={() => setCurrentSection('users')}
+                >
+                  <FiUsers className="sidebar-icon" />
+                  <span>User Management</span>
+                </div>
+                <div
+                  className={`sidebar-item ${currentSection === 'uploads' ? 'active' : ''}`}
+                  onClick={() => setCurrentSection('uploads')}
+                >
+                  <FiUpload className="sidebar-icon" />
+                  <span>Upload Monitoring</span>
+                </div>
+                <div
+                  className={`sidebar-item ${currentSection === 'model' ? 'active' : ''}`}
+                  onClick={() => setCurrentSection('model')}
+                >
+                  <FiCpu className="sidebar-icon" />
+                  <span>Model Oversight</span>
+                </div>
+                {/* <div 
                 className={`sidebar-item ${currentSection === 'logs' ? 'active' : ''}`} 
                 onClick={() => setCurrentSection('logs')}
               >
                 <FiClock className="sidebar-icon" />
                 <span>System Logs</span>
               </div> */}
-              <div 
-                className={`sidebar-item ${currentSection === 'config' ? 'active' : ''}`} 
-                onClick={() => setCurrentSection('config')}
-              >
-                <FaCog className="sidebar-icon" />
-                <span>Configuration</span>
+                <div
+                  className={`sidebar-item ${currentSection === 'config' ? 'active' : ''}`}
+                  onClick={() => setCurrentSection('config')}
+                >
+                  <FaCog className="sidebar-icon" />
+                  <span>Configuration</span>
+                </div>
               </div>
-            </div>
-            
-            <div className="panel-content">
-              {currentSection === 'users' && (
-                <div className="section-content">
-                  <div className="section-header">
-                    <h2>User Management</h2>
-                    <button className="add-button" onClick={() => {
-                      setPopupTitle('Add New User');
-                      setPopupContent('addUser');
-                      setNewUser({ username: '', email: '', password: '' });
-                      setShowPopup(true);
-                      setPopupHistory([]);
-                    }}>
-                      + Add
-                    </button>
-                  </div>
-                  
-                  <div className="search-bar">
-                    <FaSearch className="search-icon" />
-                    <input 
-                      type="text" 
-                      placeholder="Search users..." 
-                      value={searchTerm}
-                      onChange={(e) => setSearchTerm(e.target.value)}
-                    />
-                  </div>
-                  
-                  <div className="table-container">
-                    <table className="data-table">
-                      <thead>
-                        <tr>
-                          <th onClick={() => requestSort('name')}>
-                            <div className="th-content">
-                              Name {getSortIcon('name')}
-                            </div>
-                          </th>
-                          <th onClick={() => requestSort('email')}>
-                            <div className="th-content">
-                              Email {getSortIcon('email')}
-                            </div>
-                          </th>
-                          {/* <th onClick={() => requestSort('role')}>
+
+              <div className="panel-content">
+                {currentSection === 'users' && (
+                  <div className="section-content">
+                    <div className="section-header">
+                      <h2>User Management</h2>
+                      <button className="add-button" onClick={() => {
+                        setPopupTitle('Add New User');
+                        setPopupContent('addUser');
+                        setNewUser({ username: '', email: '', password: '' });
+                        setShowPopup(true);
+                        setPopupHistory([]);
+                      }}>
+                        + Add
+                      </button>
+                    </div>
+
+                    <div className="search-bar">
+                      <FaSearch className="search-icon" />
+                      <input
+                        type="text"
+                        placeholder="Search users..."
+                        value={searchTerm}
+                        onChange={(e) => setSearchTerm(e.target.value)}
+                      />
+                    </div>
+
+                    <div className="table-container">
+                      <table className="data-table">
+                        <thead>
+                          <tr>
+                            <th onClick={() => requestSort('name')}>
+                              <div className="th-content">
+                                Name {getSortIcon('name')}
+                              </div>
+                            </th>
+                            <th onClick={() => requestSort('email')}>
+                              <div className="th-content">
+                                Email {getSortIcon('email')}
+                              </div>
+                            </th>
+                            {/* <th onClick={() => requestSort('role')}>
                             <div className="th-content">
                               Role {getSortIcon('role')}
                             </div>
                           </th> */}
-                          <th onClick={() => requestSort('status')}>
-                            <div className="th-content">
-                              Status {getSortIcon('status')}
-                            </div>
-                          </th>
-                          <th onClick={() => requestSort('lastLogin')}>
-                            <div className="th-content">
-                              Last Login {getSortIcon('lastLogin')}
-                            </div>
-                          </th>
-                        </tr>
-                      </thead>
-                      <tbody>
-                        {getSortedData(filteredUsers, sortConfig?.key || '').map(user => (
-                          <tr key={user.id}>
-                            <td>{user.name}</td>
-                            <td>{user.email}</td>
-                            {/* <td>{user.role}</td> */}
-                            <td>
-                              <span className={`status-badge ${user.status === 'Active' ? 'active' : 'inactive'}`}>
-                                {user.status}
-                              </span>
-                            </td>
-                            <td className="options-cell">
-                              <span>{formatISODate(user.lastLogin)}</span>
-                            </td>
+                            <th onClick={() => requestSort('status')}>
+                              <div className="th-content">
+                                Status {getSortIcon('status')}
+                              </div>
+                            </th>
+                            <th onClick={() => requestSort('lastLogin')}>
+                              <div className="th-content">
+                                Last Login {getSortIcon('lastLogin')}
+                              </div>
+                            </th>
                           </tr>
-                        ))}
-                      </tbody>
-                    </table>
-                  </div>
-                </div>
-              )}
-              
-              {currentSection === 'uploads' && (
-                <div className="section-content">
-                  <div className="section-header">
-                    <h2>Upload Monitoring</h2>
-                  </div>
-                  
-                  <div className="search-bar">
-                    <FaSearch className="search-icon" />
-                    <input 
-                      type="text" 
-                      placeholder="Search files..." 
-                      value={searchTerm}
-                      onChange={(e) => setSearchTerm(e.target.value)}
-                    />
-                    <div className="filter-button">
-                      <FaFilter /> Filter
+                        </thead>
+                        <tbody>
+                          {getSortedData(filteredUsers, sortConfig?.key || '').map(user => (
+                            <tr key={user.id}>
+                              <td>{user.name}</td>
+                              <td>{user.email}</td>
+                              {/* <td>{user.role}</td> */}
+                              <td>
+                                <span className={`status-badge ${user.status === 'Active' ? 'active' : 'inactive'}`}>
+                                  {user.status}
+                                </span>
+                              </td>
+                              <td className="options-cell">
+                                <span>{formatISODate(user.lastLogin)}</span>
+                              </td>
+                            </tr>
+                          ))}
+                        </tbody>
+                      </table>
                     </div>
                   </div>
-                  
-                  <div className="table-container">
-                    <table className="data-table">
-                      <thead>
-                        <tr>
-                          <th onClick={() => requestSort('name')}>
-                            <div className="th-content">
-                              File Name {getSortIcon('name')}
-                            </div>
-                          </th>
-                          <th onClick={() => requestSort('size')}>
-                            <div className="th-content">
-                              Size {getSortIcon('size')}
-                            </div>
-                          </th>
-                          <th onClick={() => requestSort('uploadedBy')}>
-                            <div className="th-content">
-                              Uploaded By {getSortIcon('uploadedBy')}
-                            </div>
-                          </th>
-                          <th onClick={() => requestSort('uploadDate')}>
-                            <div className="th-content">
-                              Upload Date {getSortIcon('uploadDate')}
-                            </div>
-                          </th>
-                          <th onClick={() => requestSort('status')}>
-                            <div className="th-content">
-                              Status {getSortIcon('status')}
-                            </div>
-                          </th>
-                        </tr>
-                      </thead>
-                      <tbody>
-                        {getSortedData(filteredFiles, sortConfig?.key || '').map(file => (
-                          <tr key={file.id}>
-                            <td>{file.name}</td>
-                            <td>{file.size}</td>
-                            <td>{file.uploadedBy}</td>
-                            <td>{file.uploadDate}</td>
-                            <td className="options-cell">
-                              <span className={`status-badge ${
-                                file.status === 'Processed' ? 'success' : 
-                                file.status === 'Processing' ? 'warning' : 'error'
-                              }`}>
-                                {file.status}
-                              </span>
-                              <div className="row-actions">
-                                <div className="ellipsis-icon" onClick={(e) => toggleDropdown(e, file.id)}>
-                                  <FaEllipsisV />
-                                </div>
-                                {dropdownOpen === file.id && dropdownPosition && (
-                                  <div 
-                                    className="dropdown-content"
-                                    style={{
-                                      top: dropdownPosition.top,
-                                      left: dropdownPosition.left
-                                    }}
-                                  >
-                                    <div className="dropdown-item" onClick={() => handleFileAction(file, 'view')}>
-                                      <FiSearch className='dropdown-icon'/> View Details
-                                    </div>
-                                    {/* <div className="dropdown-item" onClick={() => handleFileAction(file, 'download')}>
+                )}
+
+                {currentSection === 'uploads' && (
+                  <div className="section-content">
+                    <div className="section-header">
+                      <h2>Upload Monitoring</h2>
+                    </div>
+
+                    <div className="search-bar">
+                      <FaSearch className="search-icon" />
+                      <input
+                        type="text"
+                        placeholder="Search files..."
+                        value={searchTerm}
+                        onChange={(e) => setSearchTerm(e.target.value)}
+                      />
+                      <div className="filter-button">
+                        <FaFilter /> Filter
+                      </div>
+                    </div>
+
+                    <div className="table-container">
+                      <table className="data-table">
+                        <thead>
+                          <tr>
+                            <th onClick={() => requestSort('name')}>
+                              <div className="th-content">
+                                File Name {getSortIcon('name')}
+                              </div>
+                            </th>
+                            <th onClick={() => requestSort('size')}>
+                              <div className="th-content">
+                                Size {getSortIcon('size')}
+                              </div>
+                            </th>
+                            <th onClick={() => requestSort('uploadedBy')}>
+                              <div className="th-content">
+                                Uploaded By {getSortIcon('uploadedBy')}
+                              </div>
+                            </th>
+                            <th onClick={() => requestSort('uploadDate')}>
+                              <div className="th-content">
+                                Upload Date {getSortIcon('uploadDate')}
+                              </div>
+                            </th>
+                            <th onClick={() => requestSort('status')}>
+                              <div className="th-content">
+                                Status {getSortIcon('status')}
+                              </div>
+                            </th>
+                          </tr>
+                        </thead>
+                        <tbody>
+                          {getSortedData(filteredFiles, sortConfig?.key || '').map(file => (
+                            <tr key={file.id}>
+                              <td>{file.name}</td>
+                              <td>{file.size}</td>
+                              <td>{file.uploadedBy}</td>
+                              <td>{file.uploadDate}</td>
+                              <td className="options-cell">
+                                <span className={`status-badge ${file.status === 'Processed' ? 'success' :
+                                    file.status === 'Processing' ? 'warning' : 'error'
+                                  }`}>
+                                  {file.status}
+                                </span>
+                                <div className="row-actions">
+                                  <div className="ellipsis-icon" onClick={(e) => toggleDropdown(e, file.id)}>
+                                    <FaEllipsisV />
+                                  </div>
+                                  {dropdownOpen === file.id && dropdownPosition && (
+                                    <div
+                                      className="dropdown-content"
+                                      style={{
+                                        top: dropdownPosition.top,
+                                        left: dropdownPosition.left
+                                      }}
+                                    >
+                                      <div className="dropdown-item" onClick={() => handleFileAction(file, 'view')}>
+                                        <FiSearch className='dropdown-icon' /> View Details
+                                      </div>
+                                      {/* <div className="dropdown-item" onClick={() => handleFileAction(file, 'download')}>
                                       <FiDownload className='dropdown-icon'/> Download
                                     </div>
                                     <div className="dropdown-item delete" onClick={() => handleFileAction(file, 'delete')}>
                                       <FiTrash className='dropdown-icon'/> Delete
                                     </div> */}
-                                  </div>
-                                )}
-                              </div>
-                            </td>
-                          </tr>
-                        ))}
-                      </tbody>
-                    </table>
+                                    </div>
+                                  )}
+                                </div>
+                              </td>
+                            </tr>
+                          ))}
+                        </tbody>
+                      </table>
+                    </div>
                   </div>
-                </div>
-              )}
-              
-              {currentSection === 'model' && (
-                <div className="section-content">
-                  <div className="section-header">
-                    <h2>Model Oversight</h2>
-                  </div>
-                  
-                  <div className="model-details">
-                    <div className="model-card">
-                      <h3>Model Information</h3>
-                      <div className="info-row">
-                        <span className="info-label">Version:</span>
-                        <span className="info-value">{modelMetrics.version}</span>
-                      </div>
-                      <div className="info-row">
-                        <span className="info-label">Deployment Date:</span>
-                        <span className="info-value">{modelMetrics.deploymentDate}</span>
-                      </div>
-                      <div className="info-row">
-                        <span className="info-label">Last Evaluated:</span>
-                        <span className="info-value">{modelMetrics.lastEvaluated}</span>
-                      </div>
+                )}
+
+                {currentSection === 'model' && (
+                  <div className="section-content">
+                    <div className="section-header">
+                      <h2>Model Oversight</h2>
                     </div>
 
-                    <div className="model-card">
-                      <h3>Performance Metrics</h3>
-                      <div className="metrics-container">
-                        <div className="metric-item">
-                          <div className="metric-value">{modelMetrics.accuracy.toFixed(1)}%</div>
-                          <div className="metric-label">Accuracy</div>
+                    <div className="model-details">
+                      <div className="model-card">
+                        <h3>Model Information</h3>
+                        <div className="info-row">
+                          <span className="info-label">Version:</span>
+                          <span className="info-value">{modelMetrics.version}</span>
                         </div>
-                        <div className="metric-item">
-                          <div className="metric-value">{modelMetrics.precision.toFixed(1)}%</div>
-                          <div className="metric-label">Precision</div>
+                        <div className="info-row">
+                          <span className="info-label">Deployment Date:</span>
+                          <span className="info-value">{modelMetrics.deploymentDate}</span>
                         </div>
-                        <div className="metric-item">
-                          <div className="metric-value">{modelMetrics.recall.toFixed(1)}%</div>
-                          <div className="metric-label">Recall</div>
-                        </div>
-                        <div className="metric-item">
-                          <div className="metric-value">{modelMetrics.f1Score.toFixed(1)}%</div>
-                          <div className="metric-label">F1 Score</div>
+                        <div className="info-row">
+                          <span className="info-label">Last Evaluated:</span>
+                          <span className="info-value">{modelMetrics.lastEvaluated}</span>
                         </div>
                       </div>
-                    </div>
-                    <div className="model-card">
-                      <h3>Model Settings</h3>
-                      <div className="settings-container">
-                        <div className="setting-item">
-                          <label>Confidence Threshold</label>
-                          <div className="slider-container">
-                            <input type="range" min="0" max="100" defaultValue="75" />
-                            <span>75%</span>
+
+                      <div className="model-card">
+                        <h3>Performance Metrics</h3>
+                        <div className="metrics-container">
+                          <div className="metric-item">
+                            <div className="metric-value">{modelMetrics.accuracy.toFixed(1)}%</div>
+                            <div className="metric-label">Accuracy</div>
+                          </div>
+                          <div className="metric-item">
+                            <div className="metric-value">{modelMetrics.precision.toFixed(1)}%</div>
+                            <div className="metric-label">Precision</div>
+                          </div>
+                          <div className="metric-item">
+                            <div className="metric-value">{modelMetrics.recall.toFixed(1)}%</div>
+                            <div className="metric-label">Recall</div>
+                          </div>
+                          <div className="metric-item">
+                            <div className="metric-value">{modelMetrics.f1Score.toFixed(1)}%</div>
+                            <div className="metric-label">F1 Score</div>
                           </div>
                         </div>
                       </div>
-                      <button className="save-settings-btn">Save Settings</button>
+                      <div className="model-card">
+                        <h3>Model Settings</h3>
+                        <div className="settings-container">
+                          <div className="setting-item">
+                            <label>Confidence Threshold</label>
+                            <div className="slider-container">
+                              <input type="range" min="0" max="100" defaultValue="75" />
+                              <span>75%</span>
+                            </div>
+                          </div>
+                        </div>
+                        <button className="save-settings-btn">Save Settings</button>
+                      </div>
                     </div>
                   </div>
-                </div>
-              )}
-              
-              {/* {currentSection === 'logs' && (
+                )}
+
+                {/* {currentSection === 'logs' && (
                 <div className="section-content">
                   <div className="section-header">
                     <h2>System Logs</h2>
@@ -1029,115 +1028,115 @@ useEffect(() => {
                   </div>
                 </div>
               )} */}
-              
-              {currentSection === 'config' && (
-  <div className="section-content">
-    <div className="section-header">
-      <h2>Account Settings</h2>
-    </div>
-    
-    <div className="config-container">
-      <div className="config-card">
-        <h3>Profile Information</h3>
-        <div className="info-row">
-          <span className="info-label">Name:</span>
-          <span className="info-value">{currentUser.name}</span>
-        </div>
-        <div className="info-row">
-          <span className="info-label">Email:</span>
-          <span className="info-value">{currentUser.email}</span>
-        </div>
-        <div className="info-row">
-          <span className="info-label">Status:</span>
-          <span className="info-value">
-            <span className={`status-badge ${currentUser.status === 'Active' ? 'active' : 'inactive'}`}>
-              {currentUser.status}
-            </span>
-          </span>
-        </div>
-        <div className="info-row">
-          <span className="info-label">Last Login:</span>
-          <span className="info-value">{currentUser.lastLogin}</span>
-        </div>
-        
-        <button 
-          className="save-settings-btn" 
-          onClick={() => {
-            setSelectedUser(currentUser);
-            setPopupTitle('Edit Profile');
-            setPopupContent('editUser');
-            setShowPopup(true);
-          }}
-        >
-          <FiEdit /> Edit Profile
-        </button>
-      </div>
 
-      <div className="config-card">
-        <h3>Security</h3>
-        <div className="info-row">
-          <span className="info-label">Password:</span>
-          <span className="info-value">••••••••</span>
-        </div>
-        
-        <button 
-          className="save-settings-btn" 
-          onClick={() => {
-            setSelectedUser(currentUser);
-            setPopupTitle('Change Password');
-            setPopupContent('resetPassword');
-            setShowPopup(true);
-          }}
-        >
-          <FiKey /> Change Password
-        </button>
-      </div>
-    </div>
-  </div>
-)}
+                {currentSection === 'config' && (
+                  <div className="section-content">
+                    <div className="section-header">
+                      <h2>Account Settings</h2>
+                    </div>
+
+                    <div className="config-container">
+                      <div className="config-card">
+                        <h3>Profile Information</h3>
+                        <div className="info-row">
+                          <span className="info-label">Name:</span>
+                          <span className="info-value">{currentUser.name}</span>
+                        </div>
+                        <div className="info-row">
+                          <span className="info-label">Email:</span>
+                          <span className="info-value">{currentUser.email}</span>
+                        </div>
+                        <div className="info-row">
+                          <span className="info-label">Status:</span>
+                          <span className="info-value">
+                            <span className={`status-badge ${currentUser.status === 'Active' ? 'active' : 'inactive'}`}>
+                              {currentUser.status}
+                            </span>
+                          </span>
+                        </div>
+                        <div className="info-row">
+                          <span className="info-label">Last Login:</span>
+                          <span className="info-value">{currentUser.lastLogin}</span>
+                        </div>
+
+                        <button
+                          className="save-settings-btn"
+                          onClick={() => {
+                            setSelectedUser(currentUser);
+                            setPopupTitle('Edit Profile');
+                            setPopupContent('editUser');
+                            setShowPopup(true);
+                          }}
+                        >
+                          <FiEdit /> Edit Profile
+                        </button>
+                      </div>
+
+                      <div className="config-card">
+                        <h3>Security</h3>
+                        <div className="info-row">
+                          <span className="info-label">Password:</span>
+                          <span className="info-value">••••••••</span>
+                        </div>
+
+                        <button
+                          className="save-settings-btn"
+                          onClick={() => {
+                            setSelectedUser(currentUser);
+                            setPopupTitle('Change Password');
+                            setPopupContent('resetPassword');
+                            setShowPopup(true);
+                          }}
+                        >
+                          <FiKey /> Change Password
+                        </button>
+                      </div>
+                    </div>
+                  </div>
+                )}
+              </div>
             </div>
           </div>
         </div>
-      </div>
-      
-      {showPopup && (
-        <div className="popup-overlay" onClick={handleOutsideClick}>
-          <div className="popup-container">
-            <div className="popup-header">
-              {popupHistory.length > 0 && (
-                <button className="back-button" onClick={goBackPopup}>
-                  <FaArrowLeft />
-                </button>
-              )}
-              <h3>{popupTitle}</h3>
-              <button className="close-button" onClick={() => setShowPopup(false)}>×</button>
-            </div>
-            
-            <div className="popup-content">
-              {popupContent === 'addUser' && (
-                <form className="form-container">
-                  <div className="form-group">
-                    <label>Full Name</label>
-                    <input 
-        type="text" 
-        name="username" 
-        placeholder="Enter full name" 
-        value={newUser.username}
-        onChange={handleNewUserChange}
-      />
-                  </div>
-                  <div className="form-group">
-                    <label>Email</label>
-                    <input 
-        type="email" 
-        name="email" 
-        placeholder="Enter email address" 
-        value={newUser.email}
-        onChange={handleNewUserChange}
-      />
-                  </div>
-                  <div>
-                    {/* <div className="form-group">
+
+        {showPopup && (
+          <div className="popup-overlay" onClick={handleOutsideClick}>
+            <div className="popup-container">
+              <div className="popup-header">
+                {popupHistory.length > 0 && (
+                  <button className="back-button" onClick={goBackPopup}>
+                    <FaArrowLeft />
+                  </button>
+                )}
+                <h3>{popupTitle}</h3>
+                <button className="close-button" onClick={() => setShowPopup(false)}>×</button>
+              </div>
+
+              <div className="popup-content-edit">
+                {popupContent === 'addUser' && (
+                  <form className="form-container">
+                    <div className="form-group">
+                      <label>Full Name</label>
+                      <input
+                        type="text"
+                        name="username"
+                        placeholder="Enter full name"
+                        value={newUser.username}
+                        onChange={handleNewUserChange}
+                      />
+                    </div>
+                    <div className="form-group">
+                      <label>Email</label>
+                      <input
+                        type="email"
+                        name="email"
+                        placeholder="Enter email address"
+                        value={newUser.email}
+                        onChange={handleNewUserChange}
+                      />
+                    </div>
+                    <div>
+                      {/* <div className="form-group">
                       <label>Role</label>
                       <select>
                         <option>Select role</option>
@@ -1146,49 +1145,49 @@ useEffect(() => {
                         <option>Read-only</option>
                       </select>
                     </div> */}
-                    <div className="form-group">
-                      <label>Initial Password</label>
- <input 
-          type="password" 
-          name="password" 
-          placeholder="Enter initial password" 
-          value={newUser.password}
-          onChange={handleNewUserChange}
-        />                    </div>
-                  </div>
-                  {saveError && <div className="error-message">{saveError}</div>}
-    {saveSuccess && <div className="success-message">{saveSuccess}</div>}
-                  <div className="form-actions">
-                    <button type="button" className="cancel-button" onClick={() => setShowPopup(false)}>Cancel</button>
-                    <button type="button" className="submit-button" onClick={handleCreateUser}>Add User</button>
-                  </div>
-                </form>
-              )}
+                      <div className="form-group">
+                        <label>Initial Password</label>
+                        <input
+                          type="password"
+                          name="password"
+                          placeholder="Enter initial password"
+                          value={newUser.password}
+                          onChange={handleNewUserChange}
+                        />                    </div>
+                    </div>
+                    {saveError && <div className="error-message">{saveError}</div>}
+                    {saveSuccess && <div className="success-message">{saveSuccess}</div>}
+                    <div className="form-actions">
+                      <button type="button" className="cancel-button" onClick={() => setShowPopup(false)}>Cancel</button>
+                      <button type="button" className="submit-button" onClick={handleCreateUser}>Add User</button>
+                    </div>
+                  </form>
+                )}
 
-              
-              {popupContent === 'editUser' && selectedUser && (
-                <form className="form-container">
-                  <div className="form-group">
-                    <label>Full Name</label>
-                 <input 
-        type="text" 
-        name="username" 
-        placeholder=""
-        value={editUser.username}
-        onChange={handleEditUserChange}
-      />
-                  </div>
-                  <div className="form-group">
-                    <label>Email</label>
-                    <input 
-        type="email" 
-        name="email" 
-        value={editUser.email}
-        onChange={handleEditUserChange}
-      />
-                  </div>
-                  <div className='role-status'>
-                    {/* <div className="form-group">
+
+                {popupContent === 'editUser' && selectedUser && (
+                  <form className="form-container">
+                    <div className="form-group">
+                      <label>Full Name</label>
+                      <input
+                        type="text"
+                        name="username"
+                        placeholder=""
+                        value={editUser.username}
+                        onChange={handleEditUserChange}
+                      />
+                    </div>
+                    <div className="form-group">
+                      <label>Email</label>
+                      <input
+                        type="email"
+                        name="email"
+                        value={editUser.email}
+                        onChange={handleEditUserChange}
+                      />
+                    </div>
+                    <div className='role-status'>
+                      {/* <div className="form-group">
                       <label>Role</label>
                       <select defaultValue={selectedUser.role}>
                         <option>Admin</option>
@@ -1196,9 +1195,9 @@ useEffect(() => {
                         <option>Read-only</option>
                       </select>
                     </div> */}
-                    <div className="form-group">
-                      {/* <label>Status</label> */}
-                          {/* <select 
+                      <div className="form-group">
+                        {/* <label>Status</label> */}
+                        {/* <select 
           name="status" 
           value={editUser.is_active ? 'Active' : 'Inactive'}
           onChange={handleEditUserChange}
@@ -1206,18 +1205,18 @@ useEffect(() => {
                         <option>Active</option>
                         <option>Inactive</option>
                       </select> */}
+                      </div>
                     </div>
-                  </div>
-    {saveError && <div className="error-message">{saveError}</div>}
-    {saveSuccess && <div className="success-message">{saveSuccess}</div>}
-                  <div className="form-actions">
-                    <button type="button" className="cancel-button-edit" onClick={() => setShowPopup(false)}>Cancel</button>
-                    <button type="button" className="submit-button-edit" onClick={handleUpdateUser}>Save</button>
-                  </div>
-                </form>
-              )}
-              
-              {/* {popupContent === 'deleteUser' && selectedUser && (
+                    {saveError && <div className="error-message">{saveError}</div>}
+                    {saveSuccess && <div className="success-message">{saveSuccess}</div>}
+                    <div className="form-actions">
+                      <button type="button" className="cancel-button-edit" onClick={() => setShowPopup(false)}>Cancel</button>
+                      <button type="button" className="submit-button-edit" onClick={handleUpdateUser}>Save</button>
+                    </div>
+                  </form>
+                )}
+
+                {/* {popupContent === 'deleteUser' && selectedUser && (
                 <div className="confirmation-content">
                   <div className="warning-icon">⚠️</div>
                   <p>Are you sure you want to delete the user <strong>{selectedUser.name}</strong>?</p>
@@ -1228,74 +1227,74 @@ useEffect(() => {
                   </div>
                 </div>
               )} */}
-              
-              {popupContent === 'resetPassword' && selectedUser && (
-                <div className="form-container">
-                  <p>Reset password for user: <strong>{selectedUser.name}</strong></p>
-                  <div className="form-group">
-                    <label>New Password</label>
-                         <input 
-        type="password" 
-        name="new_password" 
-        placeholder="Enter new password" 
-        value={passwordReset.new_password}
-        onChange={handlePasswordResetChange}
-      />
-                  </div>
-                  <div className="form-group">
-                    <label>Confirm Password</label>
-                        <input 
-        type="password" 
-        name="confirm_password" 
-        placeholder="Confirm new password" 
-        value={passwordReset.confirm_password}
-        onChange={handlePasswordResetChange}
-      />
-                  </div>
-                  <div className="checkbox-group">
-                        <input 
-        type="checkbox" 
-        id="force-reset" 
-        name="force_change" 
-        checked={passwordReset.force_change}
-        onChange={handlePasswordResetChange}
-      />
-                    {/* <label htmlFor="force-reset">Force user to change password on next login</label> */}
-                  </div>
-                      {saveError && <div className="error-message">{saveError}</div>}
-    {saveSuccess && <div className="success-message">{saveSuccess}</div>}
-                  <div className="form-actions">
-                    <button type="button" className="cancel-button-psw" onClick={() => setShowPopup(false)}>Cancel</button>
-                    <button type="button" className="submit-button" onClick={handleResetPassword}>Reset Password</button>
-                  </div>
-                </div>
-              )}
-              
-              {popupContent === 'viewFile' && selectedFile && (
-                <div className="file-details">
-                  <div className="file-prev">
-                    <img src={csv} alt="csv-file" className="csv-icon" />
-                    <div className="file-name">{selectedFile.name}</div>
-                  </div>
-                  <div className="details-table">
-                    <div className="detail-row">
-                      <span className="detail-label">Size:</span>
-                      <span className="detail-value">{selectedFile.size}</span>
+
+                {popupContent === 'resetPassword' && selectedUser && (
+                  <div className="form-container">
+                    <p>Reset password for user: <strong>{selectedUser.name}</strong></p>
+                    <div className="form-group">
+                      <label>New Password</label>
+                      <input
+                        type="password"
+                        name="new_password"
+                        placeholder="Enter new password"
+                        value={passwordReset.new_password}
+                        onChange={handlePasswordResetChange}
+                      />
                     </div>
-                    <div className="detail-row">
-                      <span className="detail-label">Uploaded By:</span>
-                      <span className="detail-value">{selectedFile.uploadedBy}</span>
+                    <div className="form-group">
+                      <label>Confirm Password</label>
+                      <input
+                        type="password"
+                        name="confirm_password"
+                        placeholder="Confirm new password"
+                        value={passwordReset.confirm_password}
+                        onChange={handlePasswordResetChange}
+                      />
                     </div>
-                    <div className="detail-row">
-                      <span className="detail-label">Upload Date:</span>
-                      <span className="detail-value">{(selectedFile.uploadDate)}</span>
+                    <div className="checkbox-group">
+                      <input
+                        type="checkbox"
+                        id="force-reset"
+                        name="force_change"
+                        checked={passwordReset.force_change}
+                        onChange={handlePasswordResetChange}
+                      />
+                      {/* <label htmlFor="force-reset">Force user to change password on next login</label> */}
                     </div>
-                    <div className="detail-row">
-                      <span className="detail-label">Status:</span>
-                      <span className={`detail-value status-${selectedFile.status.toLowerCase()}`}>{selectedFile.status}</span>
+                    {saveError && <div className="error-message">{saveError}</div>}
+                    {saveSuccess && <div className="success-message">{saveSuccess}</div>}
+                    <div className="form-actions">
+                      <button type="button" className="cancel-button-psw" onClick={() => setShowPopup(false)}>Cancel</button>
+                      <button type="button" className="submit-button" onClick={handleResetPassword}>Reset Password</button>
                     </div>
                   </div>
-                  {/* <div className="file-actions">
+                )}
+
+                {popupContent === 'viewFile' && selectedFile && (
+                  <div className="file-details">
+                    <div className="file-prev">
+                      <img src={csv} alt="csv-file" className="csv-icon" />
+                      <div className="file-name">{selectedFile.name}</div>
+                    </div>
+                    <div className="details-table">
+                      <div className="detail-row">
+                        <span className="detail-label">Size:</span>
+                        <span className="detail-value">{selectedFile.size}</span>
+                      </div>
+                      <div className="detail-row">
+                        <span className="detail-label">Uploaded By:</span>
+                        <span className="detail-value">{selectedFile.uploadedBy}</span>
+                      </div>
+                      <div className="detail-row">
+                        <span className="detail-label">Upload Date:</span>
+                        <span className="detail-value">{formatISODate(selectedFile.uploadDate)}</span>
+                      </div>
+                      <div className="detail-row">
+                        <span className="detail-label">Status:</span>
+                        <span className={`detail-value status-${selectedFile.status.toLowerCase()}`}>{selectedFile.status}</span>
+                      </div>
+                    </div>
+                    {/* <div className="file-actions">
                     <button className="download-button">
                       <FaDownload /> Download
                     </button>
@@ -1303,10 +1302,10 @@ useEffect(() => {
                       <FaTrash /> Delete
                     </button> */}
                   </div>
-                // </div>
-              )}
-              
-              {/* {popupContent === 'deleteFile' && selectedFile && (
+                  // </div>
+                )}
+
+                {/* {popupContent === 'deleteFile' && selectedFile && (
                 <div className="confirmation-content">
                   <div className="warning-icon">⚠️</div>
                   <p>Are you sure you want to delete the file <strong>{selectedFile.name}</strong>?</p>
@@ -1317,11 +1316,11 @@ useEffect(() => {
                   </div>
                 </div>
               )} */}
+              </div>
             </div>
           </div>
-        </div>
-      )}
-    </div>
+        )}
+      </div>
     </>
   );
 };

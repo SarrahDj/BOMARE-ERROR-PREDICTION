@@ -291,7 +291,7 @@
 .components-row-1 {
   display: grid;
   gap: 20px;
-  grid-template-columns: 3fr 2fr 2fr;
+  grid-template-columns: 3fr 2fr;
   width: 90%;
 }
 
@@ -501,24 +501,9 @@
     grid-template-columns: 1fr 2fr;
   }
 
-  .row-4 .stat-card:last-child {
-    grid-column: 1 / span 2;
-  }
 }
 
-@media (max-width: 880px) {
-  .row-3 {
-    grid-template-columns: 1fr;
-  }
 
-  .row-5 {
-    grid-template-columns: 1fr 1fr;
-  }
-
-  .row-5 .feeder-type-distribution {
-    grid-column: 1 / span 2;
-  }
-}
 
 @media (max-width: 546px) {
 
@@ -555,7 +540,7 @@
 
 .row-1 {
 display: grid;
-grid-template-columns: 5fr 3fr 3fr 3fr;
+grid-template-columns: 5fr 3fr 3fr;
 width: 90%;
 gap: 1.8rem;
 margin-bottom: 1.5rem;
@@ -615,7 +600,7 @@ width: 90%;
 gap: 1.8rem;
 }
 
-.row-3, .row-4, .row-5, .row-6 {
+.row-3, .row-4, .row-5 {
   display: grid;
   width: 90%;
   gap: 1.8rem;
@@ -633,9 +618,13 @@ gap: 1.8rem;
 .row-5 {
   grid-template-columns: 1fr 1fr 2fr;
 }
-
 .row-6 {
-  grid-template-columns: 1fr 2fr;
+  width: 90%;
+  display: flex;
+  justify-content: center;
+}
+.tape-width-distribution {
+  width: 50%;
 }
 
 .part-count-chart {
@@ -938,4 +927,21 @@ gap: 1.8rem;
 
 .shape-icon {
   scale: 1.1;
+}
+
+@media (max-width: 880px) {
+  .row-3 {
+    grid-template-columns: 1fr;
+  }
+
+  .row-5 {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .row-5 .feeder-type-distribution {
+    grid-column: 1 / span 2;
+  }
+  .tape-width-distribution {
+    width: 100%;
+  }
 }

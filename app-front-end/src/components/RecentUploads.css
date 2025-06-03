@@ -60,16 +60,24 @@
   background-color: #f8f9fa;
 }
 
-.status-processed {
-  color: #2e7d32;
+.file-status-processed {
+  color: #00C205;
   font-weight: 550;
+  display: flex;
+  align-items: center;
+  gap: 0.2rem;
 }
 
-.status-faulty {
+.file-status-faulty {
   color: #c62828;
   font-weight: 550;
+  display: flex;
+  align-items: center;
+  gap: 0.2rem;
 }
-
+.check-cross {
+  width: 1.2rem;
+}
 .type-th {
   color: #555;
 }

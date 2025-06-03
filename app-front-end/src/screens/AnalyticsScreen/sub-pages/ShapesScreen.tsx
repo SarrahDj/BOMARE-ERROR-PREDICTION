@@ -14,6 +14,7 @@ import {
     Legend,
 } from 'recharts';
 import danger from '../../../assets/danger.png';
+import { COLORS1, COLORS_COMPONENTS1 } from '../../../data/mockUploads';
 
 // Define interfaces for our props and data structures
 interface ShapeStatsItem {
@@ -53,8 +54,8 @@ const ShapesScreen: React.FC<ShapesScreenProps> = (props) => {
         shapeDistribution = [] 
     } = props || {};
     // Colors for charts
-    const COLORS = ['#4F7EF5', '#E0E0E0'];
-    const COLORS_COMPONENTS = ['#4F7EF5', '#FF725C', '#4DCCBD', '#FFB563', '#AE8CF2'];
+    const COLORS = COLORS1;
+    const COLORS_COMPONENTS = COLORS_COMPONENTS1;
     
 const processShapeDistribution = () => {
     let normalized: { name: string, value: number }[] = [];
