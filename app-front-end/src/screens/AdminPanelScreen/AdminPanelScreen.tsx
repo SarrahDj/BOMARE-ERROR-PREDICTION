@@ -1288,7 +1288,7 @@ useEffect(() => {
                     </div>
                     <div className="detail-row">
                       <span className="detail-label">Upload Date:</span>
-                      <span className="detail-value">{formatISODate(selectedFile.uploadDate)}</span>
+                      <span className="detail-value">{(selectedFile.uploadDate)}</span>
                     </div>
                     <div className="detail-row">
                       <span className="detail-label">Status:</span>

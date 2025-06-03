@@ -31,12 +31,13 @@ def predict_feeder_errors_detailed(
 
     # 1) Load historical merged data
     hist = pd.read_csv(historical_merged_path)
+    print("hist data")
     # 2) Load feeder setup
     try:
-        fs = pd.read_csv(feeder_setup_path, skiprows=2, skipfooter=2)
+        fs = pd.read_csv(feeder_setup_path, skiprows=2, skipfooter=2,sep=';')
     except:
-        fs = pd.read_csv(feeder_setup_path, skiprows=2, skipfooter=2, sep=None, engine='python', on_bad_lines='skip')
-
+        fs = pd.read_csv(feeder_setup_path, skiprows=2, skipfooter=2, sep=';', engine='python', on_bad_lines='skip')
+    print("read file")
     # Identify key columns
     cols = {col.lower(): col for col in fs.columns}
     module_col = cols.get('modulenumber')
@@ -197,7 +198,7 @@ def predict_feeder_errors_detailed(
 
 if __name__ == "__main__":
     predict_feeder_errors_detailed(
-        feeder_setup_path="FeederSetupA.csv",
-        historical_merged_path="PartUsage.csv",
+        feeder_setup_path=os.path.join(script_dir, 'FeederSetupCC.csv'),
+        historical_merged_path=os.path.join(script_dir, 'PartUsage.csv'),
         file_prefix="error_prediction_report"
     )

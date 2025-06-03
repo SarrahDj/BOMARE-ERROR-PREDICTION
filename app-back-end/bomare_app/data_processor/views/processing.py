@@ -19,6 +19,7 @@ from ..models.result import ProcessingResult
 from ..serializers.processing import ProcessingJobSerializer, ExportSerializer
 from ..serializers.processing import ProcessingResultSerializer
 from ..serializers.file import FileSerializer
+from ..services.backend_file1 import predict_feeder_errors
 from ..utils.auth import verify_jwt_token
 from ..services import predict_feeder_errors_detailed
 
@@ -125,15 +126,15 @@ def execute_processing(request, job_id):
         print("4")
 
         # Read the file
-        if file_type in ['csv']:
-            df = pd.read_csv(file_path)
-        elif file_type in ['xls', 'xlsx', 'excel']:
-            df = pd.read_excel(file_path)
-        else:
-            raise ValueError(f"Unsupported file type: {file_type}")
+        #if file_type in ['csv']:
+            #df = pd.read_csv(file_path)
+       # elif file_type in ['xls', 'xlsx', 'excel']:
+            #df = pd.read_excel(file_path)
+        #else:
+            #raise ValueError(f"Unsupported file type: {file_type}")
 
         # Process with model
-        model_output = predict_feeder_errors_detailed(file_path)['json_output']
+        model_output = predict_feeder_errors(file_path)['json_output']
         print(type(model_output))
         import json
         cleaned_output = make_json_serializable(model_output)

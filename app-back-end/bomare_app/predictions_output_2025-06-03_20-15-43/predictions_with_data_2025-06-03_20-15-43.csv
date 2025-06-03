@@ -1,0 +1,551 @@
+LineName,OrderNum,ModelName,ModuleNumber,SideNo,SetupName,AVLNAME,AVL,PartNumber,FeederName,Status,Location,FeederID,PartNumberImage,PartShapeName,PackageName,PartComment,PMABAR,ChuteType,FeederType,TapeWidth,FeedPitch,PTPMNH,QTY,PMADC,Position,ErrorProbability,PredictedError
+Line12,1,NXT12,1,0,Original setup,,,,,Variable,'01,11001,,,,,,,,,,,0.0,,M1-1,0.0,0
+Line12,1,NXT12,1,0,Original setup,,,,,Variable,'02,11002,,,,,,,,,,,0.0,,M1-2,0.0,0
+Line12,1,NXT12,1,0,Original setup,,,,,Variable,'03,11003,,,,,,,,,,,0.0,,M1-3,0.0,0
+Line12,1,NXT12,1,0,Original setup,,,,,Variable,'04,11004,,,,,,,,,,,0.0,,M1-4,0.0,0
+Line12,1,NXT12,1,0,Original setup,,,,,Variable,'05,11005,,,,,,,,,,,0.0,,M1-5,0.01,1
+Line12,1,NXT12,1,0,Original setup,,,,,Variable,'06,11006,,,,,,,,,,,0.0,,M1-6,0.0,0
+Line12,1,NXT12,1,0,Original setup,,,,,Variable,'07,11007,,,,,,,,,,,0.0,,M1-7,0.0,0
+Line12,1,NXT12,1,0,Original setup,,,,,Variable,'08,11008,,,,,,,,,,,0.0,,M1-8,0.0,0
+Line12,1,NXT12,1,0,Original setup,,,,,Variable,'09,11009,,,,,,,,,,,0.0,,M1-9,0.0,0
+Line12,1,NXT12,1,0,Original setup,,,,,Variable,'10,11010,,,,,,,,,,,0.0,,M1-10,0.0,0
+Line12,1,NXT12,1,0,Original setup,,,,,Variable,'11,11011,,,,,,,,,,,0.0,,M1-11,0.0,0
+Line12,1,NXT12,1,0,Original setup,,,,,Variable,'12,11012,,,,,,,,,,,0.0,,M1-12,0.0,0
+Line12,1,NXT12,1,0,Original setup,,,,,Variable,'13,11013,,,,,,,,,,,0.0,,M1-13,0.0,0
+Line12,1,NXT12,1,0,Original setup,,,,,Variable,'14,11014,,,,,,,,,,,0.0,,M1-14,0.0,0
+Line12,1,NXT12,1,0,Original setup,,,,,Variable,'15,11015,,,,,,,,,,,0.0,,M1-15,0.0,0
+Line12,1,NXT12,1,0,Original setup,,,,,Variable,'16,11016,,,,,,,,,,,0.0,,M1-16,0.0,0
+Line12,1,NXT12,1,0,Original setup,,,,,Variable,'17,11017,,,,,,,,,,,0.0,,M1-17,0.0,0
+Line12,1,NXT12,1,0,Original setup,,,,,Variable,'18,11018,,,,,,,,,,,0.0,,M1-18,0.0,0
+Line12,1,NXT12,1,0,Original setup,,,1201-AA3030-F10A,KT-0800F-180,Fixed,'19,11019,C:\Users\pc\Desktop\DONGLE-DUAL,,,,,,,,,,,,M1-19,0.01,1
+Line12,1,NXT12,1,0,Original setup,,,1201-AA4700-J10A,KT-0800F-180,Fixed,'20,11020,C:\Users\pc\Desktop\DONGLE-DUAL,,,,,,,,,,,,M1-20,0.01,1
+Line12,1,NXT12,1,0,Original setup,,,1201-AA4710-F10A,KT-0800F-180,Fixed,'21,11021,C:\Users\pc\Desktop\DONGLE-DUAL,,,,,,,,,,,,M1-21,0.01,1
+Line12,1,NXT12,1,0,Original setup,,,1201-AA5120-F10A,KT-0800F-180,Fixed,'22,11022,C:\Users\pc\Desktop\DONGLE-DUAL,,,,,,,,,,,,M1-22,0.02,1
+Line12,1,NXT12,1,0,Original setup,,,1301-A2D102-K50A,KT-0800F-180,Fixed,'23,11023,C:\Users\pc\Desktop\DONGLE-DUAL,,,,,,,,,,,,M1-23,0.01,1
+Line12,1,NXT12,1,0,Original setup,,,1201-AA0000-J10A,KT-0800F-180,Fixed,'24,11024,C:\Users\pc\Desktop\DONGLE-DUAL,,,,,,,,,,,,M1-24,0.02,1
+Line12,1,NXT12,1,0,Original setup,,,1201-AA1230-F10A,KT-0800F-180,Fixed,'25,11025,C:\Users\pc\Desktop\DONGLE-DUAL,,,,,,,,,,,,M1-25,0.01,1
+Line12,1,NXT12,1,0,Original setup,,,1201-AA2230-F10A,KT-0800F-180,Fixed,'26,11026,C:\Users\pc\Desktop\DONGLE-DUAL,,,,,,,,,,,,M1-26,0.03,1
+Line12,1,NXT12,1,0,Original setup,,,,,Variable,'27,11027,,,,,,,,,,,0.0,,M1-27,0.0,0
+Line12,1,NXT12,1,0,Original setup,,,,,Variable,'28,11028,,,,,,,,,,,0.0,,M1-28,0.0,0
+Line12,1,NXT12,1,0,Original setup,,,,,Variable,'29,11029,,,,,,,,,,,0.0,,M1-29,0.0,0
+Line12,1,NXT12,1,0,Original setup,,,,,Variable,'30,11030,,,,,,,,,,,0.0,,M1-30,0.0,0
+Line12,1,NXT12,1,0,Original setup,,,,,Variable,'31,11031,,,,,,,,,,,0.0,,M1-31,0.0,0
+Line12,1,NXT12,1,0,Original setup,,,,,Variable,'32,11032,,,,,,,,,,,0.0,,M1-32,0.0,0
+Line12,1,NXT12,1,0,Original setup,,,,,Variable,'33,11033,,,,,,,,,,,0.0,,M1-33,0.01,1
+Line12,1,NXT12,1,0,Original setup,,,,,Variable,'34,11034,,,,,,,,,,,0.0,,M1-34,0.0,0
+Line12,1,NXT12,1,0,Original setup,,,,,Variable,'35,11035,,,,,,,,,,,0.0,,M1-35,0.0,0
+Line12,1,NXT12,1,0,Original setup,,,,,Variable,'36,11036,,,,,,,,,,,0.0,,M1-36,0.0,0
+Line12,1,NXT12,1,0,Original setup,,,,,Variable,'37,11037,,,,,,,,,,,0.0,,M1-37,0.0,0
+Line12,1,NXT12,1,0,Original setup,,,,,Reserved,'38,11038,,,,,,,,,,,0.0,,M1-38,0.0,0
+Line12,1,NXT12,1,0,Original setup,,,,,Variable,'39,11039,,,,,,,,,,,0.0,,M1-39,0.0,0
+Line12,1,NXT12,1,0,Original setup,,,,,Variable,'40,11040,,,,,,,,,,,0.0,,M1-40,0.0,0
+Line12,1,NXT12,1,0,Original setup,,,,,Variable,'41,11041,,,,,,,,,,,0.0,,M1-41,0.0,0
+Line12,1,NXT12,1,0,Original setup,,,,,Variable,'42,11042,,,,,,,,,,,0.0,,M1-42,0.0,0
+Line12,1,NXT12,1,0,Original setup,,,,,Variable,'43,11043,,,,,,,,,,,0.0,,M1-43,0.0,0
+Line12,1,NXT12,1,0,Original setup,,,,,Variable,'44,11044,,,,,,,,,,,0.0,,M1-44,0.01,1
+Line12,1,NXT12,1,0,Original setup,,,,,Variable,'45,11045,,,,,,,,,,,0.0,,M1-45,0.0,0
+Line12,1,NXT12,2,0,Original setup,,,,,Variable,'01,21001,,,,,,,,,,,0.0,,M2-1,0.0,0
+Line12,1,NXT12,2,0,Original setup,,,,,Variable,'02,21002,,,,,,,,,,,0.0,,M2-2,0.0,0
+Line12,1,NXT12,2,0,Original setup,,,,,Variable,'03,21003,,,,,,,,,,,0.0,,M2-3,0.01,1
+Line12,1,NXT12,2,0,Original setup,,,,,Variable,'04,21004,,,,,,,,,,,0.0,,M2-4,0.0,0
+Line12,1,NXT12,2,0,Original setup,,,,,Variable,'05,21005,,,,,,,,,,,0.0,,M2-5,0.0,0
+Line12,1,NXT12,2,0,Original setup,,,,,Variable,'06,21006,,,,,,,,,,,0.0,,M2-6,0.0,0
+Line12,1,NXT12,2,0,Original setup,,,,,Variable,'07,21007,,,,,,,,,,,0.0,,M2-7,0.0,0
+Line12,1,NXT12,2,0,Original setup,,,,,Variable,'08,21008,,,,,,,,,,,0.0,,M2-8,0.0,0
+Line12,1,NXT12,2,0,Original setup,,,,,Variable,'09,21009,,,,,,,,,,,0.0,,M2-9,0.01,1
+Line12,1,NXT12,2,0,Original setup,,,,,Variable,'10,21010,,,,,,,,,,,0.0,,M2-10,0.0,0
+Line12,1,NXT12,2,0,Original setup,,,,,Variable,'11,21011,,,,,,,,,,,0.0,,M2-11,0.0,0
+Line12,1,NXT12,2,0,Original setup,,,,,Variable,'12,21012,,,,,,,,,,,0.0,,M2-12,0.0,0
+Line12,1,NXT12,2,0,Original setup,,,,,Variable,'13,21013,,,,,,,,,,,0.0,,M2-13,0.0,0
+Line12,1,NXT12,2,0,Original setup,,,,,Variable,'14,21014,,,,,,,,,,,0.0,,M2-14,0.0,0
+Line12,1,NXT12,2,0,Original setup,,,,,Variable,'15,21015,,,,,,,,,,,0.0,,M2-15,0.0,0
+Line12,1,NXT12,2,0,Original setup,,,,,Variable,'16,21016,,,,,,,,,,,0.0,,M2-16,0.0,0
+Line12,1,NXT12,2,0,Original setup,,,,,Variable,'17,21017,,,,,,,,,,,0.0,,M2-17,0.0,0
+Line12,1,NXT12,2,0,Original setup,,,,,Variable,'18,21018,,,,,,,,,,,0.0,,M2-18,0.02,1
+Line12,1,NXT12,2,0,Original setup,,,,,Variable,'19,21019,,,,,,,,,,,0.0,,M2-19,0.0,0
+Line12,1,NXT12,2,0,Original setup,,,,,Variable,'20,21020,,,,,,,,,,,0.0,,M2-20,0.0,0
+Line12,1,NXT12,2,0,Original setup,,,,,Variable,'21,21021,,,,,,,,,,,0.0,,M2-21,0.0,0
+Line12,1,NXT12,2,0,Original setup,,,1201-AA2210-J10A,KT-0800F-180,Fixed,'22,21022,C:\Users\pc\Desktop\DONGLE-DUAL,,,,,,,,,,,,M2-22,0.04,1
+Line12,1,NXT12,2,0,Original setup,,,1301-A2B104-Z50A,KT-0800F-180,Fixed,'23,21023,C:\Users\pc\Desktop\DONGLE-DUAL,,,,,,,,,,,,M2-23,0.01,1
+Line12,1,NXT12,2,0,Original setup,,,,,Variable,'24,21024,,,,,,,,,,,0.0,,M2-24,0.0,0
+Line12,1,NXT12,2,0,Original setup,,,,,Variable,'25,21025,,,,,,,,,,,0.0,,M2-25,0.0,0
+Line12,1,NXT12,2,0,Original setup,,,,,Variable,'26,21026,,,,,,,,,,,0.0,,M2-26,0.0,0
+Line12,1,NXT12,2,0,Original setup,,,,,Variable,'27,21027,,,,,,,,,,,0.0,,M2-27,0.01,1
+Line12,1,NXT12,2,0,Original setup,,,,,Variable,'28,21028,,,,,,,,,,,0.0,,M2-28,0.0,0
+Line12,1,NXT12,2,0,Original setup,,,,,Variable,'29,21029,,,,,,,,,,,0.0,,M2-29,0.0,0
+Line12,1,NXT12,2,0,Original setup,,,,,Variable,'30,21030,,,,,,,,,,,0.0,,M2-30,0.0,0
+Line12,1,NXT12,2,0,Original setup,,,,,Variable,'31,21031,,,,,,,,,,,0.0,,M2-31,0.0,0
+Line12,1,NXT12,2,0,Original setup,,,,,Variable,'32,21032,,,,,,,,,,,0.0,,M2-32,0.0,0
+Line12,1,NXT12,2,0,Original setup,,,,,Variable,'33,21033,,,,,,,,,,,0.0,,M2-33,0.0,0
+Line12,1,NXT12,2,0,Original setup,,,,,Variable,'34,21034,,,,,,,,,,,0.0,,M2-34,0.0,0
+Line12,1,NXT12,2,0,Original setup,,,,,Variable,'35,21035,,,,,,,,,,,0.0,,M2-35,0.0,0
+Line12,1,NXT12,2,0,Original setup,,,,,Variable,'36,21036,,,,,,,,,,,0.0,,M2-36,0.0,0
+Line12,1,NXT12,2,0,Original setup,,,,,Variable,'37,21037,,,,,,,,,,,0.0,,M2-37,0.0,0
+Line12,1,NXT12,2,0,Original setup,,,,,Variable,'38,21038,,,,,,,,,,,0.0,,M2-38,0.0,0
+Line12,1,NXT12,2,0,Original setup,,,,,Variable,'39,21039,,,,,,,,,,,0.0,,M2-39,0.0,0
+Line12,1,NXT12,2,0,Original setup,,,,,Variable,'40,21040,,,,,,,,,,,0.0,,M2-40,0.0,0
+Line12,1,NXT12,2,0,Original setup,,,,,Variable,'41,21041,,,,,,,,,,,0.0,,M2-41,0.0,0
+Line12,1,NXT12,2,0,Original setup,,,,,Variable,'42,21042,,,,,,,,,,,0.0,,M2-42,0.0,0
+Line12,1,NXT12,2,0,Original setup,,,,,Variable,'43,21043,,,,,,,,,,,0.0,,M2-43,0.0,0
+Line12,1,NXT12,2,0,Original setup,,,,,Variable,'44,21044,,,,,,,,,,,0.0,,M2-44,0.0,0
+Line12,1,NXT12,2,0,Original setup,,,,,Variable,'45,21045,,,,,,,,,,,0.0,,M2-45,0.0,0
+Line12,1,NXT12,3,0,Original setup,,,,,Variable,'01,31001,,,,,,,,,,,0.0,,M3-1,0.0,0
+Line12,1,NXT12,3,0,Original setup,,,,,Variable,'02,31002,,,,,,,,,,,0.0,,M3-2,0.0,0
+Line12,1,NXT12,3,0,Original setup,,,,,Variable,'03,31003,,,,,,,,,,,0.0,,M3-3,0.0,0
+Line12,1,NXT12,3,0,Original setup,,,,,Variable,'04,31004,,,,,,,,,,,0.0,,M3-4,0.0,0
+Line12,1,NXT12,3,0,Original setup,,,,,Variable,'05,31005,,,,,,,,,,,0.0,,M3-5,0.0,0
+Line12,1,NXT12,3,0,Original setup,,,,,Variable,'06,31006,,,,,,,,,,,0.0,,M3-6,0.0,0
+Line12,1,NXT12,3,0,Original setup,,,,,Variable,'07,31007,,,,,,,,,,,0.0,,M3-7,0.0,0
+Line12,1,NXT12,3,0,Original setup,,,,,Variable,'08,31008,,,,,,,,,,,0.0,,M3-8,0.0,0
+Line12,1,NXT12,3,0,Original setup,,,,,Variable,'09,31009,,,,,,,,,,,0.0,,M3-9,0.0,0
+Line12,1,NXT12,3,0,Original setup,,,,,Variable,'10,31010,,,,,,,,,,,0.0,,M3-10,0.0,0
+Line12,1,NXT12,3,0,Original setup,,,,,Variable,'11,31011,,,,,,,,,,,0.0,,M3-11,0.0,0
+Line12,1,NXT12,3,0,Original setup,,,,,Variable,'12,31012,,,,,,,,,,,0.0,,M3-12,0.0,0
+Line12,1,NXT12,3,0,Original setup,,,,,Variable,'13,31013,,,,,,,,,,,0.0,,M3-13,0.0,0
+Line12,1,NXT12,3,0,Original setup,,,,,Variable,'14,31014,,,,,,,,,,,0.0,,M3-14,0.01,1
+Line12,1,NXT12,3,0,Original setup,,,,,Variable,'15,31015,,,,,,,,,,,0.0,,M3-15,0.0,0
+Line12,1,NXT12,3,0,Original setup,,,,,Variable,'16,31016,,,,,,,,,,,0.0,,M3-16,0.0,0
+Line12,1,NXT12,3,0,Original setup,,,,,Variable,'17,31017,,,,,,,,,,,0.0,,M3-17,0.0,0
+Line12,1,NXT12,3,0,Original setup,,,,,Variable,'18,31018,,,,,,,,,,,0.0,,M3-18,0.0,0
+Line12,1,NXT12,3,0,Original setup,,,,,Variable,'19,31019,,,,,,,,,,,0.0,,M3-19,0.0,0
+Line12,1,NXT12,3,0,Original setup,,,1201-AA1320-F10A,KT-0800F-180,Fixed,'20,31020,C:\Users\pc\Desktop\DONGLE-DUAL,,,,,,,,,,,,M3-20,0.04,1
+Line12,1,NXT12,3,0,Original setup,,,1201-AA2020-J10A,KT-0800F-180,Fixed,'21,31021,C:\Users\pc\Desktop\DONGLE-DUAL,,,,,,,,,,,,M3-21,0.02,1
+Line12,1,NXT12,3,0,Original setup,,,1301-A2D561-K50A,KT-0800F-180,Fixed,'22,31022,C:\Users\pc\Desktop\DONGLE-DUAL,,,,,,,,,,,,M3-22,0.03,1
+Line12,1,NXT12,3,0,Original setup,,,1301-A2B105-Z50A,KT-0800F-180,Fixed,'23,31023,C:\Users\pc\Desktop\DONGLE-DUAL,,,,,,,,,,,,M3-23,0.02,1
+Line12,1,NXT12,3,0,Original setup,,,1201-AA1040-F10A,KT-0800F-180,Fixed,'24,31024,C:\Users\pc\Desktop\DONGLE-DUAL,,,,,,,,,,,,M3-24,0.02,1
+Line12,1,NXT12,3,0,Original setup,,,1201-AA1340-F11A,KT-0800F-180,Fixed,'25,31025,C:\Users\pc\Desktop\DONGLE-DUAL,,,,,,,,,,,,M3-25,0.02,1
+Line12,1,NXT12,3,0,Original setup,,,1201-AA2040-F10A,KT-0800F-180,Fixed,'26,31026,C:\Users\pc\Desktop\DONGLE-DUAL,,,,,,,,,,,,M3-26,0.01,1
+Line12,1,NXT12,3,0,Original setup,,,,,Variable,'27,31027,,,,,,,,,,,0.0,,M3-27,0.01,1
+Line12,1,NXT12,3,0,Original setup,,,,,Variable,'28,31028,,,,,,,,,,,0.0,,M3-28,0.01,1
+Line12,1,NXT12,3,0,Original setup,,,,,Variable,'29,31029,,,,,,,,,,,0.0,,M3-29,0.0,0
+Line12,1,NXT12,3,0,Original setup,,,,,Variable,'30,31030,,,,,,,,,,,0.0,,M3-30,0.01,1
+Line12,1,NXT12,3,0,Original setup,,,,,Variable,'31,31031,,,,,,,,,,,0.0,,M3-31,0.0,0
+Line12,1,NXT12,3,0,Original setup,,,,,Variable,'32,31032,,,,,,,,,,,0.0,,M3-32,0.01,1
+Line12,1,NXT12,3,0,Original setup,,,,,Variable,'33,31033,,,,,,,,,,,0.0,,M3-33,0.0,0
+Line12,1,NXT12,3,0,Original setup,,,,,Variable,'34,31034,,,,,,,,,,,0.0,,M3-34,0.0,0
+Line12,1,NXT12,3,0,Original setup,,,,,Variable,'35,31035,,,,,,,,,,,0.0,,M3-35,0.0,0
+Line12,1,NXT12,3,0,Original setup,,,,,Variable,'36,31036,,,,,,,,,,,0.0,,M3-36,0.0,0
+Line12,1,NXT12,3,0,Original setup,,,,,Variable,'37,31037,,,,,,,,,,,0.0,,M3-37,0.0,0
+Line12,1,NXT12,3,0,Original setup,,,,,Variable,'38,31038,,,,,,,,,,,0.0,,M3-38,0.0,0
+Line12,1,NXT12,3,0,Original setup,,,,,Variable,'39,31039,,,,,,,,,,,0.0,,M3-39,0.0,0
+Line12,1,NXT12,3,0,Original setup,,,,,Variable,'40,31040,,,,,,,,,,,0.0,,M3-40,0.0,0
+Line12,1,NXT12,3,0,Original setup,,,,,Variable,'41,31041,,,,,,,,,,,0.0,,M3-41,0.0,0
+Line12,1,NXT12,3,0,Original setup,,,,,Variable,'42,31042,,,,,,,,,,,0.0,,M3-42,0.0,0
+Line12,1,NXT12,3,0,Original setup,,,,,Variable,'43,31043,,,,,,,,,,,0.0,,M3-43,0.0,0
+Line12,1,NXT12,3,0,Original setup,,,,,Variable,'44,31044,,,,,,,,,,,0.0,,M3-44,0.0,0
+Line12,1,NXT12,3,0,Original setup,,,,,Variable,'45,31045,,,,,,,,,,,0.0,,M3-45,0.0,0
+Line12,1,NXT12,4,0,Original setup,,,,,Variable,'01,41001,,,,,,,,,,,0.0,,M4-1,0.0,0
+Line12,1,NXT12,4,0,Original setup,,,,,Variable,'02,41002,,,,,,,,,,,0.0,,M4-2,0.0,0
+Line12,1,NXT12,4,0,Original setup,,,,,Variable,'03,41003,,,,,,,,,,,0.0,,M4-3,0.0,0
+Line12,1,NXT12,4,0,Original setup,,,,,Variable,'04,41004,,,,,,,,,,,0.0,,M4-4,0.0,0
+Line12,1,NXT12,4,0,Original setup,,,,,Variable,'05,41005,,,,,,,,,,,0.0,,M4-5,0.0,0
+Line12,1,NXT12,4,0,Original setup,,,,,Variable,'06,41006,,,,,,,,,,,0.0,,M4-6,0.0,0
+Line12,1,NXT12,4,0,Original setup,,,,,Variable,'07,41007,,,,,,,,,,,0.0,,M4-7,0.0,0
+Line12,1,NXT12,4,0,Original setup,,,,,Variable,'08,41008,,,,,,,,,,,0.0,,M4-8,0.0,0
+Line12,1,NXT12,4,0,Original setup,,,,,Variable,'09,41009,,,,,,,,,,,0.0,,M4-9,0.0,0
+Line12,1,NXT12,4,0,Original setup,,,,,Variable,'10,41010,,,,,,,,,,,0.0,,M4-10,0.0,0
+Line12,1,NXT12,4,0,Original setup,,,,,Variable,'11,41011,,,,,,,,,,,0.0,,M4-11,0.0,0
+Line12,1,NXT12,4,0,Original setup,,,,,Variable,'12,41012,,,,,,,,,,,0.0,,M4-12,0.0,0
+Line12,1,NXT12,4,0,Original setup,,,,,Variable,'13,41013,,,,,,,,,,,0.0,,M4-13,0.0,0
+Line12,1,NXT12,4,0,Original setup,,,,,Variable,'14,41014,,,,,,,,,,,0.0,,M4-14,0.0,0
+Line12,1,NXT12,4,0,Original setup,,,,,Variable,'15,41015,,,,,,,,,,,0.0,,M4-15,0.01,1
+Line12,1,NXT12,4,0,Original setup,,,,,Variable,'16,41016,,,,,,,,,,,0.0,,M4-16,0.0,0
+Line12,1,NXT12,4,0,Original setup,,,,,Variable,'17,41017,,,,,,,,,,,0.0,,M4-17,0.0,0
+Line12,1,NXT12,4,0,Original setup,,,1201-AA1832-F10A,KT-0800F-180,Fixed,'18,41018,C:\Users\pc\Desktop\DONGLE-DUAL,,,,,,,,,,,,M4-18,0.04,1
+Line12,1,NXT12,4,0,Original setup,,,1201-AA2030-F10A,KT-0800F-180,Fixed,'19,41019,C:\Users\pc\Desktop\DONGLE-DUAL,,,,,,,,,,,,M4-19,0.01,1
+Line12,1,NXT12,4,0,Original setup,,,1201-AA4720-J10A,KT-0800F-180,Fixed,'20,41020,C:\Users\pc\Desktop\DONGLE-DUAL,,,,,,,,,,,,M4-20,0.01,1
+Line12,1,NXT12,4,0,Original setup,,,1201-AA5130-F10A,KT-0800F-180,Fixed,'21,41021,C:\Users\pc\Desktop\DONGLE-DUAL,,,,,,,,,,,,M4-21,0.01,1
+Line12,1,NXT12,4,0,Original setup,,,1201-AA1010-J10A,KT-0800F-180,Fixed,'22,41022,C:\Users\pc\Desktop\DONGLE-DUAL,,,,,,,,,,,,M4-22,0.01,1
+Line12,1,NXT12,4,0,Original setup,,,1201-AA1030-J10A,KT-0800F-180,Fixed,'23,41023,C:\Users\pc\Desktop\DONGLE-DUAL,,,,,,,,,,,,M4-23,0.03,1
+Line12,1,NXT12,4,0,Original setup,,,1201-AA51A0-J10A,KT-0800F-180,Fixed,'24,41024,C:\Users\pc\Desktop\DONGLE-DUAL,,,,,,,,,,,,M4-24,0.01,1
+Line12,1,NXT12,4,0,Original setup,,,1201-AA8220-F10A,KT-0800F-180,Fixed,'25,41025,C:\Users\pc\Desktop\DONGLE-DUAL,,,,,,,,,,,,M4-25,0.01,1
+Line12,1,NXT12,4,0,Original setup,,,1201-AA1040-J10A,KT-0800F-180,Fixed,'26,41026,C:\Users\pc\Desktop\DONGLE-DUAL,,,,,,,,,,,,M4-26,0.01,1
+Line12,1,NXT12,4,0,Original setup,,,1201-AA1240-F10A,KT-0800F-180,Fixed,'27,41027,C:\Users\pc\Desktop\DONGLE-DUAL,,,,,,,,,,,,M4-27,0.01,1
+Line12,1,NXT12,4,0,Original setup,,,,,Variable,'28,41028,,,,,,,,,,,0.0,,M4-28,0.0,0
+Line12,1,NXT12,4,0,Original setup,,,,,Variable,'29,41029,,,,,,,,,,,0.0,,M4-29,0.0,0
+Line12,1,NXT12,4,0,Original setup,,,,,Variable,'30,41030,,,,,,,,,,,0.0,,M4-30,0.0,0
+Line12,1,NXT12,4,0,Original setup,,,,,Variable,'31,41031,,,,,,,,,,,0.0,,M4-31,0.0,0
+Line12,1,NXT12,4,0,Original setup,,,,,Variable,'32,41032,,,,,,,,,,,0.0,,M4-32,0.0,0
+Line12,1,NXT12,4,0,Original setup,,,,,Variable,'33,41033,,,,,,,,,,,0.0,,M4-33,0.0,0
+Line12,1,NXT12,4,0,Original setup,,,,,Variable,'34,41034,,,,,,,,,,,0.0,,M4-34,0.0,0
+Line12,1,NXT12,4,0,Original setup,,,,,Variable,'35,41035,,,,,,,,,,,0.0,,M4-35,0.0,0
+Line12,1,NXT12,4,0,Original setup,,,,,Variable,'36,41036,,,,,,,,,,,0.0,,M4-36,0.0,0
+Line12,1,NXT12,4,0,Original setup,,,,,Variable,'37,41037,,,,,,,,,,,0.0,,M4-37,0.01,1
+Line12,1,NXT12,4,0,Original setup,,,,,Variable,'38,41038,,,,,,,,,,,0.0,,M4-38,0.0,0
+Line12,1,NXT12,4,0,Original setup,,,,,Variable,'39,41039,,,,,,,,,,,0.0,,M4-39,0.0,0
+Line12,1,NXT12,4,0,Original setup,,,,,Variable,'40,41040,,,,,,,,,,,0.0,,M4-40,0.0,0
+Line12,1,NXT12,4,0,Original setup,,,,,Variable,'41,41041,,,,,,,,,,,0.0,,M4-41,0.01,1
+Line12,1,NXT12,4,0,Original setup,,,,,Variable,'42,41042,,,,,,,,,,,0.0,,M4-42,0.0,0
+Line12,1,NXT12,4,0,Original setup,,,,,Variable,'43,41043,,,,,,,,,,,0.0,,M4-43,0.0,0
+Line12,1,NXT12,4,0,Original setup,,,,,Variable,'44,41044,,,,,,,,,,,0.0,,M4-44,0.0,0
+Line12,1,NXT12,4,0,Original setup,,,,,Variable,'45,41045,,,,,,,,,,,0.0,,M4-45,0.0,0
+Line12,1,NXT12,5,0,Original setup,,,,,Variable,'01,51001,,,,,,,,,,,0.0,,M5-1,0.0,0
+Line12,1,NXT12,5,0,Original setup,,,,,Variable,'02,51002,,,,,,,,,,,0.0,,M5-2,0.0,0
+Line12,1,NXT12,5,0,Original setup,,,,,Variable,'03,51003,,,,,,,,,,,0.0,,M5-3,0.0,0
+Line12,1,NXT12,5,0,Original setup,,,,,Variable,'04,51004,,,,,,,,,,,0.0,,M5-4,0.0,0
+Line12,1,NXT12,5,0,Original setup,,,,,Variable,'05,51005,,,,,,,,,,,0.0,,M5-5,0.0,0
+Line12,1,NXT12,5,0,Original setup,,,,,Variable,'06,51006,,,,,,,,,,,0.0,,M5-6,0.0,0
+Line12,1,NXT12,5,0,Original setup,,,,,Variable,'07,51007,,,,,,,,,,,0.0,,M5-7,0.0,0
+Line12,1,NXT12,5,0,Original setup,,,,,Variable,'08,51008,,,,,,,,,,,0.0,,M5-8,0.0,0
+Line12,1,NXT12,5,0,Original setup,,,,,Variable,'09,51009,,,,,,,,,,,0.0,,M5-9,0.0,0
+Line12,1,NXT12,5,0,Original setup,,,,,Variable,'10,51010,,,,,,,,,,,0.0,,M5-10,0.0,0
+Line12,1,NXT12,5,0,Original setup,,,,,Variable,'11,51011,,,,,,,,,,,0.0,,M5-11,0.0,0
+Line12,1,NXT12,5,0,Original setup,,,,,Variable,'12,51012,,,,,,,,,,,0.0,,M5-12,0.0,0
+Line12,1,NXT12,5,0,Original setup,,,,,Variable,'13,51013,,,,,,,,,,,0.0,,M5-13,0.0,0
+Line12,1,NXT12,5,0,Original setup,,,,,Variable,'14,51014,,,,,,,,,,,0.0,,M5-14,0.0,0
+Line12,1,NXT12,5,0,Original setup,,,,,Variable,'15,51015,,,,,,,,,,,0.0,,M5-15,0.0,0
+Line12,1,NXT12,5,0,Original setup,,,,,Variable,'16,51016,,,,,,,,,,,0.0,,M5-16,0.0,0
+Line12,1,NXT12,5,0,Original setup,,,,,Variable,'17,51017,,,,,,,,,,,0.0,,M5-17,0.0,0
+Line12,1,NXT12,5,0,Original setup,,,1201-AA9130-F10A,KT-0800F-180,Fixed,'18,51018,C:\Users\pc\Desktop\DONGLE-DUAL,,,,,,,,,,,,M5-18,0.01,1
+Line12,1,NXT12,5,0,Original setup,,,1201-AB2730-F10A,KT-0800F-180,Fixed,'19,51019,C:\Users\pc\Desktop\DONGLE-DUAL,,,,,,,,,,,,M5-19,0.01,1
+Line12,1,NXT12,5,0,Original setup,,,1201-AA2200-J10A,KT-0800F-180,Fixed,'20,51020,C:\Users\pc\Desktop\DONGLE-DUAL,,,,,,,,,,,,M5-20,0.01,1
+Line12,1,NXT12,5,0,Original setup,,,1509-4Y3V3A-101A,KT-0800F-180,Fixed,'21,51021,C:\Users\pc\Desktop\DONGLE-DUAL,,,,,,,,,,,,M5-21,0.01,1
+Line12,1,NXT12,5,0,Original setup,,,1301-A2C101-Z50A,KT-0800F-180,Fixed,'22,51022,C:\Users\pc\Desktop\DONGLE-DUAL,,,,,,,,,,,,M5-22,0.02,1
+Line12,1,NXT12,5,0,Original setup,,,1301-A3G100-J50A,KT-0800F-180,Fixed,'23,51023,C:\Users\pc\Desktop\DONGLE-DUAL,,,,,,,,,,,,M5-23,0.01,1
+Line12,1,NXT12,5,0,Original setup,,,1201-AA4730-J10A,KT-0800F-180,Fixed,'24,51024,C:\Users\pc\Desktop\DONGLE-DUAL,,,,,,,,,,,,M5-24,0.01,1
+Line12,1,NXT12,5,0,Original setup,,,1301-A3B105-Z50A,KT-0800F-180,Fixed,'25,51025,C:\Users\pc\Desktop\DONGLE-DUAL,,,,,,,,,,,,M5-25,0.01,1
+Line12,1,NXT12,5,0,Original setup,,,1401-52102-Y10A,KT-0800F-180,Fixed,'26,51026,C:\Users\pc\Desktop\DONGLE-DUAL,,,,,,,,,,,,M5-26,0.01,1
+Line12,1,NXT12,5,0,Original setup,,,1515-11R520-101A,KT-0800F-180,Fixed,'27,51027,C:\Users\pc\Desktop\DONGLE-DUAL,,,,,,,,,,,,M5-27,0.01,1
+Line12,1,NXT12,5,0,Original setup,,,1201-AA1640-F10A,KT-0800F-180,Fixed,'28,51028,C:\Users\pc\Desktop\DONGLE-DUAL,,,,,,,,,,,,M5-28,0.01,1
+Line12,1,NXT12,5,0,Original setup,,,,,Variable,'29,51029,,,,,,,,,,,0.0,,M5-29,0.0,0
+Line12,1,NXT12,5,0,Original setup,,,,,Variable,'30,51030,,,,,,,,,,,0.0,,M5-30,0.0,0
+Line12,1,NXT12,5,0,Original setup,,,,,Variable,'31,51031,,,,,,,,,,,0.0,,M5-31,0.0,0
+Line12,1,NXT12,5,0,Original setup,,,,,Variable,'32,51032,,,,,,,,,,,0.0,,M5-32,0.0,0
+Line12,1,NXT12,5,0,Original setup,,,,,Variable,'33,51033,,,,,,,,,,,0.0,,M5-33,0.0,0
+Line12,1,NXT12,5,0,Original setup,,,,,Variable,'34,51034,,,,,,,,,,,0.0,,M5-34,0.0,0
+Line12,1,NXT12,5,0,Original setup,,,,,Variable,'35,51035,,,,,,,,,,,0.0,,M5-35,0.0,0
+Line12,1,NXT12,5,0,Original setup,,,,,Variable,'36,51036,,,,,,,,,,,0.0,,M5-36,0.01,1
+Line12,1,NXT12,5,0,Original setup,,,,,Variable,'37,51037,,,,,,,,,,,0.0,,M5-37,0.0,0
+Line12,1,NXT12,5,0,Original setup,,,,,Variable,'38,51038,,,,,,,,,,,0.0,,M5-38,0.0,0
+Line12,1,NXT12,5,0,Original setup,,,,,Variable,'39,51039,,,,,,,,,,,0.0,,M5-39,0.0,0
+Line12,1,NXT12,5,0,Original setup,,,,,Variable,'40,51040,,,,,,,,,,,0.0,,M5-40,0.01,1
+Line12,1,NXT12,5,0,Original setup,,,,,Variable,'41,51041,,,,,,,,,,,0.0,,M5-41,0.0,0
+Line12,1,NXT12,5,0,Original setup,,,,,Variable,'42,51042,,,,,,,,,,,0.0,,M5-42,0.0,0
+Line12,1,NXT12,5,0,Original setup,,,,,Variable,'43,51043,,,,,,,,,,,0.0,,M5-43,0.02,1
+Line12,1,NXT12,5,0,Original setup,,,,,Variable,'44,51044,,,,,,,,,,,0.0,,M5-44,0.0,0
+Line12,1,NXT12,5,0,Original setup,,,,,Variable,'45,51045,,,,,,,,,,,0.0,,M5-45,0.0,0
+Line12,1,NXT12,6,0,Original setup,,,,,Variable,'01,61001,,,,,,,,,,,0.0,,M6-1,0.0,0
+Line12,1,NXT12,6,0,Original setup,,,,,Variable,'02,61002,,,,,,,,,,,0.0,,M6-2,0.0,0
+Line12,1,NXT12,6,0,Original setup,,,,,Variable,'03,61003,,,,,,,,,,,0.0,,M6-3,0.0,0
+Line12,1,NXT12,6,0,Original setup,,,,,Variable,'04,61004,,,,,,,,,,,0.0,,M6-4,0.0,0
+Line12,1,NXT12,6,0,Original setup,,,,,Variable,'05,61005,,,,,,,,,,,0.0,,M6-5,0.0,0
+Line12,1,NXT12,6,0,Original setup,,,,,Variable,'06,61006,,,,,,,,,,,0.0,,M6-6,0.0,0
+Line12,1,NXT12,6,0,Original setup,,,,,Variable,'07,61007,,,,,,,,,,,0.0,,M6-7,0.0,0
+Line12,1,NXT12,6,0,Original setup,,,,,Variable,'08,61008,,,,,,,,,,,0.0,,M6-8,0.0,0
+Line12,1,NXT12,6,0,Original setup,,,,,Variable,'09,61009,,,,,,,,,,,0.0,,M6-9,0.0,0
+Line12,1,NXT12,6,0,Original setup,,,,,Variable,'10,61010,,,,,,,,,,,0.0,,M6-10,0.0,0
+Line12,1,NXT12,6,0,Original setup,,,,,Variable,'11,61011,,,,,,,,,,,0.0,,M6-11,0.0,0
+Line12,1,NXT12,6,0,Original setup,,,,,Variable,'12,61012,,,,,,,,,,,0.0,,M6-12,0.0,0
+Line12,1,NXT12,6,0,Original setup,,,,,Variable,'13,61013,,,,,,,,,,,0.0,,M6-13,0.0,0
+Line12,1,NXT12,6,0,Original setup,,,,,Variable,'14,61014,,,,,,,,,,,0.0,,M6-14,0.0,0
+Line12,1,NXT12,6,0,Original setup,,,,,Variable,'15,61015,,,,,,,,,,,0.0,,M6-15,0.0,0
+Line12,1,NXT12,6,0,Original setup,,,,,Variable,'16,61016,,,,,,,,,,,0.0,,M6-16,0.0,0
+Line12,1,NXT12,6,0,Original setup,,,,,Variable,'17,61017,,,,,,,,,,,0.0,,M6-17,0.0,0
+Line12,1,NXT12,6,0,Original setup,,,,,Variable,'18,61018,,,,,,,,,,,0.0,,M6-18,0.0,0
+Line12,1,NXT12,6,0,Original setup,,,1503-3N7002-102A,KT-0800F-180,Fixed,'19,61019,C:\Users\pc\Desktop\DONGLE-DUAL,,,,,,,,,,,,M6-19,0.01,1
+Line12,1,NXT12,6,0,Original setup,,,1201-BB30A0-J10A,KT-0800F-180,Fixed,'20,61020,C:\Users\pc\Desktop\DONGLE-DUAL,,,,,,,,,,,,M6-20,0.01,1
+Line12,1,NXT12,6,0,Original setup,,,1301-A3B475-Z50A,KT-0800F-180,Fixed,'21,61021,C:\Users\pc\Desktop\DONGLE-DUAL,,,,,,,,,,,,M6-21,0.01,1
+Line12,1,NXT12,6,0,Original setup,,,1301-A2E180-J50A,KT-0800F-180,Fixed,'22,61022,C:\Users\pc\Desktop\DONGLE-DUAL,,,,,,,,,,,,M6-22,0.01,1
+Line12,1,NXT12,6,0,Original setup,,,1301-A4B106-M50A,KT-0800F-180,Fixed,'23,61023,C:\Users\pc\Desktop\DONGLE-DUAL,,,,,,,,,,,,M6-23,0.01,1
+Line12,1,NXT12,6,0,Original setup,,,1201-AA5600-J10A,KT-0800F-180,Fixed,'24,61024,C:\Users\pc\Desktop\DONGLE-DUAL,,,,,,,,,,,,M6-24,0.01,1
+Line12,1,NXT12,6,0,Original setup,,,1301-A5B476-M50A,KT-0800F-180,Fixed,'25,61025,C:\Users\pc\Desktop\DONGLE-DUAL,,,,,,,,,,,,M6-25,0.01,1
+Line12,1,NXT12,6,0,Original setup,,,1405-4222AU-M11A,KT-0800F-180,Fixed,'26,61026,C:\Users\pc\Desktop\DONGLE-DUAL,,,,,,,,,,,,M6-26,0.01,1
+Line12,1,NXT12,6,0,Original setup,,,1405-4215AU-N10A,KT-0800F-180,Fixed,'27,61027,C:\Users\pc\Desktop\DONGLE-DUAL,,,,,,,,,,,,M6-27,0.01,1
+Line12,1,NXT12,6,0,Original setup,,,,,Variable,'28,61028,,,,,,,,,,,0.0,,M6-28,0.0,0
+Line12,1,NXT12,6,0,Original setup,,,,,Variable,'29,61029,,,,,,,,,,,0.0,,M6-29,0.0,0
+Line12,1,NXT12,6,0,Original setup,,,,,Variable,'30,61030,,,,,,,,,,,0.0,,M6-30,0.0,0
+Line12,1,NXT12,6,0,Original setup,,,,,Variable,'31,61031,,,,,,,,,,,0.0,,M6-31,0.0,0
+Line12,1,NXT12,6,0,Original setup,,,,,Variable,'32,61032,,,,,,,,,,,0.0,,M6-32,0.0,0
+Line12,1,NXT12,6,0,Original setup,,,,,Variable,'33,61033,,,,,,,,,,,0.0,,M6-33,0.0,0
+Line12,1,NXT12,6,0,Original setup,,,,,Variable,'34,61034,,,,,,,,,,,0.0,,M6-34,0.0,0
+Line12,1,NXT12,6,0,Original setup,,,,,Variable,'35,61035,,,,,,,,,,,0.0,,M6-35,0.0,0
+Line12,1,NXT12,6,0,Original setup,,,,,Variable,'36,61036,,,,,,,,,,,0.0,,M6-36,0.0,0
+Line12,1,NXT12,6,0,Original setup,,,,,Variable,'37,61037,,,,,,,,,,,0.0,,M6-37,0.0,0
+Line12,1,NXT12,6,0,Original setup,,,,,Variable,'38,61038,,,,,,,,,,,0.0,,M6-38,0.0,0
+Line12,1,NXT12,6,0,Original setup,,,,,Variable,'39,61039,,,,,,,,,,,0.0,,M6-39,0.0,0
+Line12,1,NXT12,6,0,Original setup,,,,,Variable,'40,61040,,,,,,,,,,,0.0,,M6-40,0.01,1
+Line12,1,NXT12,6,0,Original setup,,,,,Variable,'41,61041,,,,,,,,,,,0.0,,M6-41,0.0,0
+Line12,1,NXT12,6,0,Original setup,,,,,Variable,'42,61042,,,,,,,,,,,0.0,,M6-42,0.0,0
+Line12,1,NXT12,6,0,Original setup,,,,,Variable,'43,61043,,,,,,,,,,,0.0,,M6-43,0.0,0
+Line12,1,NXT12,6,0,Original setup,,,,,Variable,'44,61044,,,,,,,,,,,0.0,,M6-44,0.0,0
+Line12,1,NXT12,6,0,Original setup,,,,,Variable,'45,61045,,,,,,,,,,,0.0,,M6-45,0.0,0
+Line12,1,NXT12,7,0,Original setup,,,,,Variable,'01,71001,,,,,,,,,,,0.0,,M7-1,0.0,0
+Line12,1,NXT12,7,0,Original setup,,,,,Variable,'02,71002,,,,,,,,,,,0.0,,M7-2,0.0,0
+Line12,1,NXT12,7,0,Original setup,,,,,Variable,'03,71003,,,,,,,,,,,0.0,,M7-3,0.0,0
+Line12,1,NXT12,7,0,Original setup,,,,,Variable,'04,71004,,,,,,,,,,,0.0,,M7-4,0.0,0
+Line12,1,NXT12,7,0,Original setup,,,,,Variable,'05,71005,,,,,,,,,,,0.0,,M7-5,0.0,0
+Line12,1,NXT12,7,0,Original setup,,,,,Variable,'06,71006,,,,,,,,,,,0.0,,M7-6,0.0,0
+Line12,1,NXT12,7,0,Original setup,,,,,Variable,'07,71007,,,,,,,,,,,0.0,,M7-7,0.0,0
+Line12,1,NXT12,7,0,Original setup,,,,,Variable,'08,71008,,,,,,,,,,,0.0,,M7-8,0.0,0
+Line12,1,NXT12,7,0,Original setup,,,,,Variable,'09,71009,,,,,,,,,,,0.0,,M7-9,0.0,0
+Line12,1,NXT12,7,0,Original setup,,,,,Variable,'10,71010,,,,,,,,,,,0.0,,M7-10,0.0,0
+Line12,1,NXT12,7,0,,,,,,Variable,'11,71011,,,,,,,,,,,0.0,,M7-11,0.0,0
+Line12,1,NXT12,7,0,,,,,,Variable,'12,71012,,,,,,,,,,,0.0,,M7-12,0.0,0
+Line12,1,NXT12,7,0,,,,,,Variable,'13,71013,,,,,,,,,,,0.0,,M7-13,0.0,0
+Line12,1,NXT12,7,0,,,,,,Variable,'14,71014,,,,,,,,,,,0.0,,M7-14,0.0,0
+Line12,1,NXT12,7,0,,,,,,Variable,'15,71015,,,,,,,,,,,0.0,,M7-15,0.0,0
+Line12,1,NXT12,7,0,,,,,,Variable,'16,71016,,,,,,,,,,,0.0,,M7-16,0.0,0
+Line12,1,NXT12,7,0,,,,,,Variable,'17,71017,,,,,,,,,,,0.0,,M7-17,0.0,0
+Line12,1,NXT12,7,0,,,,1201-AA1030-F10A,KT-0800F-180,Fixed,'18,71018,C:\Users\pc\Desktop\DONGLE-DUAL,,,,,,,,,,,,M7-18,0.01,1
+Line12,1,NXT12,7,0,,,,1201-AA2226-F10A,KT-0800F-180,Fixed,'19,71019,C:\Users\pc\Desktop\DONGLE-DUAL,,,,,,,,,,,,M7-19,0.01,1
+Line12,1,NXT12,7,0,,,,1201-AA3040-F10A,KT-0800F-180,Fixed,'20,71020,C:\Users\pc\Desktop\DONGLE-DUAL,,,,,,,,,,,,M7-20,0.01,1
+Line12,1,NXT12,7,0,,,,1301-A2C470-J50A,KT-0800F-180,Fixed,'21,71021,C:\Users\pc\Desktop\DONGLE-DUAL,,,,,,,,,,,,M7-21,0.01,1
+Line12,1,NXT12,7,0,,,,1201-AB22A0-F10A,KT-0800F-180,Fixed,'22,71022,C:\Users\pc\Desktop\DONGLE-DUAL,,,,,,,,,,,,M7-22,0.01,1
+Line12,1,NXT12,7,0,,,,1201-AA3030-J10A,KT-0800F-180,Fixed,'23,71023,C:\Users\pc\Desktop\DONGLE-DUAL,,,,,,,,,,,,M7-23,0.01,1
+Line12,1,NXT12,7,0,,,,1201-AA2410-F10A,KT-0800F-180,Fixed,'24,71024,C:\Users\pc\Desktop\DONGLE-DUAL,,,,,,,,,,,,M7-24,0.01,1
+Line12,1,NXT12,7,0,,,,1301-A2C101-J50A,KT-0800F-180,Fixed,'25,71025,C:\Users\pc\Desktop\DONGLE-DUAL,,,,,,,,,,,,M7-25,0.01,1
+Line12,1,NXT12,7,0,,,,1301-A2B103-K50A,KT-0800F-180,Fixed,'26,71026,C:\Users\pc\Desktop\DONGLE-DUAL,,,,,,,,,,,,M7-26,0.01,1
+Line12,1,NXT12,7,0,,,,1117-45209A-001A,KT-0800F-180,Fixed,'27,71027,C:\Users\pc\Desktop\DONGLE-DUAL,,,,,,,,,,,,M7-27,0.01,1
+Line12,1,NXT12,7,0,,,,,,Variable,'28,71028,,,,,,,,,,,0.0,,M7-28,0.0,0
+Line12,1,NXT12,7,0,,,,,,Variable,'29,71029,,,,,,,,,,,0.0,,M7-29,0.0,0
+Line12,1,NXT12,7,0,,,,,,Variable,'30,71030,,,,,,,,,,,0.0,,M7-30,0.0,0
+Line12,1,NXT12,7,0,,,,,,Variable,'31,71031,,,,,,,,,,,0.0,,M7-31,0.0,0
+Line12,1,NXT12,7,0,,,,,,Variable,'32,71032,,,,,,,,,,,0.0,,M7-32,0.0,0
+Line12,1,NXT12,7,0,,,,,,Variable,'33,71033,,,,,,,,,,,0.0,,M7-33,0.0,0
+Line12,1,NXT12,7,0,,,,,,Variable,'34,71034,,,,,,,,,,,0.0,,M7-34,0.0,0
+Line12,1,NXT12,7,0,,,,,,Variable,'35,71035,,,,,,,,,,,0.0,,M7-35,0.0,0
+Line12,1,NXT12,7,0,,,,,,Variable,'36,71036,,,,,,,,,,,0.0,,M7-36,0.0,0
+Line12,1,NXT12,7,0,,,,,,Variable,'37,71037,,,,,,,,,,,0.0,,M7-37,0.0,0
+Line12,1,NXT12,7,0,,,,,,Variable,'38,71038,,,,,,,,,,,0.0,,M7-38,0.0,0
+Line12,1,NXT12,7,0,,,,,,Variable,'39,71039,,,,,,,,,,,0.0,,M7-39,0.0,0
+Line12,1,NXT12,7,0,,,,,,Variable,'40,71040,,,,,,,,,,,0.0,,M7-40,0.0,0
+Line12,1,NXT12,7,0,,,,,,Variable,'41,71041,,,,,,,,,,,0.0,,M7-41,0.0,0
+Line12,1,NXT12,7,0,,,,,,Variable,'42,71042,,,,,,,,,,,0.0,,M7-42,0.0,0
+Line12,1,NXT12,7,0,,,,,,Variable,'43,71043,,,,,,,,,,,0.0,,M7-43,0.0,0
+Line12,1,NXT12,7,0,,,,,,Variable,'44,71044,,,,,,,,,,,0.0,,M7-44,0.0,0
+Line12,1,NXT12,7,0,,,,,,Variable,'45,71045,,,,,,,,,,,0.0,,M7-45,0.0,0
+Line12,1,NXT12,8,0,,,,,,Variable,'01,81001,,,,,,,,,,,0.0,,M8-1,0.0,0
+Line12,1,NXT12,8,0,,,,,,Variable,'02,81002,,,,,,,,,,,0.0,,M8-2,0.0,0
+Line12,1,NXT12,8,0,,,,,,Variable,'03,81003,,,,,,,,,,,0.0,,M8-3,0.0,0
+Line12,1,NXT12,8,0,,,,,,Variable,'04,81004,,,,,,,,,,,0.0,,M8-4,0.0,0
+Line12,1,NXT12,8,0,,,,,,Variable,'05,81005,,,,,,,,,,,0.0,,M8-5,0.0,0
+Line12,1,NXT12,8,0,,,,,,Variable,'06,81006,,,,,,,,,,,0.0,,M8-6,0.0,0
+Line12,1,NXT12,8,0,,,,,,Variable,'07,81007,,,,,,,,,,,0.0,,M8-7,0.0,0
+Line12,1,NXT12,8,0,,,,,,Variable,'08,81008,,,,,,,,,,,0.0,,M8-8,0.0,0
+Line12,1,NXT12,8,0,,,,,,Variable,'09,81009,,,,,,,,,,,0.0,,M8-9,0.0,0
+Line12,1,NXT12,8,0,,,,,,Variable,'10,81010,,,,,,,,,,,0.0,,M8-10,0.0,0
+Line12,1,NXT12,8,0,,,,,,Variable,'11,81011,,,,,,,,,,,0.0,,M8-11,0.0,0
+Line12,1,NXT12,8,0,,,,,,Variable,'12,81012,,,,,,,,,,,0.0,,M8-12,0.0,0
+Line12,1,NXT12,8,0,,,,,,Variable,'13,81013,,,,,,,,,,,0.0,,M8-13,0.0,0
+Line12,1,NXT12,8,0,,,,,,Variable,'14,81014,,,,,,,,,,,0.0,,M8-14,0.0,0
+Line12,1,NXT12,8,0,,,,,,Variable,'15,81015,,,,,,,,,,,0.0,,M8-15,0.0,0
+Line12,1,NXT12,8,0,,,,,,Variable,'16,81016,,,,,,,,,,,0.0,,M8-16,0.0,0
+Line12,1,NXT12,8,0,,,,,,Variable,'17,81017,,,,,,,,,,,0.0,,M8-17,0.0,0
+Line12,1,NXT12,8,0,,,,,,Variable,'18,81018,,,,,,,,,,,0.0,,M8-18,0.0,0
+Line12,1,NXT12,8,0,,1503-3N7002-104A,"1503-3N7002-102A,1503-3N7002-104A",1503-3N7002-102A,KT-0800F-180,Fixed,'19,81019,C:\Users\pc\Desktop\DONGLE-DUAL,,,,,,,,,,,,M8-19,0.01,1
+Line12,1,NXT12,8,0,,,,1301-A4G104-Z50A,KT-0800F-180,Fixed,'20,81020,C:\Users\pc\Desktop\DONGLE-DUAL,,,,,,,,,,,,M8-20,0.01,1
+Line12,1,NXT12,8,0,,,,1101-4I3108-001A,KT-0800F-180,Fixed,'21,81021,C:\Users\pc\Desktop\DONGLE-DUAL,,,,,,,,,,,,M8-21,0.01,1
+Line12,1,NXT12,8,0,,,,1501-44A035-101A,KT-0800F-180,Fixed,'22,81022,C:\Users\pc\Desktop\DONGLE-DUAL,,,,,,,,,,,,M8-22,0.01,1
+Line12,1,NXT12,8,0,,,,,,Variable,'23,81023,,,,,,,,,,,0.0,,M8-23,0.0,0
+Line12,1,NXT12,8,0,,,,3101-SD0030-CU0A,KT-1600F-380,Fixed,'24,81024,C:\Users\pc\Desktop\DONGLE-DUAL,,,,,,,,,,,,M8-24,0.0,0
+Line12,1,NXT12,8,0,,,,,,Variable,'25,81025,,,,,,,,,,,0.0,,M8-25,0.0,0
+Line12,1,NXT12,8,0,,,,1201-AB0000-J10A,KT-0800F-180,Fixed,'26,81026,C:\Users\pc\Desktop\DONGLE-DUAL,,,,,,,,,,,,M8-26,0.01,1
+Line12,1,NXT12,8,0,,,,1506-14W000-101A,KT-0800F-180,Fixed,'27,81027,C:\Users\pc\Desktop\DONGLE-DUAL,,,,,,,,,,,,M8-27,0.01,1
+Line12,1,NXT12,8,0,,,,1301-A6M102-M50A,KT-0800F-180,Fixed,'28,81028,C:\Users\pc\Desktop\DONGLE-DUAL,,,,,,,,,,,,M8-28,0.01,1
+Line12,1,NXT12,8,0,,,,,,Variable,'29,81029,,,,,,,,,,,0.0,,M8-29,0.0,0
+Line12,1,NXT12,8,0,,,,,,Variable,'30,81030,,,,,,,,,,,0.0,,M8-30,0.0,0
+Line12,1,NXT12,8,0,,,,,,Variable,'31,81031,,,,,,,,,,,0.0,,M8-31,0.0,0
+Line12,1,NXT12,8,0,,,,,,Variable,'32,81032,,,,,,,,,,,0.0,,M8-32,0.0,0
+Line12,1,NXT12,8,0,,,,,,Variable,'33,81033,,,,,,,,,,,0.0,,M8-33,0.0,0
+Line12,1,NXT12,8,0,,,,,,Variable,'34,81034,,,,,,,,,,,0.0,,M8-34,0.0,0
+Line12,1,NXT12,8,0,,,,,,Variable,'35,81035,,,,,,,,,,,0.0,,M8-35,0.0,0
+Line12,1,NXT12,8,0,,,,,,Variable,'36,81036,,,,,,,,,,,0.0,,M8-36,0.0,0
+Line12,1,NXT12,8,0,,,,,,Variable,'37,81037,,,,,,,,,,,0.0,,M8-37,0.0,0
+Line12,1,NXT12,8,0,,,,,,Variable,'38,81038,,,,,,,,,,,0.0,,M8-38,0.0,0
+Line12,1,NXT12,8,0,,,,,,Variable,'39,81039,,,,,,,,,,,0.0,,M8-39,0.0,0
+Line12,1,NXT12,8,0,,,,,,Variable,'40,81040,,,,,,,,,,,0.0,,M8-40,0.0,0
+Line12,1,NXT12,8,0,,,,,,Variable,'41,81041,,,,,,,,,,,0.0,,M8-41,0.0,0
+Line12,1,NXT12,8,0,,,,,,Variable,'42,81042,,,,,,,,,,,0.0,,M8-42,0.0,0
+Line12,1,NXT12,8,0,,,,,,Variable,'43,81043,,,,,,,,,,,0.0,,M8-43,0.0,0
+Line12,1,NXT12,8,0,,,,,,Variable,'44,81044,,,,,,,,,,,0.0,,M8-44,0.0,0
+Line12,1,NXT12,8,0,,,,,,Variable,'45,81045,,,,,,,,,,,0.0,,M8-45,0.0,0
+Line12,1,NXT12,9,0,,,,,,Variable,'01,91001,,,,,,,,,,,0.0,,M9-1,0.0,0
+Line12,1,NXT12,9,0,,,,,,Variable,'02,91002,,,,,,,,,,,0.0,,M9-2,0.0,0
+Line12,1,NXT12,9,0,,,,,,Variable,'03,91003,,,,,,,,,,,0.0,,M9-3,0.0,0
+Line12,1,NXT12,9,0,,,,,,Variable,'04,91004,,,,,,,,,,,0.0,,M9-4,0.0,0
+Line12,1,NXT12,9,0,,,,,,Variable,'05,91005,,,,,,,,,,,0.0,,M9-5,0.0,0
+Line12,1,NXT12,9,0,,,,,,Variable,'06,91006,,,,,,,,,,,0.0,,M9-6,0.0,0
+Line12,1,NXT12,9,0,,,,,,Variable,'07,91007,,,,,,,,,,,0.0,,M9-7,0.0,0
+Line12,1,NXT12,9,0,,,,,,Variable,'08,91008,,,,,,,,,,,0.0,,M9-8,0.0,0
+Line12,1,NXT12,9,0,,,,,,Variable,'09,91009,,,,,,,,,,,0.0,,M9-9,0.0,0
+Line12,1,NXT12,9,0,,,,,,Variable,'10,91010,,,,,,,,,,,0.0,,M9-10,0.0,0
+Line12,1,NXT12,9,0,,,,,,Variable,'11,91011,,,,,,,,,,,0.0,,M9-11,0.0,0
+Line12,1,NXT12,9,0,,,,,,Variable,'12,91012,,,,,,,,,,,0.0,,M9-12,0.0,0
+Line12,1,NXT12,9,0,,,,,,Variable,'13,91013,,,,,,,,,,,0.0,,M9-13,0.0,0
+Line12,1,NXT12,9,0,,,,,,Variable,'14,91014,,,,,,,,,,,0.0,,M9-14,0.0,0
+Line12,1,NXT12,9,0,,,,,,Variable,'15,91015,,,,,,,,,,,0.0,,M9-15,0.0,0
+Line12,1,NXT12,9,0,,,,,,Variable,'16,91016,,,,,,,,,,,0.0,,M9-16,0.0,0
+Line12,1,NXT12,9,0,,,,,,Variable,'17,91017,,,,,,,,,,,0.0,,M9-17,0.0,0
+Line12,1,NXT12,9,0,,,,,,Variable,'18,91018,,,,,,,,,,,0.0,,M9-18,0.0,0
+Line12,1,NXT12,9,0,,,,1501-5024M0-105A,KT-0800F-180,Fixed,'19,91019,C:\Users\pc\Desktop\DONGLE-DUAL,,,,,,,,,,,,M9-19,0.01,1
+Line12,1,NXT12,9,0,,,,1111-432905-001A,KT-0800F-180,Fixed,'20,91020,C:\Users\pc\Desktop\DONGLE-DUAL,,,,,,,,,,,,M9-20,0.01,1
+Line12,1,NXT12,9,0,,,,1301-A5B226-M50A,KT-0800F-180,Fixed,'21,91021,C:\Users\pc\Desktop\DONGLE-DUAL,,,,,,,,,,,,M9-21,0.01,1
+Line12,1,NXT12,9,0,,,,1501-4R04D3-101A,KT-0800F-180,Fixed,'22,91022,C:\Users\pc\Desktop\DONGLE-DUAL,,,,,,,,,,,,M9-22,0.01,1
+Line12,1,NXT12,9,0,,,,,,Variable,'23,91023,,,,,,,,,,,0.0,,M9-23,0.0,0
+Line12,1,NXT12,9,0,,,,1201-AB7500-J10A,KT-0800F-180,Fixed,'24,91024,C:\Users\pc\Desktop\DONGLE-DUAL,,,,,,,,,,,,M9-24,0.01,1
+Line12,1,NXT12,9,0,,,,1119-4E3417-001A,KT-0800F-180,Fixed,'25,91025,C:\Users\pc\Desktop\DONGLE-DUAL,,,,,,,,,,,,M9-25,0.01,1
+Line12,1,NXT12,9,0,,,,1301-A4B226-M50A,KT-0800F-180,Fixed,'26,91026,C:\Users\pc\Desktop\DONGLE-DUAL,,,,,,,,,,,,M9-26,0.01,1
+Line12,1,NXT12,9,0,,,,1201-AC0000-J10A,KT-0800F-180,Fixed,'27,91027,C:\Users\pc\Desktop\DONGLE-DUAL,,,,,,,,,,,,M9-27,0.01,1
+Line12,1,NXT12,9,0,,,,,,Variable,'28,91028,,,,,,,,,,,0.0,,M9-28,0.0,0
+Line12,1,NXT12,9,0,,,,,,Variable,'29,91029,,,,,,,,,,,0.0,,M9-29,0.0,0
+Line12,1,NXT12,9,0,,,,,,Variable,'30,91030,,,,,,,,,,,0.0,,M9-30,0.0,0
+Line12,1,NXT12,9,0,,,,,,Variable,'31,91031,,,,,,,,,,,0.0,,M9-31,0.0,0
+Line12,1,NXT12,9,0,,,,,,Variable,'32,91032,,,,,,,,,,,0.0,,M9-32,0.0,0
+Line12,1,NXT12,9,0,,,,,,Variable,'33,91033,,,,,,,,,,,0.0,,M9-33,0.0,0
+Line12,1,NXT12,9,0,,,,,,Variable,'34,91034,,,,,,,,,,,0.0,,M9-34,0.0,0
+Line12,1,NXT12,9,0,,,,,,Variable,'35,91035,,,,,,,,,,,0.0,,M9-35,0.0,0
+Line12,1,NXT12,9,0,,,,,,Variable,'36,91036,,,,,,,,,,,0.0,,M9-36,0.0,0
+Line12,1,NXT12,9,0,,,,,,Variable,'37,91037,,,,,,,,,,,0.0,,M9-37,0.0,0
+Line12,1,NXT12,9,0,,,,,,Variable,'38,91038,,,,,,,,,,,0.0,,M9-38,0.0,0
+Line12,1,NXT12,9,0,,,,,,Variable,'39,91039,,,,,,,,,,,0.0,,M9-39,0.0,0
+Line12,1,NXT12,9,0,,,,,,Variable,'40,91040,,,,,,,,,,,0.0,,M9-40,0.0,0
+Line12,1,NXT12,9,0,,,,,,Variable,'41,91041,,,,,,,,,,,0.0,,M9-41,0.0,0
+Line12,1,NXT12,9,0,,,,,,Variable,'42,91042,,,,,,,,,,,0.0,,M9-42,0.0,0
+Line12,1,NXT12,9,0,,,,,,Variable,'43,91043,,,,,,,,,,,0.0,,M9-43,0.0,0
+Line12,1,NXT12,9,0,,,,,,Variable,'44,91044,,,,,,,,,,,0.0,,M9-44,0.0,0
+Line12,1,NXT12,9,0,,,,,,Variable,'45,91045,,,,,,,,,,,0.0,,M9-45,0.0,0
+Line12,1,NXT12,10,0,,,,,,Variable,'01,101001,,,,,,,,,,,0.0,,M10-1,0.0,0
+Line12,1,NXT12,10,0,,,,,,Variable,'02,101002,,,,,,,,,,,0.0,,M10-2,0.0,0
+Line12,1,NXT12,10,0,,,,,,Variable,'03,101003,,,,,,,,,,,0.0,,M10-3,0.0,0
+Line12,1,NXT12,10,0,,,,,,Variable,'04,101004,,,,,,,,,,,0.0,,M10-4,0.0,0
+Line12,1,NXT12,10,0,,,,,,Variable,'05,101005,,,,,,,,,,,0.0,,M10-5,0.0,0
+Line12,1,NXT12,10,0,,,,,,Variable,'06,101006,,,,,,,,,,,0.0,,M10-6,0.0,0
+Line12,1,NXT12,10,0,,,,,,Variable,'07,101007,,,,,,,,,,,0.0,,M10-7,0.0,0
+Line12,1,NXT12,10,0,,,,,,Variable,'08,101008,,,,,,,,,,,0.0,,M10-8,0.0,0
+Line12,1,NXT12,10,0,,,,,,Variable,'09,101009,,,,,,,,,,,0.0,,M10-9,0.0,0
+Line12,1,NXT12,10,0,,,,,,Variable,'10,101010,,,,,,,,,,,0.0,,M10-10,0.0,0
+Line12,1,NXT12,10,0,Original setup,,,,,Variable,'11,101011,,,,,,,,,,,0.0,,M10-11,0.0,0
+Line12,1,NXT12,10,0,Original setup,,,,,Variable,'12,101012,,,,,,,,,,,0.0,,M10-12,0.0,0
+Line12,1,NXT12,10,0,Original setup,,,,,Variable,'13,101013,,,,,,,,,,,0.0,,M10-13,0.0,0
+Line12,1,NXT12,10,0,Original setup,,,,,Variable,'14,101014,,,,,,,,,,,0.0,,M10-14,0.0,0
+Line12,1,NXT12,10,0,Original setup,,,,,Variable,'15,101015,,,,,,,,,,,0.0,,M10-15,0.0,0
+Line12,1,NXT12,10,0,Original setup,,,,,Variable,'16,101016,,,,,,,,,,,0.0,,M10-16,0.0,0
+Line12,1,NXT12,10,0,Original setup,,,,,Variable,'17,101017,,,,,,,,,,,0.0,,M10-17,0.0,0
+Line12,1,NXT12,10,0,Original setup,,,,,Variable,'18,101018,,,,,,,,,,,0.0,,M10-18,0.0,0
+Line12,1,NXT12,10,0,Original setup,,,,,Variable,'19,101019,,,,,,,,,,,0.0,,M10-19,0.0,0
+Line12,1,NXT12,10,0,Original setup,,,,,Variable,'20,101020,,,,,,,,,,,0.0,,M10-20,0.0,0
+Line12,1,NXT12,10,0,Original setup,,,2603-C000022-116A,KT-2400-380,Fixed,'21,101021,C:\Users\pc\Desktop\DONGLE-DUAL,,,,,,,,,,,,M10-21,0.0,0
+Line12,1,NXT12,10,0,Original setup,,,,,Variable,'22,101022,,,,,,,,,,,0.0,,M10-22,0.0,0
+Line12,1,NXT12,10,0,Original setup,,,,,Variable,'23,101023,,,,,,,,,,,0.0,,M10-23,0.0,0
+Line12,1,NXT12,10,0,Original setup,,,2603-C00004-105A,KT-1600F-380,Fixed,'24,101024,C:\Users\pc\Desktop\DONGLE-DUAL,,,,,,,,,,,,M10-24,0.0,0
+Line12,1,NXT12,10,0,Original setup,,,,,Variable,'25,101025,,,,,,,,,,,0.0,,M10-25,0.0,0
+Line12,1,NXT12,10,0,Original setup,,,,,Variable,'26,101026,,,,,,,,,,,0.0,,M10-26,0.0,0
+Line12,1,NXT12,10,0,Original setup,,,2501-1H1102-101A,KT-2400-380,Fixed,'27,101027,C:\Users\pc\Desktop\DONGLE-DUAL,,,,,,,,,,,,M10-27,0.0,0
+Line12,1,NXT12,10,0,Original setup,,,,,Variable,'28,101028,,,,,,,,,,,0.0,,M10-28,0.0,0
+Line12,1,NXT12,10,0,Original setup,,,,,Variable,'29,101029,,,,,,,,,,,0.0,,M10-29,0.0,0
+Line12,1,NXT12,10,0,Original setup,,,,,Variable,'30,101030,,,,,,,,,,,0.0,,M10-30,0.0,0
+Line12,1,NXT12,10,0,Original setup,,,2622-100001-104A,KT-1200F-180,Fixed,'31,101031,C:\Users\pc\Desktop\DONGLE-DUAL,,,,,,,,,,,,M10-31,0.0,0
+Line12,1,NXT12,10,0,Original setup,,,,,Variable,'32,101032,,,,,,,,,,,0.0,,M10-32,0.0,0
+Line12,1,NXT12,10,0,Original setup,,,,,Variable,'33,101033,,,,,,,,,,,0.0,,M10-33,0.0,0
+Line12,1,NXT12,10,0,Original setup,,,,,Variable,'34,101034,,,,,,,,,,,0.0,,M10-34,0.0,0
+Line12,1,NXT12,10,0,Original setup,,,,,Variable,'35,101035,,,,,,,,,,,0.0,,M10-35,0.0,0
+Line12,1,NXT12,10,0,Original setup,,,,,Variable,'36,101036,,,,,,,,,,,0.0,,M10-36,0.0,0
+Line12,1,NXT12,10,0,Original setup,,,,,Variable,'37,101037,,,,,,,,,,,0.0,,M10-37,0.0,0
+Line12,1,NXT12,10,0,Original setup,,,,,Variable,'38,101038,,,,,,,,,,,0.0,,M10-38,0.0,0
+Line12,1,NXT12,10,0,Original setup,,,,,Variable,'39,101039,,,,,,,,,,,0.0,,M10-39,0.0,0
+Line12,1,NXT12,10,0,Original setup,,,,,Variable,'40,101040,,,,,,,,,,,0.0,,M10-40,0.0,0
+Line12,1,NXT12,10,0,Original setup,,,,,Variable,'41,101041,,,,,,,,,,,0.0,,M10-41,0.0,0
+Line12,1,NXT12,10,0,Original setup,,,,,Variable,'42,101042,,,,,,,,,,,0.0,,M10-42,0.0,0
+Line12,1,NXT12,10,0,Original setup,,,,,Variable,'43,101043,,,,,,,,,,,0.0,,M10-43,0.0,0
+Line12,1,NXT12,10,0,Original setup,,,,,Variable,'44,101044,,,,,,,,,,,0.0,,M10-44,0.0,0
+Line12,1,NXT12,10,0,Original setup,,,,,Variable,'45,101045,,,,,,,,,,,0.0,,M10-45,0.0,0
+Line12,1,NXT12,11,0,Original setup,,,,,Variable,'01,111001,,,,,,,,,,,0.0,,M11-1,0.0,0
+Line12,1,NXT12,11,0,Original setup,,,,,Variable,'02,111002,,,,,,,,,,,0.0,,M11-2,0.0,0
+Line12,1,NXT12,11,0,Original setup,,,,,Variable,'03,111003,,,,,,,,,,,0.0,,M11-3,0.0,0
+Line12,1,NXT12,11,0,Original setup,,,,,Variable,'04,111004,,,,,,,,,,,0.0,,M11-4,0.0,0
+Line12,1,NXT12,11,0,Original setup,,,,,Variable,'05,111005,,,,,,,,,,,0.0,,M11-5,0.0,0
+Line12,1,NXT12,11,0,Original setup,,,,,Variable,'06,111006,,,,,,,,,,,0.0,,M11-6,0.0,0
+Line12,1,NXT12,11,0,Original setup,,,,,Variable,'07,111007,,,,,,,,,,,0.0,,M11-7,0.0,0
+Line12,1,NXT12,11,0,Original setup,,,,,Variable,'08,111008,,,,,,,,,,,0.0,,M11-8,0.0,0
+Line12,1,NXT12,11,0,Original setup,,,,,Variable,'09,111009,,,,,,,,,,,0.0,,M11-9,0.0,0
+Line12,1,NXT12,11,0,Original setup,,,,,Variable,'10,111010,,,,,,,,,,,0.0,,M11-10,0.0,0
+Line12,1,NXT12,11,0,Original setup,,,,,Variable,'11,111011,,,,,,,,,,,0.0,,M11-11,0.0,0
+Line12,1,NXT12,11,0,Original setup,,,,,Variable,'12,111012,,,,,,,,,,,0.0,,M11-12,0.0,0
+Line12,1,NXT12,11,0,Original setup,,,,,Variable,'13,111013,,,,,,,,,,,0.0,,M11-13,0.0,0
+Line12,1,NXT12,11,0,Original setup,,,,,Variable,'14,111014,,,,,,,,,,,0.0,,M11-14,0.0,0
+Line12,1,NXT12,11,0,Original setup,,,,,Variable,'15,111015,,,,,,,,,,,0.0,,M11-15,0.0,0
+Line12,1,NXT12,11,0,Original setup,,,,,Variable,'16,111016,,,,,,,,,,,0.0,,M11-16,0.0,0
+Line12,1,NXT12,11,0,Original setup,,,,,Variable,'17,111017,,,,,,,,,,,0.0,,M11-17,0.0,0
+Line12,1,NXT12,11,0,Original setup,,,,,Variable,'18,111018,,,,,,,,,,,0.0,,M11-18,0.0,0
+Line12,1,NXT12,11,0,Original setup,,,2303-24822C-2T1A,KT-2400-380,Fixed,'19,111019,C:\Users\pc\Desktop\DONGLE-DUAL,,,,,,,,,,,,M11-19,0.0,0
+Line12,1,NXT12,11,0,Original setup,,,,,Variable,'20,111020,,,,,,,,,,,0.0,,M11-20,0.0,0
+Line12,1,NXT12,11,0,Original setup,,,,,Variable,'21,111021,,,,,,,,,,,0.0,,M11-21,0.0,0
+Line12,1,NXT12,11,0,Original setup,,,,,Variable,'22,111022,,,,,,,,,,,0.0,,M11-22,0.0,0
+Line12,1,NXT12,11,0,Original setup,,,2613-B00008-108A,KT-3200-380,Fixed,'23,111023,C:\Users\pc\Desktop\DONGLE-DUAL,,,,,,,,,,,,M11-23,0.0,0
+Line12,1,NXT12,11,0,Original setup,,,,,Variable,'24,111024,,,,,,,,,,,0.0,,M11-24,0.0,0
+Line12,1,NXT12,11,0,Original setup,,,,,Variable,'25,111025,,,,,,,,,,,0.0,,M11-25,0.0,0
+Line12,1,NXT12,11,0,Original setup,,,,,Variable,'26,111026,,,,,,,,,,,0.0,,M11-26,0.0,0
+Line12,1,NXT12,11,0,Original setup,,,2703-110004-400E,KT-2400-380,Fixed,'27,111027,C:\Users\pc\Desktop\DONGLE-DUAL,,,,,,,,,,,,M11-27,0.0,0
+Line12,1,NXT12,11,0,Original setup,,,,,Variable,'28,111028,,,,,,,,,,,0.0,,M11-28,0.0,0
+Line12,1,NXT12,11,0,Original setup,,,,,Variable,'29,111029,,,,,,,,,,,0.0,,M11-29,0.0,0
+Line12,1,NXT12,11,0,Original setup,,,,,Variable,'30,111030,,,,,,,,,,,0.0,,M11-30,0.0,0
+Line12,1,NXT12,11,0,Original setup,,,,,Variable,'31,111031,,,,,,,,,,,0.0,,M11-31,0.0,0
+Line12,1,NXT12,11,0,Original setup,,,,,Variable,'32,111032,,,,,,,,,,,0.0,,M11-32,0.0,0
+Line12,1,NXT12,11,0,Original setup,,,,,Variable,'33,111033,,,,,,,,,,,0.0,,M11-33,0.0,0
+Line12,1,NXT12,11,0,Original setup,,,,,Variable,'34,111034,,,,,,,,,,,0.0,,M11-34,0.0,0
+Line12,1,NXT12,11,0,Original setup,,,,,Variable,'35,111035,,,,,,,,,,,0.0,,M11-35,0.0,0
+Line12,1,NXT12,11,0,Original setup,,,,,Variable,'36,111036,,,,,,,,,,,0.0,,M11-36,0.0,0
+Line12,1,NXT12,11,0,Original setup,,,,,Variable,'37,111037,,,,,,,,,,,0.0,,M11-37,0.0,0
+Line12,1,NXT12,11,0,Original setup,,,,,Variable,'38,111038,,,,,,,,,,,0.0,,M11-38,0.0,0
+Line12,1,NXT12,11,0,Original setup,,,,,Variable,'39,111039,,,,,,,,,,,0.0,,M11-39,0.0,0
+Line12,1,NXT12,11,0,Original setup,,,,,Variable,'40,111040,,,,,,,,,,,0.0,,M11-40,0.0,0
+Line12,1,NXT12,11,0,Original setup,,,,,Variable,'41,111041,,,,,,,,,,,0.0,,M11-41,0.0,0
+Line12,1,NXT12,11,0,Original setup,,,,,Variable,'42,111042,,,,,,,,,,,0.0,,M11-42,0.0,0
+Line12,1,NXT12,11,0,Original setup,,,,,Variable,'43,111043,,,,,,,,,,,0.0,,M11-43,0.0,0
+Line12,1,NXT12,11,0,Original setup,,,,,Variable,'44,111044,,,,,,,,,,,0.0,,M11-44,0.0,0
+Line12,1,NXT12,11,0,Original setup,,,,,Variable,'45,111045,,,,,,,,,,,0.0,,M11-45,0.0,0
+Line12,1,NXT12,12,0,Original setup,,,,,Variable,'39,121039,,,,,,,,,,,0.0,,M12-39,0.0,0
+Line12,1,NXT12,12,0,Original setup,,,,,Variable,'40,121040,,,,,,,,,,,0.0,,M12-40,0.0,0
+Line12,1,NXT12,12,0,Original setup,,,,,Variable,'41,121041,,,,,,,,,,,0.0,,M12-41,0.0,0
+Line12,1,NXT12,12,0,Original setup,,,,,Variable,'42,121042,,,,,,,,,,,0.0,,M12-42,0.0,0
+Line12,1,NXT12,12,0,Original setup,,,,,Variable,'43,121043,,,,,,,,,,,0.0,,M12-43,0.0,0
+Line12,1,NXT12,12,0,Original setup,,,,,Variable,'44,121044,,,,,,,,,,,0.0,,M12-44,0.0,0
+Line12,1,NXT12,12,0,Original setup,,,,,Variable,'45,121045,,,,,,,,,,,0.0,,M12-45,0.0,0
+Line12,1,NXT12,12,0,Original setup,,,1113-2002G0-402A,,Fixed,'A-01-01,121901,C:\Users\pc\Desktop\DONGLE-DUAL,,,,,,,,,,,,M12-A-01-01,0.0,0
+Line12,1,NXT12,12,0,Original setup,,,1113-2002G0-402A,,Fixed,'A-01-02,121902,C:\Users\pc\Desktop\DONGLE-DUAL,,,,,,,,,,,,M12-A-01-02,0.0,0
+Line12,1,NXT12,12,0,Original setup,,,1118-3032G0-E01A,,Fixed,'A-02-01,121903,C:\Users\pc\Desktop\DONGLE-DUAL,,,,,,,,,,,,M12-A-02-01,0.0,0
+Line12,1,NXT12,12,0,Original setup,,,1118-3032G0-E01A,,Fixed,'A-02-02,121904,C:\Users\pc\Desktop\DONGLE-DUAL,,,,,,,,,,,,M12-A-02-02,0.0,0
+Line12,1,NXT12,12,0,Original setup,,,1101-1905Y4-B01A,,Fixed,'A-03-01,121905,C:\Users\pc\Desktop\DONGLE-DUAL,,,,,,,,,,,,M12-A-03-01,0.0,0
+Line12,1,NXT12,12,0,Original setup,,,1101-1905Y4-B01A,,Fixed,'A-03-02,121906,C:\Users\pc\Desktop\DONGLE-DUAL,,,,,,,,,,,,M12-A-03-02,0.0,0
+Line12,1,NXT12,12,0,Original setup,,,3101-SD0059-CU0E,,Variable,'A-04-01,121907,C:\Users\pc\Desktop\DONGLE-DUAL,,,,,,,,,,,,M12-A-04-01,0.0,0
+Line12,1,NXT12,12,0,Original setup,,,,,Variable,'A-04-02,121908,,,,,,,,,,,0.0,,M12-A-04-02,0.0,0
+Line12,1,NXT12,12,0,Original setup,,,3101-SD0059-CU0E,,Variable,'A-05-01,121909,C:\Users\pc\Desktop\DONGLE-DUAL,,,,,,,,,,,,M12-A-05-01,0.0,0
+Line12,1,NXT12,12,0,Original setup,,,,,Variable,'A-05-02,121910,,,,,,,,,,,0.0,,M12-A-05-02,0.0,0
+Line12,1,NXT12,12,0,Original setup,,,3101-SD0059-CU0E,,Variable,'A-06-01,121911,C:\Users\pc\Desktop\DONGLE-DUAL,,,,,,,,,,,,M12-A-06-01,0.0,0
+Line12,1,NXT12,12,0,Original setup,,,,,Variable,'A-06-02,121912,,,,,,,,,,,0.0,,M12-A-06-02,0.0,0
+Line12,1,NXT12,12,0,Original setup,,,3101-SD0057-CU0E,,Variable,'A-07-01,121913,C:\Users\pc\Desktop\DONGLE-DUAL,,,,,,,,,,,,M12-A-07-01,0.0,0
+Line12,1,NXT12,12,0,Original setup,,,,,Variable,'A-07-02,121914,,,,,,,,,,,0.0,,M12-A-07-02,0.0,0
+Line12,1,NXT12,12,0,Original setup,,,3101-SD0059-CU0E,,Variable,'A-08-01,121915,C:\Users\pc\Desktop\DONGLE-DUAL,,,,,,,,,,,,M12-A-08-01,0.0,0
+Line12,1,NXT12,12,0,Original setup,,,,,Variable,'A-08-02,121916,,,,,,,,,,,0.0,,M12-A-08-02,0.0,0
+Line12,1,NXT12,12,0,Original setup,,,3101-SD0057-CU0E,,Variable,'A-09-01,121917,C:\Users\pc\Desktop\DONGLE-DUAL,,,,,,,,,,,,M12-A-09-01,0.0,0
+Line12,1,NXT12,12,0,Original setup,,,,,Variable,'A-09-02,121918,,,,,,,,,,,0.0,,M12-A-09-02,0.0,0
+Line12,1,NXT12,12,0,Original setup,,,3101-SD0059-CU0E,,Variable,'A-10-01,121919,C:\Users\pc\Desktop\DONGLE-DUAL,,,,,,,,,,,,M12-A-10-01,0.0,0
+Line12,1,NXT12,12,0,Original setup,,,,,Variable,'A-10-02,121920,,,,,,,,,,,0.0,,M12-A-10-02,0.0,0
+Line12,1,NXT12,12,0,Original setup,,,3101-SD0057-CU0E,,Variable,'A-11-01,121921,C:\Users\pc\Desktop\DONGLE-DUAL,,,,,,,,,,,,M12-A-11-01,0.0,0
+Line12,1,NXT12,12,0,Original setup,,,,,Variable,'A-11-02,121922,,,,,,,,,,,0.0,,M12-A-11-02,0.0,0
+Line12,1,NXT12,12,0,Original setup,,,3101-SD0059-CU0E,,Variable,'A-12-01,121923,C:\Users\pc\Desktop\DONGLE-DUAL,,,,,,,,,,,,M12-A-12-01,0.0,0
+Line12,1,NXT12,12,0,Original setup,,,,,Variable,'A-12-02,121924,,,,,,,,,,,0.0,,M12-A-12-02,0.0,0
+Line12,1,NXT12,12,0,Original setup,,,1113-2002G0-402A,,Fixed,'B-01-01,121925,C:\Users\pc\Desktop\DONGLE-DUAL,,,,,,,,,,,,M12-B-01-01,0.0,0
+Line12,1,NXT12,12,0,Original setup,,,1113-2002G0-402A,,Fixed,'B-01-02,121926,C:\Users\pc\Desktop\DONGLE-DUAL,,,,,,,,,,,,M12-B-01-02,0.0,0
+Line12,1,NXT12,12,0,Original setup,,,1118-3032G0-E01A,,Fixed,'B-02-01,121927,C:\Users\pc\Desktop\DONGLE-DUAL,,,,,,,,,,,,M12-B-02-01,0.0,0
+Line12,1,NXT12,12,0,Original setup,,,1118-3032G0-E01A,,Fixed,'B-02-02,121928,C:\Users\pc\Desktop\DONGLE-DUAL,,,,,,,,,,,,M12-B-02-02,0.0,0
+Line12,1,NXT12,12,0,Original setup,,,1101-1905Y4-B01A,,Fixed,'B-03-01,121929,C:\Users\pc\Desktop\DONGLE-DUAL,,,,,,,,,,,,M12-B-03-01,0.0,0
+Line12,1,NXT12,12,0,Original setup,,,1101-1905Y4-B01A,,Fixed,'B-03-02,121930,C:\Users\pc\Desktop\DONGLE-DUAL,,,,,,,,,,,,M12-B-03-02,0.0,0
+Line12,1,NXT12,12,0,Original setup,,,3101-SD0059-CU0E,,Variable,'B-04-01,121931,C:\Users\pc\Desktop\DONGLE-DUAL,,,,,,,,,,,,M12-B-04-01,0.0,0
+Line12,1,NXT12,12,0,Original setup,,,,,Variable,'B-04-02,121932,,,,,,,,,,,0.0,,M12-B-04-02,0.0,0
+Line12,1,NXT12,12,0,Original setup,,,3101-SD0057-CU0E,,Variable,'B-05-01,121933,C:\Users\pc\Desktop\DONGLE-DUAL,,,,,,,,,,,,M12-B-05-01,0.0,0
+Line12,1,NXT12,12,0,Original setup,,,,,Variable,'B-05-02,121934,,,,,,,,,,,0.0,,M12-B-05-02,0.0,0
+Line12,1,NXT12,12,0,Original setup,,,3101-SD0059-CU0E,,Variable,'B-06-01,121935,C:\Users\pc\Desktop\DONGLE-DUAL,,,,,,,,,,,,M12-B-06-01,0.0,0
+Line12,1,NXT12,12,0,Original setup,,,,,Variable,'B-06-02,121936,,,,,,,,,,,0.0,,M12-B-06-02,0.0,0
+Line12,1,NXT12,12,0,Original setup,,,3101-SD0057-CU0E,,Variable,'B-07-01,121937,C:\Users\pc\Desktop\DONGLE-DUAL,,,,,,,,,,,,M12-B-07-01,0.0,0
+Line12,1,NXT12,12,0,Original setup,,,,,Variable,'B-07-02,121938,,,,,,,,,,,0.0,,M12-B-07-02,0.0,0
+Line12,1,NXT12,12,0,Original setup,,,3101-SD0059-CU0E,,Variable,'B-08-01,121939,C:\Users\pc\Desktop\DONGLE-DUAL,,,,,,,,,,,,M12-B-08-01,0.0,0
+Line12,1,NXT12,12,0,Original setup,,,,,Variable,'B-08-02,121940,,,,,,,,,,,0.0,,M12-B-08-02,0.0,0
+Line12,1,NXT12,12,0,Original setup,,,3101-SD0057-CU0E,,Variable,'B-09-01,121941,C:\Users\pc\Desktop\DONGLE-DUAL,,,,,,,,,,,,M12-B-09-01,0.0,0
+Line12,1,NXT12,12,0,Original setup,,,,,Variable,'B-09-02,121942,,,,,,,,,,,0.0,,M12-B-09-02,0.0,0
+Line12,1,NXT12,12,0,Original setup,,,3101-SD0059-CU0E,,Variable,'B-10-01,121943,C:\Users\pc\Desktop\DONGLE-DUAL,,,,,,,,,,,,M12-B-10-01,0.0,0
+Line12,1,NXT12,12,0,Original setup,,,,,Variable,'B-10-02,121944,,,,,,,,,,,0.0,,M12-B-10-02,0.0,0
+Line12,1,NXT12,12,0,Original setup,,,3101-SD0057-CU0E,,Variable,'B-11-01,121945,C:\Users\pc\Desktop\DONGLE-DUAL,,,,,,,,,,,,M12-B-11-01,0.0,0
+Line12,1,NXT12,12,0,Original setup,,,,,Variable,'B-11-02,121946,,,,,,,,,,,0.0,,M12-B-11-02,0.0,0
+Line12,1,NXT12,12,0,Original setup,,,3101-SD0059-CU0E,,Variable,'B-12-01,121947,C:\Users\pc\Desktop\DONGLE-DUAL,,,,,,,,,,,,M12-B-12-01,0.0,0
+Line12,1,NXT12,12,0,Original setup,,,,,Variable,'B-12-02,121948,,,,,,,,,,,0.0,,M12-B-12-02,0.0,0

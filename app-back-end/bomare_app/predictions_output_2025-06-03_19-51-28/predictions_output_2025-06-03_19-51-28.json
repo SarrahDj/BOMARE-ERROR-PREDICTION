@@ -916,9 +916,64 @@
     "M5": 19,
     "M6": 1
   },
+  "error_distribution_by_package": {
+    "P0802": 56,
+    "E0802": 27,
+    "E0804": 21,
+    "P0804": 15,
+    "R-0802-P": 13,
+    "E1208": 11,
+    "R-0804-P": 11,
+    "C-0402-P": 8,
+    "C-0804-P": 7,
+    "C-0804-E": 4,
+    "E1612": 2,
+    "E1608": 1,
+    "E5612": 1,
+    "E3220": 1,
+    "E3212": 1,
+    "E2412": 1,
+    "E2416": 1,
+    "E1204": 1
+  },
+  "package_with_most_error": {
+    "name": "P0802",
+    "count": 56,
+    "percentage": 0.3076923076923077
+  },
+  "top_5_packages_with_errors": {
+    "P0802": "56",
+    "E0802": "27",
+    "E0804": "21",
+    "P0804": "15",
+    "R-0802-P": "13"
+  },
+  "all_packages_errors": {
+    "P0802": 56,
+    "E0802": 27,
+    "E0804": 21,
+    "P0804": 15,
+    "R-0802-P": 13,
+    "E1208": 11,
+    "R-0804-P": 11,
+    "C-0402-P": 8,
+    "C-0804-P": 7,
+    "C-0804-E": 4,
+    "E1612": 2,
+    "E1608": 1,
+    "E5612": 1,
+    "E3220": 1,
+    "E3212": 1,
+    "E2412": 1,
+    "E2416": 1,
+    "E1204": 1
+  },
   "output_files": {
-    "excel": "predictions_output_2025-05-18.xlsx",
-    "csv": "predictions_output_2025-05-18.csv",
-    "json": "predictions_output_2025-05-18.json"
+    "folder": "predictions_output_2025-06-03_19-51-28",
+    "excel": "predictions_output_2025-06-03_19-51-28\\predictions_output_2025-06-03_19-51-28.xlsx",
+    "csv": "predictions_output_2025-06-03_19-51-28\\predictions_output_2025-06-03_19-51-28.csv",
+    "json": "predictions_output_2025-06-03_19-51-28\\predictions_output_2025-06-03_19-51-28.json",
+    "predictions_excel": "predictions_output_2025-06-03_19-51-28\\predictions_with_data_2025-06-03_19-51-28.xlsx",
+    "predictions_csv": "predictions_output_2025-06-03_19-51-28\\predictions_with_data_2025-06-03_19-51-28.csv"
   }
 }
